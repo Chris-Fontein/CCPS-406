@@ -1,2 +1,3 @@
 Name:                           E-mail
 Christopher Fontein             cfontein@ryerson.ca
+Jeesoo Kim                      j17kim@ryerson.ca
