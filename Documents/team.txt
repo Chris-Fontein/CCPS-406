@@ -2,3 +2,4 @@ Name:                           E-mail
 Christopher Fontein             cfontein@ryerson.ca
 Jeesoo Kim                      j17kim@ryerson.ca
 Charif Sukkar			charif.sukkar@ryerson.ca
+Ervin Demnushaj			ervin.demnushaj@ryerson.ca
