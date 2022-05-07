@@ -1,0 +1,20 @@
+- name: entrance
+    description: Some description
+    characters: 
+         -player
+    connections: 
+         -cave 1
+         -cave 2
+    monster_connections:
+         -cave 5
+    items:
+        -type: table
+         items:
+            -type: plates
+            -type: chest
+             items:
+                -type:gems
+        -type: chair
+        -type: trappedPedastal
+         items:
+            -type:idol

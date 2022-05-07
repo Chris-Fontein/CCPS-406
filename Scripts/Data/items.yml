@@ -1,0 +1,22 @@
+table:
+    description: some desc
+    type: container
+    contents_visible: true
+    carryable: false
+plates:
+    description: simple plates
+    type: container
+    weight: 1
+    value: 1
+trappedPedastal:
+    type: trappedPedastal
+idol:
+    description: gold idol
+    type: container
+    weight: 1
+    value: 75
+gems:
+    description: small bag of gems
+    type: container
+    weight: 1
+    value: 50
