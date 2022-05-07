@@ -1,19 +1,22 @@
--  name: entrance
-   description: Some description
-   characters:
+-   name: cave
+    short_description: small cave
+    description: The entrance to the cave.  There is a path to the west and east and the exit south. There is a table on the north wall.
+    characters:
       -  player
-   connections:
+    connections:
       -  cave 1
       -  cave 2
-   monster_connections:
+    monster_connections:
       -  cave 5
-   items:
-     -  type: table
-        items:
-           -  type: plates
-           -  type: chest
-              items: -type:gems
-           -  type: chair
-           -  type: trappedPedastal
-              items:
-                 -  type: idol
+    items:
+        -   type: table
+            items:
+            -   type: plates
+            -   type: chest
+                items: -type:gems
+            -   type: chair
+            -   type: trappedPedastal
+                items:
+                    -   type: idol
+    floor:
+        - type: appple
