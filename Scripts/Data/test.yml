@@ -1,0 +1,58 @@
+#generic items
+plate:
+    type: item
+    name: plate
+    value: 2
+    weight: 1
+
+#containers
+table:
+    type: container
+    name: table
+    value: 0
+    weight: 50
+    description: A long oak table
+    contents_description: it has <content> on it.  <addition.>
+    empty_description: "The table has nothing on it"
+    closed_description: ""
+    open_state: true
+chest:
+    type: container
+    name: chest
+    value: 0
+    weight: 50
+    description: Large wooden chest
+    contents_description: The chest is open, inside you see <content> in it.
+    empty_description: "The chest is empty"
+    closed_description: "A closed large wooden chest"
+    open_state: false
+
+#equipment
+#-armor
+helmet:
+    type: equipment
+    name: helmet
+    value: 5
+    weight: 1
+    slot: head
+    equipType: armor
+    equipValue: 1
+
+#-weapon
+sword:
+    type: equipment
+    name: sword
+    value: 5
+    weight: 1
+    slot: hand
+    equipType: weapon
+    equipValue: 1
+
+
+#unique classes.  Items with item specific functionality
+trick potion:
+    type: trickPotion
+healing potion:
+    type: healPotion
+invisibility potion:
+    type: healPotion
