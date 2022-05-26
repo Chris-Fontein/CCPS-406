@@ -55,4 +55,4 @@ trick potion:
 healing potion:
     type: healPotion
 invisibility potion:
-    type: healPotion
+    type: invisibilityPotion
