@@ -12,7 +12,9 @@ class Asset:
         self._description = description
 
     def __str__(self):
-        return self.get_description()
+        return "".join([self._name, ":", self.get_description()])
+    def __hash__(self):
+        return hash(repr(self))
 
     def __eq__(self, other):
         return (self.__class__ == other.__class__

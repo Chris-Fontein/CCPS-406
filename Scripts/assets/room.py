@@ -46,6 +46,7 @@ class Room(Asset):
         ''' Adds connection to the specified room.
         Monster connections can only be navigated by the monster while regular connections
         can be navigated by all Characters.
+        This function should only be used during level creation.
         '''
         connections = monster_connection if self._monster_connections else self._connections
         connections[direction] = room
