@@ -26,7 +26,7 @@ class Room(Asset):
         """Returns room's long description."""
         short_desc = "".join(["[", self._name, "]"])
 
-        return " ".join([short_desc, self._description, self.build_furniture_description(), self.build_character_description(), self.build_item_description()])
+        return " ".join([short_desc, self._description, self.build_character_description(), self.build_furniture_description(), self.build_item_description()])
 
     def add_item_to_floor(self, new_item):
         '''Adds the specified item to the floor list.'''
