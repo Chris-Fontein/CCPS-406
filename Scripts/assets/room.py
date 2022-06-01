@@ -57,9 +57,9 @@ class Room(Asset):
         To be used for the long description of a room.'''
         items_on_floor = self._floor
         if len(items_on_floor) == 1:
-            add_item_desc = "\n" + "On the floor, you can see " + items_on_floor[0]._description + ". "
+            add_item_desc = "\n" + "On the floor, you notice " + items_on_floor[0]._description + ". "
         elif len(items_on_floor) > 1:
-            add_item_desc = "\n" + "On the floor, you can see "
+            add_item_desc = "\n" + "On the floor, you notice "
             for item in range(len(items_on_floor)):
                 if item != len(items_on_floor)-1:
                     add_item_desc = add_item_desc + items_on_floor[item]._description + ", "
@@ -91,14 +91,14 @@ class Room(Asset):
         To be used for the long of a room.'''
         furnishings = self._furniture
         if len(furnishings) == 1:
-            add_furn_desc = "\n" + "There is a " + furnishings[0].get_description() + ". "
+            add_furn_desc = "\n" + "There is a " + furnishings[0].get_furniture_description() + ". "
         elif len(furnishings) > 1:
             add_furn_desc = "\n" + "There is a "
             for furniture in range(len(furnishings)):
                 if furniture != len(furnishings)-1:
-                    add_furn_desc = add_furn_desc + furnishings[furniture].get_description() + ", "
+                    add_furn_desc = add_furn_desc + furnishings[furniture].get_furniture_description() + ", "
                 else:
-                    add_furn_desc = add_furn_desc + "and " + furnishings[furniture].get_description() + ". "
+                    add_furn_desc = add_furn_desc + "and " + furnishings[furniture].get_furniture_description() + ". "
         else:
             add_furn_desc = ""
         return add_furn_desc

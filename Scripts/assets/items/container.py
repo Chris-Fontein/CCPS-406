@@ -17,6 +17,7 @@ class Container(Item):
         self._closed_desc = ""
         self._empty_desc = ""
         self._placement = ""
+        self._carry_desc = ""
 
     def __eq__(self, other):
         return super().__eq__(other)
@@ -43,7 +44,7 @@ class Container(Item):
         '''Removes target item from the container's contents'''
         self._content.remove(target_item)
     
-    def get_description(self):
+    def get_furniture_description(self):
         '''Returns the description of the container along with the placement of the container
         inside the room. Returns whether the container is full, empty or locked, but
         does not include individual descriptions of items inside.
@@ -55,22 +56,23 @@ class Container(Item):
         else:
             return self._full_desc + " " + self._placement
     
-    def get_look_description(self):
+    def get_container_description(self):
         '''Returns the description of the container along with the descriptions of
         individual items inside if the container is open. To be used when the player looks
         at the specific container'''
         if not(self._open):
-            look_desc = "You see " + self._closed_desc + ". "
+            look_desc = self._closed_desc + ". "
         else:
             if len(self._content) == 0:
-                look_desc = "You see " + self._empty_desc + ". "
+                look_desc = self._empty_desc + ". "
             elif len(self._content) == 1:
-                look_desc = "You see " + self._full_desc + ". " + "It holds " + self._content[0]._description + ". "
+                look_desc = self._full_desc + ". " + self._carry_desc + self._content[0]._description + ". "
             else:
-                look_desc = "You see " + self._full_desc + ". " + "It holds "
+                look_desc = self._full_desc + ". " + self._carry_desc
                 for item in range(len(self._content)):
                     if item != len(self._content) - 1:
                         look_desc = look_desc + self._content[item]._description + ", "
                     else:
                         look_desc = look_desc + "and " + self._content[item]._description + ". "
         return look_desc
+    

@@ -5,6 +5,9 @@
 #Third party imports
 #Local imports
 from assets.asset import Asset
+from assets.room import Room
+from assets.item import Item
+from assets.items.container import Container
 
 class Character(Asset):
     '''Character class.'''
@@ -31,6 +34,30 @@ class Character(Asset):
     def adjust_weight(self, adjustment):
         '''Adjust the character's weight load by the specified amount.'''
         self._weight += adjustment
+    
+    def look(self, target):
+        '''Returns the description of the target.'''
+        if isinstance(target, Room) and (self._room == target):
+            return target.get_long_description()
+        elif isinstance(target, Container) and (target in self._room._furniture):
+            target_desc = target.get_container_description()
+            return target_desc[0].upper() + target_desc[1:]
+        elif isinstance(target, Character) and (target in self._room._characters):
+            target_desc = target._description
+            return target_desc[0].upper() + target_desc[1:]
+        elif isinstance(target, Item):
+            if (target in self._room._floor) or (target in self._inventory):
+                target_desc = target._description
+                return target_desc[0].upper() + target_desc[1:]
+            else:
+                for x in self._room._furniture:
+                    if target in (x._content) and (x._open):
+                        target_desc = target._description
+                        return target_desc[0].upper() + target_desc[1:]
+                return "You cannot see anything like that."
+        else:
+            return "You cannot see anything like that."
+
 
     def move():
         pass
@@ -38,8 +65,8 @@ class Character(Asset):
     def attack(target):
         pass
 
-    def action():
-        do action
-        if always_print || player in room:
-            print action
+   # def action():
+        #do action
+        #f always_print or player in room:
+        #   print action
 
