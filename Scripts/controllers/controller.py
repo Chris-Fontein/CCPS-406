@@ -16,7 +16,7 @@ class Controller():
 
     def action(self):
         '''Perform the characters actions based the Characters surrounding'''
-        print(self._character.get_name())
+        print(self._character.get_name() + " does nothing")
 
     def search(self, identifiers):
         '''Search Room Character is in for asset matching identifiers'''

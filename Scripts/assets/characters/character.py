@@ -67,6 +67,10 @@ class Character(Asset):
         self._room = room
         room.add_character(self)
 
+    def get_valid_connections(self):
+        '''Returns the directions and rooms a Character can go'''
+        return {}
+
     def set_controller(self, controller):
         '''Set a new Controller for the Character'''
         if self._controller:

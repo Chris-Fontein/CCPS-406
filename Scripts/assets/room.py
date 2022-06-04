@@ -28,6 +28,14 @@ class Room(Asset):
 
         return " ".join([short_desc, self._description, self.build_character_description(), self.build_furniture_description(), self.build_item_description()])
 
+    def get_connections(self):
+        '''return the connections any Character can take'''
+        return self._connections
+    
+    def get_monster_connections(self):
+        '''return the connections the Monster can take'''
+        return self._monster_connections
+
     def add_character(self, character):
         self._characters.add(character)
 
