@@ -31,6 +31,14 @@ class Character(Asset):
         '''Sets the room the Character is currently located in.'''
         self._room = room
 
+    def add_item(self, item):
+        '''Add item to Character inventory'''
+        self._inventory.append(item)
+
+    def remove_item(self, item):
+        '''Remove item to Character inventory'''
+        self._inventory.remove(item)
+
     def adjust_weight(self, adjustment):
         '''Adjust the character's weight load by the specified amount.'''
         self._weight += adjustment
@@ -39,13 +47,13 @@ class Character(Asset):
         '''Returns the description of the target.'''
         if isinstance(target, Room) and (self._room == target):
             return target.get_long_description()
-        elif isinstance(target, Container) and (target in self._room._furniture):
+        if isinstance(target, Container) and (target in self._room._furniture):
             target_desc = target.get_container_description()
             return target_desc[0].upper() + target_desc[1:]
-        elif isinstance(target, Character) and (target in self._room._characters):
+        if isinstance(target, Character) and (target in self._room._characters):
             target_desc = target._description
             return target_desc[0].upper() + target_desc[1:]
-        elif isinstance(target, Item):
+        if isinstance(target, Item):
             if (target in self._room._floor) or (target in self._inventory):
                 target_desc = target._description
                 return target_desc[0].upper() + target_desc[1:]
@@ -59,10 +67,10 @@ class Character(Asset):
             return "You cannot see anything like that."
 
 
-    def move():
+    def move(self):
         pass
 
-    def attack(target):
+    def attack(self, target):
         pass
 
    # def action():
