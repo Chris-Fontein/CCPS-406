@@ -1,11 +1,105 @@
--   name: cave
-    short_description: small cave
+-   name: room00
+    short_description: entrance hall
     description: The entrance to the cave.  There is a path to the west and east and the exit south. There is a table on the north wall.
     characters:
       -  player
     connections:
-      -  cave 1
-      -  cave 2
+      -  room01
+      -  room02
+      -  room11
+    monster_connections:
+      -  room05
+    items:
+        -   type: table
+            items:
+            -   type: plates
+            -   type: chest
+                items: -type:gems
+            -   type: chair
+            -   type: trappedPedastal
+                items:
+                    -   type: idol
+    floor:
+        - type: appple
+
+-   name: room01
+    short_description: small cave
+    description: long description for room 1
+    characters:
+      -  player
+    connections:
+      -  room00
+      -  room03
+    monster_connections:
+      -  room05
+    items:
+        -   type: table
+            items:
+            -   type: plates
+            -   type: chest
+                items: -type:gems
+            -   type: chair
+            -   type: trappedPedastal
+                items:
+                    -   type: idol
+    floor:
+        - type: appple
+
+-   name: room02
+    short_description: small cave2
+    description: long description for room 2
+    characters:
+      -  player
+    connections:
+      -  room00
+      -  room04
+    monster_connections:
+      -  room05
+    items:
+        -   type: table
+            items:
+            -   type: plates
+            -   type: chest
+                items: -type:gems
+            -   type: chair
+            -   type: trappedPedastal
+                items:
+                    -   type: idol
+    floor:
+        - type: appple
+
+-   name: room03
+    short_description: small cave3
+    description: long description for room 3
+    characters:
+      -  player
+    connections:
+      -  room01
+      -  room05
+      -  room07
+    monster_connections:
+      -  room05
+    items:
+        -   type: table
+            items:
+            -   type: plates
+            -   type: chest
+                items: -type:gems
+            -   type: chair
+            -   type: trappedPedastal
+                items:
+                    -   type: idol
+    floor:
+        - type: appple
+
+-   name: room04
+    short_description: small cave4
+    description: long description for room 4
+    characters:
+      -  player
+    connections:
+      -  room02
+      -  room06
     monster_connections:
       -  cave 5
     items:
@@ -20,3 +114,165 @@
                     -   type: idol
     floor:
         - type: appple
+
+-   name: room05
+    short_description: small cave5
+    description: long description for room 4
+    characters:
+      -  player
+    connections:
+      -  room03
+      -  room08
+    monster_connections:
+      -  cave 5
+    items:
+        -   type: table
+            items:
+            -   type: plates
+            -   type: chest
+                items: -type:gems
+            -   type: chair
+            -   type: trappedPedastal
+                items:
+                    -   type: idol
+    floor:
+        - type: appple
+
+-   name: room06
+    short_description: small cave6
+    description: long description for room 6
+    characters:
+      -  player
+    connections:
+      -  room04
+      -  room08
+    monster_connections:
+      -  cave 5
+    items:
+        -   type: table
+            items:
+            -   type: plates
+            -   type: chest
+                items: -type:gems
+            -   type: chair
+            -   type: trappedPedastal
+                items:
+                    -   type: idol
+    floor:
+        - type: appple
+
+-   name: room07
+    short_description: small cave7
+    description: long description for room 7
+    characters:
+      -  player
+    connections:
+      -  room03
+      -  room09
+    monster_connections:
+      -  cave 5
+    items:
+        -   type: table
+            items:
+            -   type: plates
+            -   type: chest
+                items: -type:gems
+            -   type: chair
+            -   type: trappedPedastal
+                items:
+                    -   type: idol
+    floor:
+        - type: appple
+        
+-   name: room08
+    short_description: small cave8
+    description: long description for room 8
+    characters:
+      -  player
+    connections:
+      -  room05
+      -  room06
+      -  room10
+    monster_connections:
+      -  cave 5
+    items:
+        -   type: table
+            items:
+            -   type: plates
+            -   type: chest
+                items: -type:gems
+            -   type: chair
+            -   type: trappedPedastal
+                items:
+                    -   type: idol
+    floor:
+        - type: appple
+
+-   name: room09
+    short_description: small cave9
+    description: long description for room 9
+    characters:
+      -  player
+    connections:
+      -  room07      
+      -  room10
+    monster_connections:
+      -  cave 5
+    items:
+        -   type: table
+            items:
+            -   type: plates
+            -   type: chest
+                items: -type:gems
+            -   type: chair
+            -   type: trappedPedastal
+                items:
+                    -   type: idol
+    floor:
+        - type: appple
+
+
+-   name: room10
+    short_description: small cave10
+    description: long description for room 10
+    characters:
+      -  player
+    connections:
+      -  room09
+      -  room08      
+    monster_connections:
+      -  cave 5
+    items:
+        -   type: table
+            items:
+            -   type: plates
+            -   type: chest
+                items: -type:gems
+            -   type: chair
+            -   type: trappedPedastal
+                items:
+                    -   type: idol
+    floor:
+        - type: appple
+
+-   name: room11
+    short_description: end
+    description: The end of the game
+    characters:
+      -  player
+    connections:
+      -  room00
+    items:
+        -   type: table
+            items:
+            -   type: plates
+            -   type: chest
+                items: -type:gems
+            -   type: chair
+            -   type: trappedPedastal
+                items:
+                    -   type: idol
+    floor:
+        - type: appple
+
+
