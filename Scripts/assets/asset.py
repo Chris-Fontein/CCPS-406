@@ -30,3 +30,7 @@ class Asset:
     def get_description(self):
         """Returns asset's description."""
         return self._description
+
+    def get_long_description(self):
+        """Returns asset's description."""
+        return self._description
