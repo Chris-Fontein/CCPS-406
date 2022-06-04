@@ -28,6 +28,12 @@ class Room(Asset):
 
         return " ".join([short_desc, self._description, self.build_character_description(), self.build_furniture_description(), self.build_item_description()])
 
+    def add_character(self, character):
+        self._characters.add(character)
+
+    def remove_character(self, character):
+        self._characters.remove(character)
+
     def add_item_to_floor(self, new_item):
         '''Adds the specified item to the floor list.'''
         self._floor.append(new_item)
