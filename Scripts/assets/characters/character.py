@@ -71,6 +71,12 @@ class Character(Asset):
         '''Returns the directions and rooms a Character can go'''
         return {}
 
+    def has_visited(self):
+        if self._room in self._rooms_visited:
+            return True
+        self._rooms_visited.add(self._room)
+        return False
+
     def set_controller(self, controller):
         '''Set a new Controller for the Character'''
         if self._controller:

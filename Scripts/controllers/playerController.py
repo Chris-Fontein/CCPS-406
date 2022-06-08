@@ -11,6 +11,11 @@ class PlayerController(Controller):
 
     def action(self):
         '''Perform the characters actions based the Characters surrounding'''
+        if self._character.has_visited():
+            print(self._character.get_room().get_description())
+        else:
+            print(self._character.get_room().get_long_description())
+
         valid_action = False
         while not valid_action:
             command = input("> ")
