@@ -152,7 +152,7 @@
 
 - room10:
     name: Marble Cave
-    description: A cave filled with marble statues of humans, their expressions frozen in horror. To the east, a ghostly wail emanates from a dark corridor. To the south, an exit littered by human bones.
+    description: A cave filled with marble statues of humans, their expressions frozen in horror. To the west, a golden light shines from a dark corridor. To the south, an exit covered by mist.
     characters: !!set {}
     floor: 
       - banishing stone
