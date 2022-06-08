@@ -31,7 +31,7 @@ class Room(Asset):
     def get_connections(self):
         '''return the connections any Character can take'''
         return self._connections
-    
+
     def get_monster_connections(self):
         '''return the connections the Monster can take'''
         return self._monster_connections

@@ -32,6 +32,7 @@ class PlayerController(Controller):
             "use": self.use,
             "look": self.look,
             "move": self.move,
+            "take": self.take,
             "open": self.open,
             "close": self.close,
             "equip": self.equip,
@@ -65,6 +66,10 @@ class PlayerController(Controller):
         print("look: %s" %details)
         return False
 
+    def take(self, details):
+        '''Attempt to pickup the specified item'''
+        return True
+
     def move(self, details):
         '''Attempt to move in the specified direction'''
         if not details:
@@ -73,13 +78,14 @@ class PlayerController(Controller):
 
         valid_dirs = self._character.get_valid_connections()
 
-        new_room = None
+        final_dir = None
         for direction in details:
             if direction in valid_dirs:
-                new_room = valid_dirs[direction]
+                final_dir = direction
                 break
-        if new_room:
-            self._character.move(new_room)
+        if final_dir:
+            self._character.move(valid_dirs[final_dir])
+            print("You move %s towards %s." %(final_dir, self._character.get_room().get_name()))
             return True
         print("No valid direction specified")
         return False
@@ -93,6 +99,7 @@ class PlayerController(Controller):
         '''Attempt to attack the specified character'''
         print("attack: %s" %details)
         return True
+
 
 def substitute_commands(action, details):
     '''Modify actions and details with synonymous command'''
@@ -114,5 +121,9 @@ def substitute_commands(action, details):
         action = "use"
     elif action == "fight":
         action = "attack"
+    elif action == "pickup":
+        action = "take"
+    elif action == "grab":
+        action = "take"
 
     return action, details

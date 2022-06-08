@@ -80,10 +80,12 @@ class Character(Asset):
 
     def add_item(self, item):
         '''Add item to Character inventory'''
+        self.adjust_weight(item.get_weight())
         self._inventory.append(item)
 
     def remove_item(self, item):
         '''Remove item to Character inventory'''
+        self.adjust_weight(-item.get_weight())
         self._inventory.remove(item)
 
     def adjust_weight(self, adjustment):
