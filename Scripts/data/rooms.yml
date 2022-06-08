@@ -1,278 +1,189 @@
--   name: room00
-    short_description: entrance hall
-    description: The entrance to the cave.  There is a path to the west and east and the exit south. There is a table on the north wall.
-    characters:
-      -  player
+- room00:
+    name: Cavern Entrance
+    description: The mouth of the cave. To the south, is the exit to the outside world. To the east, there is a corridor with a faint red glow. To the west, a corridor with an emanating icy mist.
+    characters: !!set {Player}
+    floor: []
+    furniture:
+      - skeleton
     connections:
-      -  room01
-      -  room02
-      -  room11
+      - [w, room01]
+      - [e, room02]
+      - [s, room12]
     monster_connections:
-      -  room05
-    items:
-        -   type: table
-            items:
-            -   type: plates
-            -   type: chest
-                items: -type:gems
-            -   type: chair
-            -   type: trappedPedastal
-                items:
-                    -   type: idol
-    floor:
-        - type: appple
+      n: room05
 
--   name: room01
-    short_description: small cave
-    description: long description for room 1
-    characters:
-      -  player
+- room01:
+    name: Ice Cave
+    description: A cave with icy crystals protruding from every corner. To the east, is a dark corridor. To the north, a narrow exit from which running water can be heard.
+    characters: !!set {}
+    floor: 
+      - shield
+    furniture:
+      - icy table
     connections:
-      -  room00
-      -  room03
+      - [n, room03]
+      - [e, room00]
     monster_connections:
-      -  room05
-    items:
-        -   type: table
-            items:
-            -   type: plates
-            -   type: chest
-                items: -type:gems
-            -   type: chair
-            -   type: trappedPedastal
-                items:
-                    -   type: idol
-    floor:
-        - type: appple
+      w: room11
 
--   name: room02
-    short_description: small cave2
-    description: long description for room 2
-    characters:
-      -  player
+- room02:
+    name: Lava Cave
+    description: A cave with streaks of lava flowing down its walls. To the west, is a dark corridor. To the north, a dark hole which seemingly goes deeper under the earth.
+    characters: !!set {}
+    floor: 
+      - sword
+      - pouch
+      - helmet
+    furniture:
+      - wooden chest
+      - wooden barrel
     connections:
-      -  room00
-      -  room04
+      - [n, room04]
+      - [w, room00]
     monster_connections:
-      -  room05
-    items:
-        -   type: table
-            items:
-            -   type: plates
-            -   type: chest
-                items: -type:gems
-            -   type: chair
-            -   type: trappedPedastal
-                items:
-                    -   type: idol
-    floor:
-        - type: appple
 
--   name: room03
-    short_description: small cave3
-    description: long description for room 3
-    characters:
-      -  player
+- room03:
+    name: Fountain Cave
+    description: A cave with streams of water flowing in impossible geometric patterns through the floor and walls. To the north, is an exit covered by a waterfall. To the east, an exit covered by sparse vines and foliage.
+    characters: !!set {Sylas, Alice}
+    floor: 
+      - cloak
+    furniture:
+      - drowned corpse
     connections:
-      -  room01
-      -  room05
-      -  room07
+      - [n, room07]
+      - [e, room05]
+      - [s, room01]
     monster_connections:
-      -  room05
-    items:
-        -   type: table
-            items:
-            -   type: plates
-            -   type: chest
-                items: -type:gems
-            -   type: chair
-            -   type: trappedPedastal
-                items:
-                    -   type: idol
-    floor:
-        - type: appple
 
--   name: room04
-    short_description: small cave4
-    description: long description for room 4
-    characters:
-      -  player
+- room04:
+    name: Emerald Cave
+    description: A cave with glowing green crystal walls and pillars. To the north, there is a corridor stretching upwards towards the surface. To the south, a glowing red corridor.
+    characters: !!set {Isabella}
+    floor: 
+      - ruby
+      - health potion
+    furniture:
+      - emerald table
     connections:
-      -  room02
-      -  room06
+      - [n, room06]
+      - [s, room02]
     monster_connections:
-      -  cave 5
-    items:
-        -   type: table
-            items:
-            -   type: plates
-            -   type: chest
-                items: -type:gems
-            -   type: chair
-            -   type: trappedPedastal
-                items:
-                    -   type: idol
-    floor:
-        - type: appple
+      w: room05
 
--   name: room05
-    short_description: small cave5
-    description: long description for room 4
-    characters:
-      -  player
+- room05:
+    name: Forest Cave
+    description: A cave whose walls are covered by vines and leaves. Tree-like pillars seem to grow through the ceiling. To the north, a dense fog escapes through an entrance. To the west, an exit covered by dense foliage.
+    characters: !!set {}
+    floor: 
+      - hammer
+      - spear
+      - chestplate
+    furniture:
+      - oak table
     connections:
-      -  room03
-      -  room08
+      - [n, room08]
+      - [w, room03]
     monster_connections:
-      -  cave 5
-    items:
-        -   type: table
-            items:
-            -   type: plates
-            -   type: chest
-                items: -type:gems
-            -   type: chair
-            -   type: trappedPedastal
-                items:
-                    -   type: idol
-    floor:
-        - type: appple
+      e: room04
+      s: room00
 
--   name: room06
-    short_description: small cave6
-    description: long description for room 6
-    characters:
-      -  player
+- room06:
+    name: Rainbow Cave
+    description: A cave with crystal walls emitting light of various colors.  To the south, there is an exit with predominantly green glow. To the west, an exit covered by a dense fog.
+    characters: !!set {}
+    floor: 
+      - axe
+      - pouch
+    furniture:
+      - jewel chest
     connections:
-      -  room04
-      -  room08
+      - [s, room04]
+      - [w, room08]
     monster_connections:
-      -  cave 5
-    items:
-        -   type: table
-            items:
-            -   type: plates
-            -   type: chest
-                items: -type:gems
-            -   type: chair
-            -   type: trappedPedastal
-                items:
-                    -   type: idol
-    floor:
-        - type: appple
+      n: room11
 
--   name: room07
-    short_description: small cave7
-    description: long description for room 7
-    characters:
-      -  player
+- room07:
+    name: Skull Cave
+    description: A cave with protruding human skulls in the walls and floor.  To the south, there is an exit within the mouth of a giant skull. To the north, a halway littered with bones.
+    characters: !!set {}
+    floor: 
+      - skull
+      - knife
+      - key
+    furniture:
+      - bone chest
+      - rotting corpse
     connections:
-      -  room03
-      -  room09
+      - [s, room03]
+      - [n, room09]
     monster_connections:
-      -  cave 5
-    items:
-        -   type: table
-            items:
-            -   type: plates
-            -   type: chest
-                items: -type:gems
-            -   type: chair
-            -   type: trappedPedastal
-                items:
-                    -   type: idol
-    floor:
-        - type: appple
-        
--   name: room08
-    short_description: small cave8
-    description: long description for room 8
-    characters:
-      -  player
+      e: room08
+
+- room08:
+    name: Mist Cave
+    description: A cave filled with a menacing, ghostly mist. The fog seems to be escaping from two exits one to the north, and one to the east.
+    characters: !!set {Sebastian}
+    floor: 
+      - crossbow
+    furniture:
+      - floating chest
     connections:
-      -  room05
-      -  room06
-      -  room10
+      - [n, room10]
+      - [e, room06]
+      - [s, room05]
     monster_connections:
-      -  cave 5
-    items:
-        -   type: table
-            items:
-            -   type: plates
-            -   type: chest
-                items: -type:gems
-            -   type: chair
-            -   type: trappedPedastal
-                items:
-                    -   type: idol
-    floor:
-        - type: appple
+      w: room07
 
--   name: room09
-    short_description: small cave9
-    description: long description for room 9
-    characters:
-      -  player
+- room09:
+    name: Gold Cave
+    description: A cave with golden walls and pillars. To the east, a ghostly wail emanates from a dark corridor. To the south, an exit littered by human bones.
+    characters: !!set {}
+    floor: 
+      - mace
+    furniture:
+      - gold chest
+      - fresh corpse
     connections:
-      -  room07      
-      -  room10
+      - [e, room10]
+      - [s, room07]
     monster_connections:
-      -  cave 5
-    items:
-        -   type: table
-            items:
-            -   type: plates
-            -   type: chest
-                items: -type:gems
-            -   type: chair
-            -   type: trappedPedastal
-                items:
-                    -   type: idol
-    floor:
-        - type: appple
+      n: room11
 
-
--   name: room10
-    short_description: small cave10
-    description: long description for room 10
-    characters:
-      -  player
+- room10:
+    name: Marble Cave
+    description: A cave filled with marble statues of humans, their expressions frozen in horror. To the east, a ghostly wail emanates from a dark corridor. To the south, an exit littered by human bones.
+    characters: !!set {}
+    floor: 
+      - banishing stone
+      - painting
+    furniture:
+      - marble table
     connections:
-      -  room09
-      -  room08      
+      - [w, room09]
+      - [s, room08]
     monster_connections:
-      -  cave 5
-    items:
-        -   type: table
-            items:
-            -   type: plates
-            -   type: chest
-                items: -type:gems
-            -   type: chair
-            -   type: trappedPedastal
-                items:
-                    -   type: idol
-    floor:
-        - type: appple
+      n: room11
 
--   name: room11
-    short_description: end
-    description: The end of the game
-    characters:
-      -  player
+- room11:
+    name: Monster Cave
+    description: A pitch black cave with no apparent exits.
+    characters: !!set {Monster}
+    floor: 
+    furniture:
     connections:
-      -  room00
-    items:
-        -   type: table
-            items:
-            -   type: plates
-            -   type: chest
-                items: -type:gems
-            -   type: chair
-            -   type: trappedPedastal
-                items:
-                    -   type: idol
-    floor:
-        - type: appple
+    monster_connections:
+      - [n, room01]
+      - [s, room10]
+      - [w, room09]
+      - [e, room06]
 
-
+- room12:
+    name: Outside
+    description: A dense forest borders a cliffside. To the north, a dark, cavernous mouth opens up and leads to caves that run under the cliffside. To the south, a long stretch of forest. To the east a white, sandy beach, and to the west, a long grassy plain.
+    characters: !!set {Pierre}
+    floor: 
+    furniture:
+    connections:
+      n: room00
+    monster_connections:
