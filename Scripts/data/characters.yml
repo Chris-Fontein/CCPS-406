@@ -1,16 +1,126 @@
-explorer:
-  health: 10
-  maxHealth: 10
-  baseArmor: 0
-  baseAttack: 1
-  weightLimit: 15
-  goldLimit: 150
-  description: "you can't see yourself"
+Player:
+  name: Player
+  description: a youthful, sharply dressed adventurer
+  current_health: 10
+  base_stats:
+    maxHealth: 10
+    baseArmor: 0
+    baseAttack: 1
+    weightLimit: 15
+  inventory:
+  equipped:
+  effects:
+  controller: PlayerController
+  room: room00
+  rooms_visited: !!set {room12, room00}
 
-monster:
-  health: 100
-  maxHealth: 100
-  baseArmor: 50
-  baseAttack: 5
-  description: "A large creature of amorphous slime"
-  sealed: 1
+Sylas:
+  name: Sylas
+  description: a dark-haired, menacing, middle aged man
+  current_health: 10
+  base_stats:
+    maxHealth: 10
+    baseArmor: 0
+    baseAttack: 1
+    weightLimit: 15
+  inventory:
+    - knife
+    - pouch
+    - ruby
+  equipped:
+    sword: hand
+  effects:
+  controller: AdventurerController
+  room: room03
+  rooms_visited: !!set {room12, room00, room01, room03}
+
+Alice:
+  name: Alice
+  description: a young, blonde woman
+  current_health: 10
+  base_stats:
+    maxHealth: 10
+    baseArmor: 0
+    baseAttack: 1
+    weightLimit: 15
+  inventory:
+    - health potion
+    - scroll
+    - painting
+  equipped:
+    chestplate: body
+  effects:
+  controller: AdventurerController
+  room: room03
+  rooms_visited: !!set {room12, room00, room01, room03}
+
+Isabella:
+  name: Isabella
+  description: a mature, stern looking woman
+  current_health: 10
+  base_stats:
+    maxHealth: 10
+    baseArmor: 0
+    baseAttack: 1
+    weightLimit: 15
+  inventory:
+    - shield
+    - spear
+  equipped:
+    axe: hand
+  effects:
+  controller: AdventurerController
+  room: room04
+  rooms_visited: !!set {room12, room00, room02, room04}
+
+Sebastian:
+  name: Sebastian
+  description: a young, suave looking man
+  current_health: 10
+  base_stats:
+    maxHealth: 10
+    baseArmor: 0
+    baseAttack: 1
+    weightLimit: 15
+  inventory:
+    - ruby
+    - saphire
+  equipped:
+    knife: hand
+  effects:
+  controller: AdventurerController
+  room: room08
+  rooms_visited: !!set {room12, room00, room01, room03, room05, room08}
+
+  Pierre:
+  name: Pierre
+  description: a timid, elder man
+  current_health: 10
+  base_stats:
+    maxHealth: 10
+    baseArmor: 0
+    baseAttack: 1
+    weightLimit: 15
+  inventory:
+  equipped:
+  effects:
+  controller: AdventurerController
+  room: room12
+  rooms_visited: !!set {room12}
+
+Monster:
+  name: Monster
+  description: a gigantic cave troll
+  current_health: 10
+  base_stats:
+    maxHealth: 10
+    baseArmor: 0
+    baseAttack: 1
+    weightLimit: 15
+  inventory:
+    - monster core
+  equipped:
+  effects:
+  controller: MonsterController
+  room: room11
+  rooms_visited: !!set {room11}

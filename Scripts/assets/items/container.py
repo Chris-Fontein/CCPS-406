@@ -13,11 +13,11 @@ class Container(Item):
 
         self._content = []
         self._open = False
-        self._full_desc = ""
+        self._open = True
         self._closed_desc = ""
         self._empty_desc = ""
         self._placement = ""
-        self._carry_desc = ""
+        self._content_desc = ""
 
     def __eq__(self, other):
         return super().__eq__(other)
@@ -26,14 +26,14 @@ class Container(Item):
         '''Returns the value of the container plus the values of all items inside'''
         total_value = self._value
         for item in self._content:
-            total_value += item._value
+            total_value += item.get_value()
         return total_value
     
     def get_weight(self):
         '''Returns the weight of the container plus the weight of all items inside'''
         total_weight = self._weight
         for item in self._content:
-            total_weight += item._weight
+            total_weight += item.get_weight()
         return total_weight
 
     def add_item_contents(self, new_item):
@@ -46,15 +46,8 @@ class Container(Item):
     
     def get_furniture_description(self):
         '''Returns the description of the container along with the placement of the container
-        inside the room. Returns whether the container is full, empty or locked, but
-        does not include individual descriptions of items inside.
-        To be implemented in a room's long description.'''
-        if not(self._open):
-            return self._closed_desc + " " + self._placement 
-        elif len(self._content) == 0:
-            return self._empty_desc + " " + self._placement
-        else:
-            return self._full_desc + " " + self._placement
+        inside the room. To be implemented in a room's long description.'''
+        return self._description + " " + self._placement
     
     def get_container_description(self):
         '''Returns the description of the container along with the descriptions of
@@ -66,13 +59,13 @@ class Container(Item):
             if len(self._content) == 0:
                 look_desc = self._empty_desc + ". "
             elif len(self._content) == 1:
-                look_desc = self._full_desc + ". " + self._carry_desc + self._content[0]._description + ". "
+                look_desc = self._description + ". " + self._content_desc + self._content[0].get_description() + ". "
             else:
-                look_desc = self._full_desc + ". " + self._carry_desc
+                look_desc = self._description + ". " + self._content_desc
                 for item in range(len(self._content)):
                     if item != len(self._content) - 1:
-                        look_desc = look_desc + self._content[item]._description + ", "
+                        look_desc = look_desc + self._content[item].get_description() + ", "
                     else:
-                        look_desc = look_desc + "and " + self._content[item]._description + ". "
+                        look_desc = look_desc + "and " + self._content[item].get_description() + ". "
         return look_desc
     
