@@ -18,16 +18,13 @@ class Container(Item):
         self._placement = ""
         self._content_desc = ""
 
-    def __eq__(self, other):
-        return super().__eq__(other)
-    
     def get_value(self):
         '''Returns the value of the container plus the values of all items inside'''
         total_value = self._value
         for item in self._content:
             total_value += item.get_value()
         return total_value
-    
+
     def get_weight(self):
         '''Returns the weight of the container plus the weight of all items inside'''
         total_weight = self._weight
@@ -38,11 +35,11 @@ class Container(Item):
     def add_item_contents(self, new_item):
         '''Adds item to the container's contents'''
         self._content.append(new_item)
-    
+
     def remove_item_contents(self, target_item):
         '''Removes target item from the container's contents'''
         self._content.remove(target_item)
-    
+
     def get_furniture_description(self):
         '''Returns the description of the container along with the placement of the container
         inside the room. To be implemented in a room's long description.'''
@@ -52,7 +49,7 @@ class Container(Item):
         '''Returns the description of the container along with the descriptions of
         individual items inside if the container is open. To be used when the player looks
         at the specific container'''
-        if not(self._open):
+        if not self._open:
             look_desc = self._closed_desc + ". "
         else:
             if len(self._content) == 0:
@@ -67,4 +64,3 @@ class Container(Item):
                     else:
                         look_desc = look_desc + "and " + self._content[item].get_description() + ". "
         return look_desc
-    
