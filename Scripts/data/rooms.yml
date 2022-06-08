@@ -6,9 +6,9 @@
     furniture:
       - skeleton
     connections:
-      w: room01
-      e: room02
-      s: room12
+      - [w, room01]
+      - [e, room02]
+      - [s, room12]
     monster_connections:
       n: room05
 
@@ -21,8 +21,8 @@
     furniture:
       - icy table
     connections:
-      n: room03
-      e: room00
+      - [n, room03]
+      - [e, room00]
     monster_connections:
       w: room11
 
@@ -38,8 +38,8 @@
       - wooden chest
       - wooden barrel
     connections:
-      n: room04
-      w: room00
+      - [n, room04]
+      - [w, room00]
     monster_connections:
 
 - room03:
@@ -51,9 +51,9 @@
     furniture:
       - drowned corpse
     connections:
-      n: room07
-      e: room05
-      s: room01
+      - [n, room07]
+      - [e, room05]
+      - [s, room01]
     monster_connections:
 
 - room04:
@@ -66,8 +66,8 @@
     furniture:
       - emerald table
     connections:
-      n: room06
-      s: room02
+      - [n, room06]
+      - [s, room02]
     monster_connections:
       w: room05
 
@@ -82,8 +82,8 @@
     furniture:
       - oak table
     connections:
-      n: room08
-      w: room03
+      - [n, room08]
+      - [w, room03]
     monster_connections:
       e: room04
       s: room00
@@ -98,8 +98,8 @@
     furniture:
       - jewel chest
     connections:
-      s: room04
-      w: room08
+      - [s, room04]
+      - [w, room08]
     monster_connections:
       n: room11
 
@@ -115,8 +115,8 @@
       - bone chest
       - rotting corpse
     connections:
-      s: room03
-      n: room09
+      - [s, room03]
+      - [n, room09]
     monster_connections:
       e: room08
 
@@ -129,9 +129,9 @@
     furniture:
       - floating chest
     connections:
-      n: room10
-      e: room06
-      s: room05
+      - [n, room10]
+      - [e, room06]
+      - [s, room05]
     monster_connections:
       w: room07
 
@@ -145,8 +145,8 @@
       - gold chest
       - fresh corpse
     connections:
-      e: room10
-      s: room07
+      - [e, room10]
+      - [s, room07]
     monster_connections:
       n: room11
 
@@ -160,8 +160,8 @@
     furniture:
       - marble table
     connections:
-      w: room09
-      s: room08
+      - [w, room09]
+      - [s, room08]
     monster_connections:
       n: room11
 
@@ -173,10 +173,10 @@
     furniture:
     connections:
     monster_connections:
-      n: room01
-      s: room10
-      w: room09
-      e: room06
+      - [n, room01]
+      - [s, room10]
+      - [w, room09]
+      - [e, room06]
 
 - room12:
     name: Outside
