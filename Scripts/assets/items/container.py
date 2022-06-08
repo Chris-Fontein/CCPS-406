@@ -44,7 +44,7 @@ class Container(Item):
         '''Returns the description of the container along with the placement of the container
         inside the room. To be implemented in a room's long description.'''
         return self._description + " " + self._placement
-    
+
     def get_container_description(self):
         '''Returns the description of the container along with the descriptions of
         individual items inside if the container is open. To be used when the player looks
@@ -55,12 +55,19 @@ class Container(Item):
             if len(self._content) == 0:
                 look_desc = self._empty_desc + ". "
             elif len(self._content) == 1:
-                look_desc = self._description + ". " + self._content_desc + self._content[0].get_description() + ". "
+                look_desc = (self._description
+                            + ". "
+                            + self._content_desc
+                            + self._content[0].get_description()
+                            + ". ")
             else:
                 look_desc = self._description + ". " + self._content_desc
                 for item in range(len(self._content)):
                     if item != len(self._content) - 1:
                         look_desc = look_desc + self._content[item].get_description() + ", "
                     else:
-                        look_desc = look_desc + "and " + self._content[item].get_description() + ". "
+                        look_desc = (look_desc
+                                    + "and "
+                                    + self._content[item].get_description()
+                                    + ". ")
         return look_desc
