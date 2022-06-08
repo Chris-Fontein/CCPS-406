@@ -12,7 +12,6 @@ class Container(Item):
         super().__init__(name, description, value, weight)
 
         self._content = []
-        self._open = False
         self._open = True
         self._closed_desc = ""
         self._empty_desc = ""
