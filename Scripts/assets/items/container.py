@@ -12,12 +12,11 @@ class Container(Item):
         super().__init__(name, description, value, weight)
 
         self._content = []
-        self._open = False
-        self._full_desc = ""
+        self._open = True
         self._closed_desc = ""
         self._empty_desc = ""
         self._placement = ""
-        self._carry_desc = ""
+        self._content_desc = ""
 
     def get_value(self):
         '''Returns the value of the container plus the values of all items inside'''
@@ -43,15 +42,9 @@ class Container(Item):
 
     def get_furniture_description(self):
         '''Returns the description of the container along with the placement of the container
-        inside the room. Returns whether the container is full, empty or locked, but
-        does not include individual descriptions of items inside.
-        To be implemented in a room's long description.'''
-        if not self._open:
-            return self._closed_desc + " " + self._placement
-        if len(self._content) == 0:
-            return self._empty_desc + " " + self._placement
-        return self._full_desc + " " + self._placement
-
+        inside the room. To be implemented in a room's long description.'''
+        return self._description + " " + self._placement
+    
     def get_container_description(self):
         '''Returns the description of the container along with the descriptions of
         individual items inside if the container is open. To be used when the player looks
@@ -62,9 +55,9 @@ class Container(Item):
             if len(self._content) == 0:
                 look_desc = self._empty_desc + ". "
             elif len(self._content) == 1:
-                look_desc = self._full_desc + ". " + self._carry_desc + self._content[0].get_description() + ". "
+                look_desc = self._description + ". " + self._content_desc + self._content[0].get_description() + ". "
             else:
-                look_desc = self._full_desc + ". " + self._carry_desc
+                look_desc = self._description + ". " + self._content_desc
                 for item in range(len(self._content)):
                     if item != len(self._content) - 1:
                         look_desc = look_desc + self._content[item].get_description() + ", "
