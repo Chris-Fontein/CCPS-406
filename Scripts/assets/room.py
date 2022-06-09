@@ -4,6 +4,7 @@
 #Python imports
 #Third party imports
 #Local imports
+from Scripts.controllers.playerController import PlayerController
 from assets.asset import Asset
 
 class Room(Asset):
@@ -20,7 +21,7 @@ class Room(Asset):
     def get_description(self):
         """Returns room's short description."""
         short_desc = "".join(["[", self._name, "]"])
-        return " ".join([short_desc, self.build_character_description()])
+        return " ".join([short_desc, self.build_character_names()])
 
     def get_long_description(self):
         """Returns room's long description."""
@@ -87,6 +88,9 @@ class Room(Asset):
         '''Synthesizes various descriptions of characters in a room into one description.
         To be used for the long and the short description of a room.'''
         others_in_room = list(self._characters)
+        for person in others_in_room:
+            if isinstance(person._controller, PlayerController):
+                others_in_room.remove(person)
         if len(others_in_room) == 1:
             add_char_desc = "\n" + "Inside, you see " + others_in_room[0].get_description() + ". "
         elif len(others_in_room) > 1:
@@ -96,6 +100,26 @@ class Room(Asset):
                     add_char_desc = add_char_desc + others_in_room[other].get_description() + ", "
                 else:
                     add_char_desc = add_char_desc + "and " + others_in_room[other].get_description() + ". "
+        else:
+            add_char_desc = ""
+        return add_char_desc
+    
+    def build_character_names(self):
+        '''Synthesizes various descriptions of characters in a room into one description.
+        To be used for the long and the short description of a room.'''
+        others_in_room = list(self._characters)
+        for person in others_in_room:
+            if isinstance(person._controller, PlayerController):
+                others_in_room.remove(person)
+        if len(others_in_room) == 1:
+            add_char_desc = "\n" + "Inside, you see " + others_in_room[0].get_name() + ". "
+        elif len(others_in_room) > 1:
+            add_char_desc = "\n" + "Inside, you see "
+            for other in range(len(others_in_room)):
+                if other != len(others_in_room)-1:
+                    add_char_desc = add_char_desc + others_in_room[other].get_name() + ", "
+                else:
+                    add_char_desc = add_char_desc + "and " + others_in_room[other].get_name() + ". "
         else:
             add_char_desc = ""
         return add_char_desc

@@ -1,6 +1,7 @@
 Player:
   name: Player
-  description: a youthful, sharply dressed adventurer
+  description: a young adventurer dressed in beige clothes and sturdy boots
+  identifiers: [player, adventurer, beige, clothes sturdy, boots, adventurer, explorer]
   current_health: 10
   base_stats:
     maxHealth: 10
@@ -12,11 +13,12 @@ Player:
   effects:
   controller: PlayerController
   room: room00
-  rooms_visited: !!set {room12, room00}
+  rooms_visited: []
 
 Sylas:
   name: Sylas
-  description: a dark-haired, menacing, middle aged man
+  description: a dark-haired, menacing, middle aged man dressed in leather
+  identifiers: [Sylas, dark, hair, dark-haired, menacing, man, middle, aged, older, leather, adventurer, explorer]
   current_health: 10
   base_stats:
     maxHealth: 10
@@ -28,15 +30,16 @@ Sylas:
     - pouch
     - ruby
   equipped:
-    sword: hand
+    - sword
   effects:
   controller: AdventurerController
   room: room03
-  rooms_visited: !!set {room12, room00, room01, room03}
+  rooms_visited: []
 
 Alice:
   name: Alice
-  description: a young, blonde woman
+  description: a young, blonde woman dressed in expensive hiking clothes
+  identifiers: [Alice, young, blonde, woman, girl, expensive, hiking, clothes, adventurer, explorer]
   current_health: 10
   base_stats:
     maxHealth: 10
@@ -44,19 +47,19 @@ Alice:
     baseAttack: 1
     weightLimit: 15
   inventory:
-    - health potion
     - scroll
     - painting
   equipped:
-    chestplate: body
+    - chestplate
   effects:
   controller: AdventurerController
   room: room03
-  rooms_visited: !!set {room12, room00, room01, room03}
+  rooms_visited: []
 
 Isabella:
   name: Isabella
-  description: a mature, stern looking woman
+  description: a mature, stern looking woman wearing a black cloak
+  identifiers: [Isabella, mature, stern, woman, older, old, black, cloak, adventurer, explorer]
   current_health: 10
   base_stats:
     maxHealth: 10
@@ -67,15 +70,16 @@ Isabella:
     - shield
     - spear
   equipped:
-    axe: hand
+    - axe
   effects:
   controller: AdventurerController
   room: room04
-  rooms_visited: !!set {room12, room00, room02, room04}
+  rooms_visited: []
 
 Sebastian:
   name: Sebastian
-  description: a young, suave looking man
+  description: a handsome, young man with a curly mustache and slicked back hair 
+  identifiers: [Sebastian, young, man, mustache, beard, slicked, slick, hair, adventurer, explorer]
   current_health: 10
   base_stats:
     maxHealth: 10
@@ -86,15 +90,16 @@ Sebastian:
     - ruby
     - saphire
   equipped:
-    knife: hand
+    - knife
   effects:
   controller: AdventurerController
   room: room08
-  rooms_visited: !!set {room12, room00, room01, room03, room05, room08}
+  rooms_visited: []
 
   Pierre:
   name: Pierre
-  description: a timid, elder man
+  description: a timid, elder man carrying a very large travel pack
+  identifiers: [Pierre, timid, scared, elder, man, old, older, backpack, large, adventurer, explorer]
   current_health: 10
   base_stats:
     maxHealth: 10
@@ -106,11 +111,12 @@ Sebastian:
   effects:
   controller: AdventurerController
   room: room12
-  rooms_visited: !!set {room12}
+  rooms_visited: []
 
 Monster:
   name: Monster
-  description: a gigantic cave troll
+  description: a gigantic cave troll 
+  identifiers: [monster, troll, giant, gigantic, creature]
   current_health: 10
   base_stats:
     maxHealth: 10
@@ -123,4 +129,4 @@ Monster:
   effects:
   controller: MonsterController
   room: room11
-  rooms_visited: !!set {room11}
+  rooms_visited: []
