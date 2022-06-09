@@ -9,7 +9,7 @@ from assets.asset import Asset
 class Room(Asset):
     '''Room class.'''
     def __init__(self, name, description):
-        super().__init__(name, description)
+        super().__init__(name, description, set())
 
         self._floor = []
         self._furniture = []

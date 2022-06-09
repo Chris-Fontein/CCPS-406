@@ -8,8 +8,8 @@ from assets.item import Item
 
 class Container(Item):
     '''Container class'''
-    def __init__(self, name, description, value, weight):
-        super().__init__(name, description, value, weight)
+    def __init__(self, name, description, identifiers, value, weight):
+        super().__init__(name, description, identifiers, value, weight)
 
         self._content = []
         self._open = True
@@ -71,3 +71,27 @@ class Container(Item):
                                     + self._content[item].get_description()
                                     + ". ")
         return look_desc
+
+    def search_contents(self, identifiers, min_match = 1):
+        '''Searches the contents of the container for the best matches to the identifier'''
+        if not self._open:
+            return []
+
+        match_value = min_match
+        matches = []
+        for item in self._content:
+            match_number = item.match_identifiers(identifiers)
+            if match_number >= match_value:
+                if match_number > match_value:
+                    matches = []
+                    match_value = match_number
+                matches.append(item)
+
+            if isinstance(item, Container):
+                container_number, container_items = item.search_contents(identifiers)
+                if container_number > match_value:
+                    matches = []
+                    match_value = container_number
+                matches.extend(container_items)
+
+        return match_value, matches
