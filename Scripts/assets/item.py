@@ -8,16 +8,10 @@ from assets.asset import Asset
 
 class Item(Asset):
     '''Generic item class.'''
-    def __init__(self, name, description, value, weight):
-        super().__init__(name, description)
+    def __init__(self, name, description, identifiers, value, weight):
+        super().__init__(name, description, identifiers)
         self._value = value
         self._weight = weight
-
-    def __eq__(self, other):
-        if super().__eq__(other):
-            return (self._value == other._value
-                    and self._weight == other._weight)
-        return False
 
     def get_value(self):
         """Returns item's value."""

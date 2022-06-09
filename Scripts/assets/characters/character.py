@@ -20,8 +20,8 @@ class Character(Asset):
     DAMAGE = "damage"
     NO_DAMAGE = "no_damage"
 
-    def __init__(self, name, description, base_stats, current_health):
-        super().__init__(name, description)
+    def __init__(self, name, description, identifiers, base_stats, current_health):
+        super().__init__(name, description, identifiers)
 
         self._weight = 0
         self._base_stats = base_stats
@@ -72,6 +72,7 @@ class Character(Asset):
         return {}
 
     def has_visited(self):
+        '''Checks if the current room has been visited'''
         if self._room in self._rooms_visited:
             return True
         self._rooms_visited.add(self._room)
@@ -99,6 +100,10 @@ class Character(Asset):
         self._weight += adjustment
 
     def search(self, identifiers):
+        '''Pass identifying keys to the room and returns the Asset found'''
+        return self._room.search(identifiers)
+
+    def search_inventory(self, identifiers):
         '''Pass identifying keys to the room and returns the Asset found'''
         return self._room.search(identifiers)
 

@@ -9,8 +9,8 @@ from assets.characters.character import Character
 
 class Adventurer(Character):
     '''Adventurer class.'''
-    def __init__(self, name, description, base_stats, current_health):
-        super().__init__(name, description, base_stats, current_health)
+    def __init__(self, name, description, identifiers, base_stats, current_health):
+        super().__init__(name, description, identifiers, base_stats, current_health)
         self._equipment = {
             "body":None,
             "head":None,
@@ -51,6 +51,7 @@ class Adventurer(Character):
         self._equipment[slot] = item
         message.append("Equip %s." %item.get_name())
         item_stats = item.get_stats()
+        self.adjust_weight(item.get_weight())
 
         for stat in item_stats:
             self._stat_modifiers[stat] += item_stats[stat]
@@ -66,7 +67,7 @@ class Adventurer(Character):
 
         item = self._equipment[slot]
         self._equipment[slot] = None
-        self._weight -= item.get_weight()
+        self.adjust_weight(-item.get_weight())
 
         item_stats = item.get_stats()
         for stat in item_stats:
