@@ -96,7 +96,7 @@ Sebastian:
   room: room08
   rooms_visited: []
 
-  Pierre:
+Pierre:
   name: Pierre
   description: a timid, elder man carrying a very large travel pack
   identifiers: [Pierre, timid, scared, elder, man, old, older, backpack, large, adventurer, explorer]
