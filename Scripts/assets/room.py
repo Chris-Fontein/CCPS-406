@@ -4,7 +4,7 @@
 #Python imports
 #Third party imports
 #Local imports
-from Scripts.controllers.playerController import PlayerController
+#from controllers.playerController import PlayerController
 from assets.asset import Asset
 
 class Room(Asset):
