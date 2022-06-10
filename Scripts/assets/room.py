@@ -4,12 +4,13 @@
 #Python imports
 #Third party imports
 #Local imports
+from Scripts.controllers.playerController import PlayerController
 from assets.asset import Asset
 
 class Room(Asset):
     '''Room class.'''
     def __init__(self, name, description):
-        super().__init__(name, description)
+        super().__init__(name, description, set())
 
         self._floor = []
         self._furniture = []
@@ -20,13 +21,27 @@ class Room(Asset):
     def get_description(self):
         """Returns room's short description."""
         short_desc = "".join(["[", self._name, "]"])
-        return " ".join([short_desc, self.build_character_description()])
+        return " ".join([short_desc, self.build_character_names()])
 
     def get_long_description(self):
         """Returns room's long description."""
         short_desc = "".join(["[", self._name, "]"])
 
         return " ".join([short_desc, self._description, self.build_character_description(), self.build_furniture_description(), self.build_item_description()])
+
+    def get_connections(self):
+        '''return the connections any Character can take'''
+        return self._connections
+
+    def get_monster_connections(self):
+        '''return the connections the Monster can take'''
+        return self._monster_connections
+
+    def add_character(self, character):
+        self._characters.add(character)
+
+    def remove_character(self, character):
+        self._characters.remove(character)
 
     def add_item_to_floor(self, new_item):
         '''Adds the specified item to the floor list.'''
@@ -57,14 +72,14 @@ class Room(Asset):
         To be used for the long description of a room.'''
         items_on_floor = self._floor
         if len(items_on_floor) == 1:
-            add_item_desc = "\n" + "On the floor, you notice " + items_on_floor[0]._description + ". "
+            add_item_desc = "\n" + "On the floor, you notice " + items_on_floor[0].get_description() + ". "
         elif len(items_on_floor) > 1:
             add_item_desc = "\n" + "On the floor, you notice "
             for item in range(len(items_on_floor)):
                 if item != len(items_on_floor)-1:
-                    add_item_desc = add_item_desc + items_on_floor[item]._description + ", "
+                    add_item_desc = add_item_desc + items_on_floor[item].get_description() + ", "
                 else:
-                    add_item_desc = add_item_desc + "and " + items_on_floor[item]._description + ". "
+                    add_item_desc = add_item_desc + "and " + items_on_floor[item].get_description() + ". "
         else:
             add_item_desc = ""
         return add_item_desc
@@ -73,15 +88,38 @@ class Room(Asset):
         '''Synthesizes various descriptions of characters in a room into one description.
         To be used for the long and the short description of a room.'''
         others_in_room = list(self._characters)
+        for person in others_in_room:
+            if isinstance(person._controller, PlayerController):
+                others_in_room.remove(person)
         if len(others_in_room) == 1:
-            add_char_desc = "\n" + "Inside, you see " + others_in_room[0]._description + ". "
+            add_char_desc = "\n" + "Inside, you see " + others_in_room[0].get_description() + ". "
         elif len(others_in_room) > 1:
             add_char_desc = "\n" + "Inside, you see "
             for other in range(len(others_in_room)):
                 if other != len(others_in_room)-1:
-                    add_char_desc = add_char_desc + others_in_room[other]._description + ", "
+                    add_char_desc = add_char_desc + others_in_room[other].get_description() + ", "
                 else:
-                    add_char_desc = add_char_desc + "and " + others_in_room[other]._description + ". "
+                    add_char_desc = add_char_desc + "and " + others_in_room[other].get_description() + ". "
+        else:
+            add_char_desc = ""
+        return add_char_desc
+    
+    def build_character_names(self):
+        '''Synthesizes various descriptions of characters in a room into one description.
+        To be used for the long and the short description of a room.'''
+        others_in_room = list(self._characters)
+        for person in others_in_room:
+            if isinstance(person._controller, PlayerController):
+                others_in_room.remove(person)
+        if len(others_in_room) == 1:
+            add_char_desc = "\n" + "Inside, you see " + others_in_room[0].get_name() + ". "
+        elif len(others_in_room) > 1:
+            add_char_desc = "\n" + "Inside, you see "
+            for other in range(len(others_in_room)):
+                if other != len(others_in_room)-1:
+                    add_char_desc = add_char_desc + others_in_room[other].get_name() + ", "
+                else:
+                    add_char_desc = add_char_desc + "and " + others_in_room[other].get_name() + ". "
         else:
             add_char_desc = ""
         return add_char_desc
@@ -91,9 +129,9 @@ class Room(Asset):
         To be used for the long of a room.'''
         furnishings = self._furniture
         if len(furnishings) == 1:
-            add_furn_desc = "\n" + "There is a " + furnishings[0].get_furniture_description() + ". "
+            add_furn_desc = "\n" + "There is " + furnishings[0].get_furniture_description() + ". "
         elif len(furnishings) > 1:
-            add_furn_desc = "\n" + "There is a "
+            add_furn_desc = "\n" + "There is "
             for furniture in range(len(furnishings)):
                 if furniture != len(furnishings)-1:
                     add_furn_desc = add_furn_desc + furnishings[furniture].get_furniture_description() + ", "

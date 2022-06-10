@@ -7,9 +7,10 @@
 
 class Asset:
     '''Base class for all game assets.'''
-    def __init__(self, name, description):
+    def __init__(self, name, description, identifiers):
         self._name = name
         self._description = description
+        self._identifiers = set(identifiers)
 
     def __str__(self):
         return "".join([self._name, ":", self.get_description()])
@@ -18,19 +19,27 @@ class Asset:
 
     def __eq__(self, other):
         return (self.__class__ == other.__class__
-                    and self._name == other._name
+                    and self._identifiers == other.identifiers
                 )
     def __ne__(self, other):
         return not self.__eq__(other)
 
     def get_name(self):
-        """Returns asset's name"""
+        '''Returns asset's name'''
         return self._name
 
+    def get_identifiers(self):
+        '''Returns Assets identifiers'''
+        return self._identifiers
+
     def get_description(self):
-        """Returns asset's description."""
+        '''Returns asset's description.'''
         return self._description
 
     def get_long_description(self):
-        """Returns asset's description."""
+        '''Returns asset's description.'''
         return self._description
+
+    def match_identifiers(self, identifiers):
+        '''Returns the number of identifiers that match the identifiers being searched'''
+        return len(self._identifiers & identifiers)

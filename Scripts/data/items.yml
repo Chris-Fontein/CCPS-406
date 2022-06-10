@@ -1,58 +1,491 @@
 #generic items
-plate:
+plates:
     type: item
-    name: plate
+    name: plates
+    description: a stack of beatifully decorated plates
+    identifiers: [plates, plate, stack, decorated, beautiful]
+    value: 3
+    weight: 2
+
+chalice:
+    type: item
+    name: chalice
+    description: a gold jewel encrusted cup
+    identifiers: [gold, chalice, jewel, cup, grail]
+    value: 5
+    weight: 1
+
+scroll:
+    type: item
+    name: scroll
+    description: an ancient, beautifully illustrated scroll
+    identifiers: [scroll, ancient, illustrated, paper]
+    value: 4
+    weight: 1
+
+book:
+    type: item
+    name: book
+    description: a manual about cave trolls
+    identifiers: [book, manual, trolls]
+    value: 1
+    weight: 1
+
+saphire:
+    type: item
+    name: saphire
+    description: a precious, blue gem
+    identifiers: [saphire, blue, gem, stone, precious]
+    value: 5
+    weight: 1
+
+amulet:
+    type: item
+    name: amulet
+    description: a golden amulet
+    identifiers: [amulet, gold, necklace, pendant]
+    value: 3
+    weight: 1
+
+pouch:
+    type: item
+    name: pouch
+    description: a pouch of gold coins
+    identifiers: [pouch, bag, gold, coins]
+    value: 4
+    weight: 1
+
+ruby:
+    type: item
+    name: ruby
+    description: a precious red gem
+    identifiers: [ruby, red, precious, gem, stone]
+    value: 5
+    weight: 1
+
+skull:
+    type: item
+    name: skull
+    description: a human skull
+    identifiers: [skull, bone, human]
+    value: 0
+    weight: 1
+
+diamond skull:
+    type: item
+    name: diamond skull
+    description: a diamond, human-shaped skull
+    identifiers: [diamond, skull, valuable, crystal]
+    value: 10
+    weight: 2
+
+statue:
+    type: item
+    name: statue
+    description: a miniature statue of an elven god
+    identifiers: [statue, miniature, elven, god]
+    value: 4
+    weight: 1
+
+emerald:
+    type: item
+    name: emerald
+    description: a precious green stone
+    identifiers: [emerald, green, precious, gem, stone]
+    value: 5
+    weight: 1
+
+key:
+    type: item
+    name: key
+    description: a small key
+    identifiers: [key]
     value: 2
     weight: 1
 
+banishing stone:
+    type: item
+    name: banishing stone
+    description: a glowing, rune engraved stone
+    identifiers: [banishing, stone, monster, rune, glowing]
+    value: 3
+    weight: 1
+
+painting:
+    type: item
+    name: painting
+    description: a portrait of a young woman
+    identifiers: [painting, portrait, picture, woman]
+    value: 5
+    weight: 2
+
+
 #containers
-table:
+oak table:
     type: container
-    name: table
+    name: oak table
     value: 0
     weight: 50
-    description: A long oak table
-    contents_description: it has <content> on it.  <addition.>
-    empty_description: "The table has nothing on it"
-    closed_description: ""
-    open_state: true
-chest:
+    description: a long oak table
+    identifiers: [long, oak, table, wood]
+    placement: in the center of the cave
+    content: []
+    contents_description: "On top of the table, there is "
+    empty_description: a long oak table with nothing on it
+    closed_description: a long oak table
+    open: true
+
+icy table:
     type: container
-    name: chest
+    name: icy table
     value: 0
     weight: 50
-    description: Large wooden chest
-    contents_description: The chest is open, inside you see <content> in it.
-    empty_description: "The chest is empty"
-    closed_description: "A closed large wooden chest"
-    open_state: false
+    description: a large icy table
+    identifiers: [ice, icy, table, large]
+    placement: to the north side of the cave
+    content: []
+    contents_description: "On top of the table, there is "
+    empty_description: a large icy table with nothing on it
+    closed_description: a large icy table
+    open: true
+
+emerald table:
+    type: container
+    name: emerald table
+    value: 0
+    weight: 50
+    description: a large crystal-green table
+    identifiers: [emerald, green, crystal, large, table]
+    placement: by the north exit of the cave
+    content: []
+    contents_description: "On top of the table, there is "
+    empty_description: a large crystal-green table with nothing on it
+    closed_description: a large crystal-green table
+    open: true
+
+marble table:
+    type: container
+    name: marble table
+    value: 0
+    weight: 50
+    description: a long marble table
+    identifiers: [long, marble, stone, table, large]
+    placement: in the center of the cave
+    content: []
+    contents_description: "On top of the table, there is "
+    empty_description: a long marble table with nothing on it
+    closed_description: a long marble table
+    open: true
+
+wooden chest:
+    type: container
+    name: wooden chest
+    value: 0
+    weight: 50
+    description: a wooden chest
+    identifiers: [wood, wooden, chest, treasure, coffer, box]
+    placement: in the center of the cave
+    content: []
+    contents_description: "Inside the chest, there is "
+    empty_description: an empty wooden chest
+    closed_description: a locked wooden chest
+    open: true
+
+jewel chest:
+    type: container
+    name: jewel chest
+    value: 0
+    weight: 50
+    description: a jewel-encrusted chest
+    identifiers: [jewel, encrusted, chest, treasure, box, coffer]
+    placement: by the east wall of the cave
+    content: []
+    contents_description: "Inside the chest, there is "
+    empty_description: an empty jewel-encrusted chest
+    closed_description: a locked jewel-encrusted chest
+    open: true
+
+bone chest:
+    type: container
+    name: bone chest
+    value: 0
+    weight: 50
+    description: a chest made of human bones
+    identifiers: [bone, chest, human, skeleton, coffer, box]
+    placement: by the west wall of the cave
+    content: []
+    contents_description: "Inside the chest, there is "
+    empty_description: an empty chest made of bones
+    closed_description: a locked chest made of bones
+    open: true
+
+floating chest:
+    type: container
+    name: floating chest
+    value: 0
+    weight: 50
+    description: a floating steel chest
+    identifiers: [floating, steel, chest, treasure, box, coffer, flying]
+    placement: above the floor of the cave
+    content: []
+    contents_description: "Inside the chest, there is "
+    empty_description: an empty, floating chest 
+    closed_description: a locked, floating chest 
+    open: true
+
+gold chest:
+    type: container
+    name: gold chest
+    value: 0
+    weight: 50
+    description: a gold-trimmed chest
+    identifiers: [gold, gold-trimmed, chest, golden, box, treasure, coffer]
+    placement: by the west wall of the cave
+    content: []
+    contents_description: "Inside the chest, there is "
+    empty_description: an empty gold-trimmed chest
+    closed_description: a locked gold-trimmed chest
+    open: true
+
+wooden barrel:
+    type: container
+    name: wooden barrel
+    value: 0
+    weight: 50
+    description: a wooden barrel
+    identifiers: [wood, wooden, barrel, keg]
+    placement: by the south exit of the cave
+    content: []
+    contents_description: "Inside the barrel, there is "
+    empty_description: an empty wooden barrel
+    closed_description: a sealed wooden barrel
+    open: true
+
+rotting corpse:
+    type: container
+    name: rotting corpse
+    value: 0
+    weight: 50
+    description: a rotting corpse
+    identifiers: [rotting, corpse, body, dead]
+    placement: by the south exit of the cave
+    content: []
+    contents_description: "By the corpse, there is "
+    empty_description: a rotting corpse
+    closed_description: a rotting corpse
+    open: true
+
+fresh corpse:
+    type: container
+    name: fresh corpse
+    value: 0
+    weight: 50
+    description: a lifeless body
+    identifiers: [fresh, corpse, dead, body]
+    placement: in the center of the cave
+    content: []
+    contents_description: "By the body, there is "
+    empty_description: a lifeless body
+    closed_description: a lifeless body
+    open: true
+
+drowned corpse:
+    type: container
+    name: drowned corpse
+    value: 0
+    weight: 50
+    description: a bloated corpse
+    identifiers: [drowned, bloated, water, corpse, body, dead, wet]
+    placement: by the north exit of the cave
+    content: []
+    contents_description: "By the corpse, there is "
+    empty_description: a bloated corpse
+    closed_description: a bloated corpse
+    open: true
+
+skeleton:
+    type: container
+    name: skeleton
+    value: 0
+    weight: 50
+    description: a human skeleton
+    identifiers: []
+    placement: in the center of the cave
+    content: [skeleton, bones, bone, body, dead, corpse]
+    contents_description: "By the bones, there is "
+    empty_description: a human skeleton
+    closed_description: a human skeleton
+    open: true
 
 #equipment
 #-armor
 helmet:
     type: equipment
     name: helmet
+    description: a grey, metal helmet
+    identifiers: [helmet, armor, metal, grey]
     value: 5
     weight: 1
     slot: head
-    equipType: armor
-    equipValue: 1
+    equipValue: 
+      armor: 2
+      attack: 0
+      health: 0
+      weight: 0
+
+shield:
+    type: equipment
+    name: shield
+    description: a round steel shield
+    identifiers: [shield, round, steel, armor]
+    value: 5
+    weight: 2
+    slot: shield
+    equipValue: 
+      armor: 3
+      attack: 1
+      health: 0
+      weight: 0
+
+cloak:
+    type: equipment
+    name: cloak
+    description: a long black cloak
+    identifiers: [cloak, cape, black, long]
+    value: 2
+    weight: 1
+    slot: body
+    equipValue: 
+      armor: 1
+      attack: 0
+      health: 0
+      weight: 0
+
+chestplate:
+    type: equipment
+    name: chestplate
+    description: a shiny, steel chestplate
+    identifiers: [chestplate, armor, steel, shiny]
+    value: 5
+    weight: 3
+    slot: body
+    equipValue: 
+      armor: 4
+      attack: 0
+      health: 0
+      weight: 0
 
 #-weapon
 sword:
     type: equipment
     name: sword
+    description: a steel long-sword
+    identifiers: [sword, long-sword, steel]
     value: 5
     weight: 1
-    slot: hand
-    equipType: weapon
-    equipValue: 1
+    slot: weapon
+    equipValue: 
+      armor: 1
+      attack: 3
+      health: 0
+      weight: 0
+
+hammer:
+    type: equipment
+    name: hammer
+    description: a large battle hammer
+    identifiers: [hammer, large, battle]
+    value: 3
+    weight: 2
+    slot: weapon
+    equipValue: 
+      armor: 1
+      attack: 2
+      health: 0
+      weight: 0
+
+spear:
+    type: equipment
+    name: spear
+    description: a wooden spear
+    identifiers: [spear, wooden]
+    value: 5
+    weight: 1
+    slot: weapon
+    equipValue: 
+      armor: 0
+      attack: 3
+      health: 0
+      weight: 0
+
+axe:
+    type: equipment
+    name: axe
+    description: an iron battle-axe
+    identifiers: [axe, battle-axe, battle, iron]
+    value: 5
+    weight: 2
+    slot: weapon
+    equipValue: 
+      armor: 1
+      attack: 3
+      health: 0
+      weight: 0
+
+knife:
+    type: equipment
+    name: knife
+    description: a sharp knife
+    identifiers: [sharp, knife, blade]
+    value: 2
+    weight: 1
+    slot: weapon
+    equipValue: 
+      armor: 0
+      attack: 1
+      health: 0
+      weight: 0
+
+crossbow:
+    type: equipment
+    name: crossbow
+    description: a black crossbow
+    identifiers: [crossbow, bow, black]
+    value: 5
+    weight: 2
+    slot: weapon
+    equipValue: 
+      armor: 0
+      attack: 2
+      health: 0
+      weight: 0
+
+mace:
+    type: equipment
+    name: mace
+    description: a steel mace
+    identifiers: [mace, steel]
+    value: 5
+    weight: 3
+    slot: weapon
+    equipValue: 
+      armor: 1
+      attack: 3
+      health: 0
+      weight: 0
 
 
 #unique classes.  Items with item specific functionality
 trick potion:
-    type: trickPotion
-healing potion:
-    type: healPotion
-invisibility potion:
-    type: invisibilityPotion
+    type: consumable
+    name: trick potion
+    description: a red potion with an upside-down heart on the label
+    effect: 
+        health: -5 
+
+health potion:
+    type: consumable
+    name: health potion
+    description: a red potion with a heart on the label
+    effect: 
+        health: 5 
