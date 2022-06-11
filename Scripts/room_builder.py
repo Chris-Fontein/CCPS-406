@@ -117,7 +117,7 @@ def initialize_room_builder(yaml_characters,yaml_items,yaml_rooms):
                 connected_room_id = connection_obj[1]
                 room.add_room_connection(connection_direction, connected_room_id,True)
 
-    rooms
+    #rooms
 
 
 initialize_room_builder(read_yaml('characters'),read_yaml('items'),read_yaml('rooms'))
