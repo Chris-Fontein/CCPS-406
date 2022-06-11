@@ -62,7 +62,8 @@ class Container(Item):
                             + ". "
                             + self._content_desc
                             + self._content[0].get_description()
-                            + ". ")
+                            + ". "
+                            )
             else:
                 look_desc = self._description + ". " + self._content_desc
                 for item in range(len(self._content)):
@@ -72,7 +73,8 @@ class Container(Item):
                         look_desc = (look_desc
                                     + "and "
                                     + self._content[item].get_description()
-                                    + ". ")
+                                    + ". "
+                                    )
         return look_desc
 
     def get_contents(self, instance):

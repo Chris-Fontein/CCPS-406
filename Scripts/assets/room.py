@@ -101,21 +101,24 @@ class Room(Asset):
         items_on_floor = self._floor
         if len(items_on_floor) == 1:
             add_item_desc = ("\n"
-                                + "On the floor, you notice "
-                                + items_on_floor[0].get_description()
-                                + ". "
-                                )
+                            + "On the floor, you notice "
+                            + items_on_floor[0].get_description()
+                            + ". "
+                            )
         elif len(items_on_floor) > 1:
             add_item_desc = "\n" + "On the floor, you notice "
             for item in range(len(items_on_floor)):
                 if item != len(items_on_floor)-1:
-                    add_item_desc = add_item_desc + items_on_floor[item].get_description() + ", "
+                    add_item_desc = (add_item_desc 
+                                    + items_on_floor[item].get_description() 
+                                    + ", "
+                                    )
                 else:
                     add_item_desc = (add_item_desc
-                                        + "and "
-                                        + items_on_floor[item].get_description()
-                                        + ". "
-                                        )
+                                    + "and "
+                                    + items_on_floor[item].get_description()
+                                    + ". "
+                                    )
         else:
             add_item_desc = ""
         return add_item_desc
@@ -128,14 +131,25 @@ class Room(Asset):
             if isinstance(person._controller, PlayerController):
                 others_in_room.remove(person)
         if len(others_in_room) == 1:
-            add_char_desc = "\n" + "Inside, you see " + others_in_room[0].get_description() + ". "
+            add_char_desc = ("\n" 
+                            + "Inside, you see " 
+                            + others_in_room[0].get_description() 
+                            + ". "
+                            )
         elif len(others_in_room) > 1:
             add_char_desc = "\n" + "Inside, you see "
             for other in range(len(others_in_room)):
                 if other != len(others_in_room)-1:
-                    add_char_desc = add_char_desc + others_in_room[other].get_description() + ", "
+                    add_char_desc = (add_char_desc 
+                                    + others_in_room[other].get_description() 
+                                    + ", "
+                                    )
                 else:
-                    add_char_desc = add_char_desc + "and " + others_in_room[other].get_description() + ". "
+                    add_char_desc = (add_char_desc 
+                                    + "and " 
+                                    + others_in_room[other].get_description() 
+                                    + ". "
+                                    )
         else:
             add_char_desc = ""
         return add_char_desc
@@ -148,14 +162,24 @@ class Room(Asset):
             if isinstance(person._controller, PlayerController):
                 others_in_room.remove(person)
         if len(others_in_room) == 1:
-            add_char_desc = "\n" + "Inside, you see " + others_in_room[0].get_name() + ". "
+            add_char_desc = ("\n" 
+                            + "Inside, you see " 
+                            + others_in_room[0].get_name() 
+                            + ". "
+                            )
         elif len(others_in_room) > 1:
             add_char_desc = "\n" + "Inside, you see "
             for other in range(len(others_in_room)):
                 if other != len(others_in_room)-1:
-                    add_char_desc = add_char_desc + others_in_room[other].get_name() + ", "
+                    add_char_desc = (add_char_desc 
+                                    + others_in_room[other].get_name() 
+                                    + ", "
+                                    )
                 else:
-                    add_char_desc = add_char_desc + "and " + others_in_room[other].get_name() + ". "
+                    add_char_desc = (add_char_desc 
+                                    + "and " + others_in_room[other].get_name() 
+                                    + ". "
+                                    )
         else:
             add_char_desc = ""
         return add_char_desc
@@ -167,14 +191,24 @@ class Room(Asset):
         '''
         furnishings = self._furniture
         if len(furnishings) == 1:
-            add_furn_desc = "\n" + "There is " + furnishings[0].get_furniture_description() + ". "
+            add_furn_desc = ("\n" 
+                            + "There is " 
+                            + furnishings[0].get_furniture_description() 
+                            + ". "
+                            )
         elif len(furnishings) > 1:
             add_furn_desc = "\n" + "There is "
             for furniture in range(len(furnishings)):
                 if furniture != len(furnishings)-1:
-                    add_furn_desc = add_furn_desc + furnishings[furniture].get_furniture_description() + ", "
+                    add_furn_desc = (add_furn_desc 
+                                    + furnishings[furniture].get_furniture_description() 
+                                    + ", "
+                                    )
                 else:
-                    add_furn_desc = add_furn_desc + "and " + furnishings[furniture].get_furniture_description() + ". "
+                    add_furn_desc = (add_furn_desc 
+                                    + "and " + furnishings[furniture].get_furniture_description() 
+                                    + ". "
+                                    )
         else:
             add_furn_desc = ""
         return add_furn_desc
