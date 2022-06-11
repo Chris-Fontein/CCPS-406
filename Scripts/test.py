@@ -1,5 +1,5 @@
 """fine"""
-from assets.item import Item
+#from assets.item import Item
 from assets.items.container import Container
 #from assets.asset import Asset
 from assets.room import Room
@@ -8,19 +8,21 @@ from controllers.playerController import PlayerController
 from controllers.adventurerController import AdventurerController
 
 char1 = Adventurer(
-    "bob",
-    "A man in red robes",
-    {"attack":1, "armor":1, "weight":15, "health":10},
-    10
+        "bob",
+        "A man in red robes",
+        ["man, bob, red, robes"],
+        {"attack":1, "armor":1, "weight":15, "health":10},
+        10
     )
 char2 = Adventurer(
-    "gil",
-    "A woman in black robes",
-    {"attack":3, "armor":0, "weight":15, "health":10},
-    10
+        "gil",
+        "A woman in black robes",
+        ["man, bob, red, robes"],
+        {"attack":3, "armor":0, "weight":15, "health":10},
+        10
     )
 
-table = Container("table", "A solid oak table", 0, 100)
+table = Container("table", "A solid oak table", ["table", "oak", "solid"], 0, 100, True)
 
 entrance = Room("Entrance", "The entrance to the cave.  There is a room to the east, and a hallway leading north.")
 dead_end = Room("Dead end", "A dead end.  The entrance lies to the west.")

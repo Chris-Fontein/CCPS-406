@@ -5,14 +5,15 @@
 #Third party imports
 #Local imports
 from assets.item import Item
+from assets.asset import Asset
 
 class Container(Item):
     '''Container class'''
-    def __init__(self, name, description, identifiers, value, weight):
+    def __init__(self, name, description, identifiers, value, weight, openned):
         super().__init__(name, description, identifiers, value, weight)
 
         self._content = []
-        self._open = True
+        self._open = openned
         self._closed_desc = ""
         self._empty_desc = ""
         self._placement = ""
@@ -72,7 +73,18 @@ class Container(Item):
                                     + ". ")
         return look_desc
 
-    def search_contents(self, identifiers, min_match = 1):
+    def get_contents(self, instance):
+        '''Returns all items that are instances of the specified class'''
+        items = []
+        if self._open:
+            for item in self._content:
+                if isinstance(item, instance):
+                    items.append(item)
+                if isinstance(item, Container):
+                    items.extend(item.get_contents(instance))
+        return items
+
+    def search_contents(self, identifiers, instance = Asset, min_match = 1):
         '''Searches the contents of the container for the best matches to the identifier'''
         if not self._open:
             return []
@@ -80,6 +92,9 @@ class Container(Item):
         match_value = min_match
         matches = []
         for item in self._content:
+            if not isinstance(item, instance):
+                continue
+
             match_number = item.match_identifiers(identifiers)
             if match_number >= match_value:
                 if match_number > match_value:

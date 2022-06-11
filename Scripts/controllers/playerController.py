@@ -37,10 +37,10 @@ class PlayerController(Controller):
             "use": self.use,
             "look": self.look,
             "move": self.move,
-            "take": self.take,
             "open": self.open,
             "close": self.close,
             "equip": self.equip,
+            "pickup": self.pickup,
             "attack": self.attack,
             }
 
@@ -71,8 +71,9 @@ class PlayerController(Controller):
         print("look: %s" %details)
         return False
 
-    def take(self, details):
+    def pickup(self, details):
         '''Attempt to pickup the specified item'''
+        print("pickup: %s" %details)
         return True
 
     def move(self, details):
@@ -83,8 +84,17 @@ class PlayerController(Controller):
 
         valid_dirs = self._character.get_valid_connections()
 
+        dir_conversion = {
+            "n":"north",
+            "s":"south",
+            "e":"east",
+            "w":"west",
+            }
+
         final_dir = None
         for direction in details:
+            if direction in dir_conversion:
+                direction = dir_conversion[direction]
             if direction in valid_dirs:
                 final_dir = direction
                 break
@@ -104,6 +114,20 @@ class PlayerController(Controller):
         '''Attempt to attack the specified character'''
         print("attack: %s" %details)
         return True
+
+def search_contents(identifiers, items):
+    '''Returns the best matches in a list of items'''
+    match_value = 1
+    matches = []
+    for item in items:
+        match_number = item.match_identifiers(identifiers)
+        if match_number >= match_value:
+            if match_number > match_value:
+                matches = []
+                match_value = match_number
+            matches.append(item)
+
+    return matches
 
 
 def substitute_commands(action, details):
@@ -126,9 +150,9 @@ def substitute_commands(action, details):
         action = "use"
     elif action == "fight":
         action = "attack"
-    elif action == "pickup":
-        action = "take"
+    elif action == "take":
+        action = "pickup"
     elif action == "grab":
-        action = "take"
+        action = "pickup"
 
     return action, details

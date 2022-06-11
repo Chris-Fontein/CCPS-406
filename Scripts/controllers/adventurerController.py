@@ -15,5 +15,8 @@ class AdventurerController(Controller):
         connections = self._character.get_valid_connections()
         direction = random.choice(list(connections))
 
-        print("%s moves %s towards %s." %(self._character.get_name(), direction, self._character.get_room().get_name()))
+        print("%s moves %s towards %s." %(self._character.get_name(),
+                                            direction,
+                                            self._character.get_room().get_name(),
+                                            ))
         self._character.move(connections[direction])
