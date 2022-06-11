@@ -76,10 +76,11 @@ class Room(Asset):
         self._furniture.append(furniture)
 
     def add_room_connection(self, direction, room, monster_connection = False):
-        ''' Adds connection to the specified room.
-        Monster connections can only be navigated by the monster while regular connections
-        can be navigated by all Characters.
-        This function should only be used during level creation.
+        '''
+            Adds connection to the specified room.
+            Monster connections can only be navigated by the monster while regular connections
+            can be navigated by all Characters.
+            This function should only be used during level creation.
         '''
         connections = monster_connection if self._monster_connections else self._connections
         connections[direction] = room
@@ -150,8 +151,10 @@ class Room(Asset):
         return add_char_desc
 
     def build_furniture_description(self):
-        '''Synthesizes various descriptions of the furniture and their locations in a room into one description.
-        To be used for the long of a room.'''
+        '''
+            Synthesizes various descriptions of the furniture and their locations in a room into one
+            description. To be used for the long of a room.
+        '''
         furnishings = self._furniture
         if len(furnishings) == 1:
             add_furn_desc = "\n" + "There is " + furnishings[0].get_furniture_description() + ". "

@@ -18,7 +18,7 @@ class PlayerController(Controller):
 
         valid_action = False
         while not valid_action:
-            command = input("> ")
+            command = input("\n> ")
             valid_action = self.parse_command(command)
 
     def parse_command(self, command):
@@ -48,7 +48,7 @@ class PlayerController(Controller):
             action_function = actions[action]
             return action_function(details)
 
-        print("I don't recognise '%(action)s' as an action" %locals())
+        print("I don't recognise '%(action)s' as an action." %locals())
         return False
 
     def use(self, details):
@@ -79,7 +79,7 @@ class PlayerController(Controller):
     def move(self, details):
         '''Attempt to move in the specified direction'''
         if not details:
-            print("You didn't specify a direction")
+            print("You didn't specify a direction.")
             return False
 
         valid_dirs = self._character.get_valid_connections()
@@ -102,7 +102,7 @@ class PlayerController(Controller):
             self._character.move(valid_dirs[final_dir])
             print("You move %s towards %s." %(final_dir, self._character.get_room().get_name()))
             return True
-        print("No valid direction specified")
+        print("You did not specify a valid direction.")
         return False
 
     def equip(self, details):
@@ -154,5 +154,7 @@ def substitute_commands(action, details):
         action = "pickup"
     elif action == "grab":
         action = "pickup"
+    elif action == "search":
+        action = "look"
 
     return action, details
