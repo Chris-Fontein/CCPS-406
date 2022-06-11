@@ -64,10 +64,15 @@ class Room(Asset):
         can be navigated by all Characters.
         This function should only be used during level creation.
         '''
-        connections = monster_connection if self._monster_connections else self._connections
+        #connections = monster_connection if self._monster_connections else self._connections
+        if monster_connection:
+            connections = self._monster_connections
+        else:
+            connections = self._connections
+
         connections[direction] = room
-    
-    def build_item_description(self): 
+
+    def build_item_description(self):
         '''Synthesizes various descriptions of items on the floor into one description.
         To be used for the long description of a room.'''
         items_on_floor = self._floor
@@ -103,7 +108,7 @@ class Room(Asset):
         else:
             add_char_desc = ""
         return add_char_desc
-    
+
     def build_character_names(self):
         '''Synthesizes various descriptions of characters in a room into one description.
         To be used for the long and the short description of a room.'''
@@ -123,7 +128,7 @@ class Room(Asset):
         else:
             add_char_desc = ""
         return add_char_desc
-    
+
     def build_furniture_description(self):
         '''Synthesizes various descriptions of the furniture and their locations in a room into one description.
         To be used for the long of a room.'''
