@@ -71,7 +71,8 @@ def build_a_room(room,characters_dict,items_dict):
                         floor['description'],
                         floor['identifiers'],
                         floor['value'],
-                        floor['weight']
+                        floor['weight'],
+                        floor['open']
                     )
                 new_room.add_item_to_floor(new_items_on_floor)
 
@@ -86,7 +87,8 @@ def build_a_room(room,characters_dict,items_dict):
                     furniture['description'],
                     furniture['identifiers'],
                     furniture['value'],
-                    furniture['weight'])
+                    furniture['weight'],
+                    furniture['open'])
                 new_room.add_funiture(new_furniture)
     return new_room
 
