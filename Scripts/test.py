@@ -6,21 +6,44 @@ from assets.room import Room
 from assets.characters.adventurer import Adventurer
 from controllers.playerController import PlayerController
 from controllers.adventurerController import AdventurerController
+from controllers.controller import Controller
 
 char1 = Adventurer(
         "bob",
         "A man in red robes",
-        ["man, bob, red, robes"],
+        ["man", "bob", "red", "robes"],
         {"attack":1, "armor":1, "weight":15, "health":10},
         10
     )
 char2 = Adventurer(
         "gil",
         "A woman in black robes",
-        ["man, bob, red, robes"],
+        ["woman", "bob", "red", "robes"],
         {"attack":3, "armor":0, "weight":15, "health":10},
         10
     )
+char3 = Adventurer(
+        "carol",
+        "A man in grey robes",
+        ["woman", "carol", "green", "robes"],
+        {"attack":1, "armor":1, "weight":15, "health":5},
+        10
+    )
+char4 = Adventurer(
+        "dave",
+        "A man in grey robes",
+        ["man", "dave", "grey", "robes"],
+        {"attack":1, "armor":1, "weight":15, "health":5},
+        10
+    )
+char5 = Adventurer(
+        "Golem",
+        "A big rock guy",
+        ["golem", "rock", "guy"],
+        {"attack":1, "armor":10, "weight":15, "health":5},
+        10
+    )
+
 
 table = Container("table", "A solid oak table", ["table", "oak", "solid"], 0, 100, True)
 
@@ -29,8 +52,11 @@ dead_end = Room("Dead end", "A dead end.  The entrance lies to the west.")
 hallway = Room("Hallway", "A long hallway.  The entrance lies to the south and a room to the north.")
 dining_room = Room("Dining room", "A large dining room.  A long hallway lies to the south")
 
+char3.set_room(entrance)
 char2.set_room(entrance)
 char1.set_room(dead_end)
+char4.set_room(entrance)
+char5.set_room(dead_end)
 
 entrance.add_room_connection("east", dead_end)
 dead_end.add_room_connection("west", entrance)
@@ -43,6 +69,12 @@ dining_room.add_funiture(table)
 
 char1.set_controller(AdventurerController())
 char2.set_controller(PlayerController())
+char3.set_controller(Controller())
+char4.set_controller(Controller())
+char5.set_controller(Controller())
+
+characters = [char1, char2, char3, char4, char5]
+
 while True:
-    char1.action()
-    char2.action()
+    for c in characters:
+        c.action()

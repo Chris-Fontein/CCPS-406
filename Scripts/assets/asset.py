@@ -19,7 +19,7 @@ class Asset:
 
     def __eq__(self, other):
         return (self.__class__ == other.__class__
-                    and self._identifiers == other.identifiers
+                    and self._identifiers == other._identifiers
                 )
     def __ne__(self, other):
         return not self.__eq__(other)

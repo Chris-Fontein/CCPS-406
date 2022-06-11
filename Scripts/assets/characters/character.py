@@ -16,10 +16,6 @@ class Character(Asset):
     MAX_HEALTH = "health"
     WEIGHT_LIMIT = "weight"
 
-    #damgage message keys
-    KILL = "kill"
-    DAMAGE = "damage"
-    NO_DAMAGE = "no_damage"
 
     def __init__(self, name, description, identifiers, base_stats, current_health):
         super().__init__(name, description, identifiers)
@@ -41,11 +37,7 @@ class Character(Asset):
         self._room = None
         self._rooms_visited = set()
 
-        self._damage_messages = {
-            Character.KILL: "and hit dealing {1} damage, killing them.",
-            Character.DAMAGE: "and hit dealing {1} damage.",
-            Character.NO_DAMAGE: "but {1} are unable to penetrate {2} armor."
-            }
+        self._equipment = {}
 
     def get_name(self):
         '''Returns the name of the Character'''
@@ -122,13 +114,33 @@ class Character(Asset):
         attack = (self._base_stats[Character.ATTACK]
                   + self._stat_modifiers[Character.ATTACK]
                 )
-        character.attacked(attack)
+        damage = character.attacked(attack)
+
+        return damage
 
     def attacked(self, attack_value):
         '''Receive damage from an attack'''
         armor = self._base_stats[Character.ARMOR] + self._stat_modifiers[Character.ARMOR]
         damage = max(attack_value - armor, 0)
         self.modify_health(-damage)
+
+        if self._current_health <= 0:
+            body = Container("%s's body" %self._name,
+                                "%s's body. They were alive until recently" %self._name,
+                                ["body", self._name],
+                                0,
+                                100,
+                                True
+                                )
+            for item in self._inventory:
+                body.add_item_contents(item)
+            for slot in self._equipment:
+                item = self._equipment[slot]
+                if item:
+                    body.add_item_contents(item)
+
+            self._room.add_item_to_floor(body)
+            self._room.remove_character(self)
         return damage
 
     def modify_health(self, value):
