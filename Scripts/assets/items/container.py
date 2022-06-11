@@ -35,10 +35,12 @@ class Container(Item):
 
     def add_item_contents(self, new_item):
         '''Adds item to the container's contents'''
+        self._weight += new_item.get_weight()
         self._content.append(new_item)
 
     def remove_item_contents(self, target_item):
         '''Removes target item from the container's contents'''
+        self._weight -= target_item.get_weight()
         self._content.remove(target_item)
 
     def get_furniture_description(self):

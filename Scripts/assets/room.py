@@ -4,9 +4,11 @@
 #Python imports
 #Third party imports
 #Local imports
-from controllers.playerController import PlayerController
 from assets.asset import Asset
 from assets.items.container import Container
+from assets.characters.character import Character
+from controllers.playerController import PlayerController
+
 
 class Room(Asset):
     '''Room class.'''
@@ -42,14 +44,17 @@ class Room(Asset):
         '''return the connections the Monster can take.'''
         return self._monster_connections
 
-    def get_room_contents(self, instance, furniture = False, floor = False):
+    def get_characters(self):
+        '''return the characters in the room.'''
+        return self._characters
+
+    def get_room_contents(self, instance, floor = False):
         '''Returns all items from funiture that are instances of the specified class.'''
         items = []
-        if floor:
-            items.extend(_get_contents(instance, self._floor))
-        if furniture:
-            items.extend(_get_contents(instance, self._furniture))
 
+        items.extend(_get_contents(instance, self._floor))
+        if not floor:
+            items.extend(_get_contents(instance, self._furniture))
         return items
 
     def add_character(self, character):

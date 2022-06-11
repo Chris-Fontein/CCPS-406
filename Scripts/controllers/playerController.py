@@ -6,6 +6,10 @@
 #Local imports
 from controllers.controller import Controller
 
+from assets.items.equipment import Equipment
+from assets.characters.character import Character
+
+
 class PlayerController(Controller):
     '''Controller class.'''
 
@@ -93,8 +97,7 @@ class PlayerController(Controller):
 
         final_dir = None
         for direction in details:
-            if direction in dir_conversion:
-                direction = dir_conversion[direction]
+            direction = dir_conversion.get(direction, direction)
             if direction in valid_dirs:
                 final_dir = direction
                 break
@@ -112,15 +115,45 @@ class PlayerController(Controller):
 
     def attack(self, details):
         '''Attempt to attack the specified character'''
-        print("attack: %s" %details)
+        room = self._character.get_room()
+        characters = room.get_characters() - set([self._character])
+
+        if not characters:
+            print("There is no one else in the room with you.")
+            return False
+        matches = search_contents(details, characters)
+        if not matches:
+            print("There is no one like that in the room.")
+            return False
+        if len(matches) > 1:
+            print("There is more then one person in the room that matches that description")
+            return False
+
+        target = matches[0]
+        damage = self._character.attack(target)
+
+        message = ["You attack", target.get_name()]
+
+        if damage > 0:
+            message.extend(["dealing", str(damage), "damage"])
+            if target.get_current_health() <= 0:
+                message.append(", killing them")
+        else:
+            message.append("but, are not able to penetrate their defences.")
+            print(" ".join(message))
+            return False
+
+        print("%s." %" ".join(message))
         return True
+
 
 def search_contents(identifiers, items):
     '''Returns the best matches in a list of items'''
+    id_set = set(identifiers)
     match_value = 1
     matches = []
     for item in items:
-        match_number = item.match_identifiers(identifiers)
+        match_number = item.match_identifiers(id_set)
         if match_number >= match_value:
             if match_number > match_value:
                 matches = []
