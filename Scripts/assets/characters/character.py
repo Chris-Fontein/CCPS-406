@@ -5,6 +5,7 @@
 #Third party imports
 #Local imports
 from assets.asset import Asset
+from assets.items.container import Container
 
 class Character(Asset):
     '''Character class.'''
@@ -71,6 +72,16 @@ class Character(Asset):
         '''Returns the directions and rooms a Character can go'''
         return {}
 
+    def get_contents(self, instance):
+        '''Returns all items that are instances of the specified class'''
+        items = []
+        for item in self._inventory:
+            if isinstance(item, instance):
+                items.append(item)
+            if isinstance(item, Container):
+                items.extend(item.get_contents(instance))
+        return items
+
     def has_visited(self):
         '''Checks if the current room has been visited'''
         if self._room in self._rooms_visited:
@@ -98,14 +109,6 @@ class Character(Asset):
     def adjust_weight(self, adjustment):
         '''Adjust the character's weight load by the specified amount.'''
         self._weight += adjustment
-
-    def search(self, identifiers):
-        '''Pass identifying keys to the room and returns the Asset found'''
-        return self._room.search(identifiers)
-
-    def search_inventory(self, identifiers):
-        '''Pass identifying keys to the room and returns the Asset found'''
-        return self._room.search(identifiers)
 
     def move(self, room):
         '''Move to a new room'''

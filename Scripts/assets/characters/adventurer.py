@@ -24,7 +24,6 @@ class Adventurer(Character):
         connections = self._room.get_connections()
         return connections
 
-
     def equip(self, item):
         '''Unequips Equipment in slot and equips item.'''
         slot = item.get_slot()

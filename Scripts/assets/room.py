@@ -4,8 +4,9 @@
 #Python imports
 #Third party imports
 #Local imports
-#from controllers.playerController import PlayerController
+from controllers.playerController import PlayerController
 from assets.asset import Asset
+from assets.items.container import Container
 
 class Room(Asset):
     '''Room class.'''
@@ -27,20 +28,36 @@ class Room(Asset):
         """Returns room's long description."""
         short_desc = "".join(["[", self._name, "]"])
 
-        return " ".join([short_desc, self._description, self.build_character_description(), self.build_furniture_description(), self.build_item_description()])
+        return " ".join([short_desc, self._description,
+                            self.build_character_description(),
+                            self.build_furniture_description(),
+                            self.build_item_description()
+                            ])
 
     def get_connections(self):
-        '''return the connections any Character can take'''
+        '''return the connections any Character can take.'''
         return self._connections
 
     def get_monster_connections(self):
-        '''return the connections the Monster can take'''
+        '''return the connections the Monster can take.'''
         return self._monster_connections
 
+    def get_room_contents(self, instance, furniture = False, floor = False):
+        '''Returns all items from funiture that are instances of the specified class.'''
+        items = []
+        if floor:
+            items.extend(_get_contents(instance, self._floor))
+        if furniture:
+            items.extend(_get_contents(instance, self._furniture))
+
+        return items
+
     def add_character(self, character):
+        '''Adds Character to the room.'''
         self._characters.add(character)
 
     def remove_character(self, character):
+        '''Removes Character from the room.'''
         self._characters.remove(character)
 
     def add_item_to_floor(self, new_item):
@@ -59,10 +76,11 @@ class Room(Asset):
         self._furniture.append(furniture)
 
     def add_room_connection(self, direction, room, monster_connection = False):
-        ''' Adds connection to the specified room.
-        Monster connections can only be navigated by the monster while regular connections
-        can be navigated by all Characters.
-        This function should only be used during level creation.
+        '''
+            Adds connection to the specified room.
+            Monster connections can only be navigated by the monster while regular connections
+            can be navigated by all Characters.
+            This function should only be used during level creation.
         '''
         #connections = monster_connection if self._monster_connections else self._connections
         if monster_connection:
@@ -77,14 +95,22 @@ class Room(Asset):
         To be used for the long description of a room.'''
         items_on_floor = self._floor
         if len(items_on_floor) == 1:
-            add_item_desc = "\n" + "On the floor, you notice " + items_on_floor[0].get_description() + ". "
+            add_item_desc = ("\n"
+                                + "On the floor, you notice "
+                                + items_on_floor[0].get_description()
+                                + ". "
+                                )
         elif len(items_on_floor) > 1:
             add_item_desc = "\n" + "On the floor, you notice "
             for item in range(len(items_on_floor)):
                 if item != len(items_on_floor)-1:
                     add_item_desc = add_item_desc + items_on_floor[item].get_description() + ", "
                 else:
-                    add_item_desc = add_item_desc + "and " + items_on_floor[item].get_description() + ". "
+                    add_item_desc = (add_item_desc
+                                        + "and "
+                                        + items_on_floor[item].get_description()
+                                        + ". "
+                                        )
         else:
             add_item_desc = ""
         return add_item_desc
@@ -130,8 +156,10 @@ class Room(Asset):
         return add_char_desc
 
     def build_furniture_description(self):
-        '''Synthesizes various descriptions of the furniture and their locations in a room into one description.
-        To be used for the long of a room.'''
+        '''
+            Synthesizes various descriptions of the furniture and their locations in a room into one
+            description. To be used for the long of a room.
+        '''
         furnishings = self._furniture
         if len(furnishings) == 1:
             add_furn_desc = "\n" + "There is " + furnishings[0].get_furniture_description() + ". "
@@ -146,5 +174,12 @@ class Room(Asset):
             add_furn_desc = ""
         return add_furn_desc
 
-
-
+def _get_contents(instance, target):
+    '''Returns all items that are instances of the specified class for the specified'''
+    items = []
+    for item in target:
+        if isinstance(item, instance):
+            items.append(item)
+        if isinstance(item, Container):
+            items.extend(item.get_contents(instance))
+    return items
