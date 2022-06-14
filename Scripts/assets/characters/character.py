@@ -59,6 +59,10 @@ class Character(Asset):
         '''Sets the room the Character is currently located in.'''
         self._room = room
         room.add_character(self)
+    
+    def get_controller(self):
+        '''Returns the controller of the character'''
+        return self._controller
 
     def get_valid_connections(self):
         '''Returns the directions and rooms a Character can go'''
