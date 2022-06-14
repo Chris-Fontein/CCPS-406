@@ -98,11 +98,13 @@ class PlayerController(Controller):
         final_dir = None
         for direction in details:
             direction = dir_conversion.get(direction, direction)
-            if direction in valid_dirs:
+            #if direction in valid_dirs:
+            if direction[0] in list(valid_dirs.keys()):
                 final_dir = direction
                 break
         if final_dir:
-            self._character.move(valid_dirs[final_dir])
+            #self._character.move(valid_dirs[final_dir])
+            self._character.move(valid_dirs[final_dir[0]])
             print("You move %s towards %s." %(final_dir, self._character.get_room().get_name()))
             return True
         print("You did not specify a valid direction.")
