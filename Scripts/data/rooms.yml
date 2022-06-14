@@ -7,11 +7,11 @@ room00:
   furniture:
     - skeleton: []
   connections:
-    - [w, room01]
-    - [e, room02]
-    - [s, room12]
+    - [west, room01]
+    - [east, room02]
+    - [south, room12]
   monster_connections:
-    - [n, room05]
+    - [north, room05]
 
 room01:
   name: Ice Cave
@@ -23,10 +23,10 @@ room01:
   furniture:
     - icy table: [saphire, plates]
   connections:
-    - [n, room03]
-    - [e, room00]
+    - [north, room03]
+    - [east, room00]
   monster_connections:
-    - [w, room11]
+    - [west, room11]
 
 room02:
   name: Lava Cave
@@ -41,8 +41,8 @@ room02:
     - wooden chest: [sword, amulet]
     - wooden barrel: [pouch, statue, key]
   connections:
-    - [n, room04]
-    - [w, room00]
+    - [north, room04]
+    - [west, room00]
   monster_connections:
 
 room03:
@@ -55,9 +55,9 @@ room03:
   furniture:
     - drowned corpse: [emerald, pouch, axe]
   connections:
-    - [n, room07]
-    - [e, room05]
-    - [s, room01]
+    - [north, room07]
+    - [east, room05]
+    - [south, room01]
   monster_connections:
 
 room04:
@@ -71,10 +71,10 @@ room04:
   furniture:
     - emerald table: [book, chalice, plates, crossbow]
   connections:
-    - [n, room06]
-    - [s, room02]
+    - [north, room06]
+    - [south, room02]
   monster_connections:
-    - [w, room05]
+    - [west, room05]
 
 room05:
   name: Forest Cave
@@ -88,11 +88,11 @@ room05:
   furniture:
     - oak table: [scroll, painting, helmet]
   connections:
-    - [n, room08]
-    - [w, room03]
+    - [north, room08]
+    - [west, room03]
   monster_connections:
-    - [e, room04]
-    - [s, room00]
+    - [east, room04]
+    - [south, room00]
 
 room06:
   name: Rainbow Cave
@@ -105,10 +105,10 @@ room06:
   furniture:
     - jewel chest: [ruby, saphire, emerald, diamond skull]
   connections:
-    - [s, room04]
-    - [w, room08]
+    - [south, room04]
+    - [west, room08]
   monster_connections:
-    - [n, room11]
+    - [north, room11]
 
 room07:
   name: Skull Cave
@@ -122,10 +122,10 @@ room07:
     - bone chest: [pouch, knife, amulet]
     - rotting corpse: [sword, shield]
   connections:
-    - [s, room03]
-    - [n, room09]
+    - [south, room03]
+    - [north, room09]
   monster_connections:
-    - [e, room08]
+    - [east, room08]
 
 room08:
   name: Mist Cave
@@ -137,11 +137,11 @@ room08:
   furniture:
     - floating chest: [painting, chalice, diamond skull]
   connections:
-    - [n, room10]
-    - [e, room06]
-    - [s, room05]
+    - [north, room10]
+    - [east, room06]
+    - [south, room05]
   monster_connections:
-    - [w, room07]
+    - [west, room07]
 
 room09:
   name: Gold Cave
@@ -154,10 +154,10 @@ room09:
     - gold chest: [statue, chalice, saphire]
     - fresh corpse: [spear, helmet, cloak, pouch]
   connections:
-    - [e, room10]
-    - [s, room07]
+    - [east, room10]
+    - [south, room07]
   monster_connections:
-    - [n, room11]
+    - [north, room11]
 
 room10:
   name: Marble Cave
@@ -170,10 +170,10 @@ room10:
   furniture:
     - marble table: [plates, scroll, diamond skull, mace]
   connections:
-    - [w, room09]
-    - [s, room08]
+    - [west, room09]
+    - [south, room08]
   monster_connections:
-    - [n, room11]
+    - [north, room11]
 
 room11:
   name: Monster Cave
@@ -184,10 +184,10 @@ room11:
   furniture:
   connections:
   monster_connections:
-    - [n, room01]
-    - [s, room10]
-    - [w, room09]
-    - [e, room06]
+    - [north, room01]
+    - [south, room10]
+    - [west, room09]
+    - [east, room06]
 
 room12:
   name: Outside
@@ -197,5 +197,5 @@ room12:
   floor: 
   furniture:
   connections:
-    - [n, room00]
+    - [north, room00]
   monster_connections:

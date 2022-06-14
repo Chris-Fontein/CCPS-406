@@ -127,7 +127,7 @@ class Room(Asset):
         To be used for the long and the short description of a room.'''
         others_in_room = list(self._characters)
         for person in others_in_room:
-            if isinstance(person._controller, PlayerController):
+            if isinstance(person.get_controller(), PlayerController):
                 others_in_room.remove(person)
         if len(others_in_room) == 1:
             add_char_desc = ("\n"
@@ -158,7 +158,7 @@ class Room(Asset):
         To be used for the long and the short description of a room.'''
         others_in_room = list(self._characters)
         for person in others_in_room:
-            if isinstance(person._controller, PlayerController):
+            if isinstance(person.get_controller(), PlayerController):
                 others_in_room.remove(person)
         if len(others_in_room) == 1:
             add_char_desc = ("\n"
