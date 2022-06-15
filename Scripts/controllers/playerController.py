@@ -6,7 +6,9 @@
 #Local imports
 from controllers.controller import Controller
 
+from assets.asset import Asset
 from assets.items.equipment import Equipment
+from assets.items.container import Container
 from assets.characters.character import Character
 
 
@@ -56,6 +58,7 @@ class PlayerController(Controller):
         print("I don't recognise '%(action)s' as an action." %locals())
         return False
 
+
     def use(self, details):
         '''Attempt to use the specified items'''
         print("use: %s" %details)
@@ -73,7 +76,21 @@ class PlayerController(Controller):
 
     def look(self, details):
         '''Attempt to look at the specified asset'''
-        print("look: %s" %details)
+        if not details or details[0] == "room":
+            print(self._character.get_room().get_long_description())
+            return False
+        if details[0] in ["me", "self"]:
+            print(self._character.get_description())
+            return False
+
+        characters = self._character.get_room().get_characters() - set([self._character])
+        available = self._character.get_available_contents(Asset)
+        available.extend(characters)
+        items = find_nested_item(details, available)
+
+        for item in items:
+            print(item.get_description())
+
         return False
 
     def pickup(self, details):
@@ -185,29 +202,40 @@ def search_contents(identifiers, items):
 
     return matches
 
-def find_nested_item(details, items):
-    levels = []
-    current_level = []
+def find_nested_item(details, items, instance = Asset):
+    '''
+        Parse details to handle instructions indicating items in a container to identify matching
+        items.
+    '''
+    sections = []
+    current_section = []
 
     for detail in details:
+        print (detail)
         if detail in set(["in", "on"]):
-            levels.append(current_level)
-            current_level = []
-        current_level.append(detail)
+            sections.append(current_section)
+            current_section = []
+        current_section.append(detail)
 
-    failed = False
+    sections.append(current_section)
     current_items = items
-    levels.reverse()
-    for i in range(len(levels)):
-        level = levels[i]
-        current_items = search_contents(level, current_items)
-        if not current_items:
-            failed = True
+    sections.reverse()
+    for i in range(len(sections)):
+        level = sections[i]
+        item_matches = search_contents(level, current_items)
+        if not item_matches:
+            current_items = []
             break
+        if i < len(sections) - 1:
+            current_items = []
+            for item in item_matches:
+                if isinstance(item, Container):
+                    current_items.extend(item.get_contents(instance))
+        else:
+            current_items = item_matches
 
-    if failed:
-        print("There is no item that matches that description.")
-        return []
+    if not current_items:
+        print("Nothing in the room matches that description.")
 
     return current_items
 
@@ -238,6 +266,8 @@ def substitute_commands(action, details):
     elif action == "grab":
         action = "pickup"
     elif action == "search":
+        action = "look"
+    elif action == "examine":
         action = "look"
 
     return action, details

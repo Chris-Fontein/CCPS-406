@@ -1,7 +1,7 @@
 from time import sleep
 
 """fine"""
-#from assets.item import Item
+from assets.item import Item
 from assets.items.container import Container
 #from assets.asset import Asset
 from assets.room import Room
@@ -48,6 +48,9 @@ char5 = Adventurer(
 
 
 table = Container("table", "A solid oak table", ["table", "oak", "solid"], 0, 100)
+gem1 = Item("saphire", "a blue gem", ["blue", "gem", "saphire"], 50, 1)
+gem2 = Item("ruby", "a red gem", ["red", "gem", "ruby"], 50, 1)
+gem3 = Item("diamond", "a clear gem", ["clear", "gem", "diamond"], 50, 1)
 
 entrance = Room("Entrance", "The entrance to the cave.  There is a room to the east, and a hallway leading north.")
 dead_end = Room("Dead end", "A dead end.  The entrance lies to the west.")
@@ -68,6 +71,9 @@ hallway.add_room_connection("north", dining_room)
 dining_room.add_room_connection("south", hallway)
 
 dining_room.add_funiture(table)
+dining_room.add_item_to_floor(gem1)
+dining_room.add_item_to_floor(gem2)
+table.add_item_contents(gem3)
 
 char1.set_controller(AdventurerController())
 char2.set_controller(PlayerController())
@@ -76,8 +82,9 @@ char4.set_controller(Controller())
 char5.set_controller(Controller())
 
 characters = [char1, char2, char3, char4, char5]
+characters = [char2]
 
 while True:
     for c in characters:
         c.action()
-        sleep(1)
+        sleep(0.25)

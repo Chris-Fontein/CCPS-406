@@ -134,7 +134,6 @@ class Character(Asset):
                                 ["body", self._name],
                                 0,
                                 100,
-                                True
                                 )
             for item in self._inventory:
                 body.add_item_contents(item)
@@ -159,3 +158,9 @@ class Character(Asset):
     def action(self):
         '''Gets the controller to select the next action'''
         self._controller.action()
+
+    def get_available_contents(self, instance):
+        '''Gets all the contents the character can access'''
+        items = self.get_contents(instance)
+        items.extend(self._room.get_room_contents(instance))
+        return items
