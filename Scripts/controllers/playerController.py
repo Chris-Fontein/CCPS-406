@@ -44,6 +44,7 @@ class PlayerController(Controller):
             "open": self.open,
             "close": self.close,
             "equip": self.equip,
+            "unequip": self.unequip,
             "pickup": self.pickup,
             "attack": self.attack,
             }
@@ -87,7 +88,6 @@ class PlayerController(Controller):
             return False
 
         valid_dirs = self._character.get_valid_connections()
-
         dir_conversion = {
             "n":"north",
             "s":"south",
@@ -98,7 +98,8 @@ class PlayerController(Controller):
         final_dir = None
         for direction in details:
             direction = dir_conversion.get(direction, direction)
-            if direction in valid_dirs:
+            #if direction in valid_dirs:
+            if direction in list(valid_dirs.keys()):
                 final_dir = direction
                 break
         if final_dir:
@@ -113,6 +114,11 @@ class PlayerController(Controller):
         print("equip: %s" %details)
         return True
 
+    def unequip(self, details):
+        '''Attempt to unequip the specified item'''
+        print("unequip: %s" %details)
+        return True
+
     def attack(self, details):
         '''Attempt to attack the specified character'''
         room = self._character.get_room()
@@ -125,11 +131,15 @@ class PlayerController(Controller):
         if not matches:
             print("There is no one like that in the room.")
             return False
-        if len(matches) > 1:
-            print("There is more then one person in the room that matches that description")
-            return False
 
-        target = matches[0]
+        if len(matches) > 1:
+            if all(matches[0] == m for m in matches):
+                target = matches[0]
+            else:
+                print("There is more then one person in the room that matches that description")
+                return False
+        else:
+            target = matches[0]
         damage = self._character.attack(target)
 
         message = ["You attack", target.get_name()]
@@ -146,6 +156,19 @@ class PlayerController(Controller):
         print("%s." %" ".join(message))
         return True
 
+    def attacked(self, attacker, damage):
+        message = [attacker.get_name(), "attacked you"]
+        if damage > 0:
+            message.extend(["dealing", str(damage), "damage"])
+            if self._character.get_current_health() <= 0:
+                message.append(", killing you")
+        else:
+            message.append("but, was not able to penetrate your defences")
+
+        print("%s." %" ".join(message))
+
+
+
 
 def search_contents(identifiers, items):
     '''Returns the best matches in a list of items'''
@@ -161,6 +184,33 @@ def search_contents(identifiers, items):
             matches.append(item)
 
     return matches
+
+def find_nested_item(details, items):
+    levels = []
+    current_level = []
+
+    for detail in details:
+        if detail in set(["in", "on"]):
+            levels.append(current_level)
+            current_level = []
+        current_level.append(detail)
+
+    failed = False
+    current_items = items
+    levels.reverse()
+    for i in range(len(levels)):
+        level = levels[i]
+        current_items = search_contents(level, current_items)
+        if not current_items:
+            failed = True
+            break
+
+    if failed:
+        print("There is no item that matches that description.")
+        return []
+
+    return current_items
+
 
 
 def substitute_commands(action, details):

@@ -95,7 +95,6 @@ class Room_builder:
                         floor['identifiers'],
                         floor['value'],
                         floor['weight'],
-                        floor['open']
                     )
                 new_room.add_item_to_floor(new_items_on_floor)
 
@@ -111,7 +110,7 @@ class Room_builder:
                         furniture['identifiers'],
                         furniture['value'],
                         furniture['weight'],
-                        furniture['open'])
+                        )
                     new_room.add_funiture(new_furniture)
         return new_room, characters
 

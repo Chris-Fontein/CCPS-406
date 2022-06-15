@@ -1,3 +1,5 @@
+from time import sleep
+
 """fine"""
 #from assets.item import Item
 from assets.items.container import Container
@@ -45,7 +47,7 @@ char5 = Adventurer(
     )
 
 
-table = Container("table", "A solid oak table", ["table", "oak", "solid"], 0, 100, True)
+table = Container("table", "A solid oak table", ["table", "oak", "solid"], 0, 100)
 
 entrance = Room("Entrance", "The entrance to the cave.  There is a room to the east, and a hallway leading north.")
 dead_end = Room("Dead end", "A dead end.  The entrance lies to the west.")
@@ -78,3 +80,4 @@ characters = [char1, char2, char3, char4, char5]
 while True:
     for c in characters:
         c.action()
+        sleep(1)

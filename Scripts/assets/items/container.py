@@ -9,11 +9,10 @@ from assets.asset import Asset
 
 class Container(Item):
     '''Container class'''
-    def __init__(self, name, description, identifiers, value, weight, openned):
+    def __init__(self, name, description, identifiers, value, weight):
         super().__init__(name, description, identifiers, value, weight)
 
         self._content = []
-        self._open = openned
         self._closed_desc = ""
         self._empty_desc = ""
         self._placement = ""
@@ -80,19 +79,15 @@ class Container(Item):
     def get_contents(self, instance):
         '''Returns all items that are instances of the specified class'''
         items = []
-        if self._open:
-            for item in self._content:
-                if isinstance(item, instance):
-                    items.append(item)
-                if isinstance(item, Container):
-                    items.extend(item.get_contents(instance))
+        for item in self._content:
+            if isinstance(item, instance):
+                items.append(item)
+            if isinstance(item, Container):
+                items.extend(item.get_contents(instance))
         return items
 
     def search_contents(self, identifiers, instance = Asset, min_match = 1):
         '''Searches the contents of the container for the best matches to the identifier'''
-        if not self._open:
-            return []
-
         match_value = min_match
         matches = []
         for item in self._content:

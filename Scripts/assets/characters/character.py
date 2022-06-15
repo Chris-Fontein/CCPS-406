@@ -118,11 +118,11 @@ class Character(Asset):
         attack = (self._base_stats[Character.ATTACK]
                   + self._stat_modifiers[Character.ATTACK]
                 )
-        damage = character.attacked(attack)
+        damage = character.attacked(attack, self)
 
         return damage
 
-    def attacked(self, attack_value):
+    def attacked(self, attack_value, attacker):
         '''Receive damage from an attack'''
         armor = self._base_stats[Character.ARMOR] + self._stat_modifiers[Character.ARMOR]
         damage = max(attack_value - armor, 0)
@@ -145,6 +145,8 @@ class Character(Asset):
 
             self._room.add_item_to_floor(body)
             self._room.remove_character(self)
+
+        self._controller.attacked(attacker, damage)
         return damage
 
     def modify_health(self, value):
