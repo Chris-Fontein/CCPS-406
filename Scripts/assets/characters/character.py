@@ -129,12 +129,11 @@ class Character(Asset):
         self.modify_health(-damage)
 
         if self._current_health <= 0:
-            body = Container("%s's body" %self._name,
-                                "%s's body. They were alive until recently" %self._name,
-                                ["body", self._name],
-                                0,
-                                100,
-                                True
+            body = Container(name = "%s's body" %self._name,
+                                description = "%s's body. They were alive until recently" %self._name,
+                                identifiers = ["body", self._name],
+                                value = 0,
+                                weight = 100
                                 )
             for item in self._inventory:
                 body.add_item_contents(item)
