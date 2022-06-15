@@ -136,13 +136,13 @@ class Room_builder:
                 for connection_obj in room_dict[room_id]['connections']:
                     connection_direction = connection_obj[0]
                     #connected_room_id = connection_obj[1]
-                    room.add_room_connection(connection_direction, room, False)
+                    room.add_room_connection(connection_direction, room_dict[connection_obj[1]], False)
 
             if room_dict[room_id]['monster_connections'] is not None:
                 for connection_obj in room_dict[room_id]['monster_connections']:
                     connection_direction = connection_obj[0]
                     #connected_room_id = connection_obj[1]
-                    room.add_room_connection(connection_direction, room, True)
+                    room.add_room_connection(connection_direction, room_dict[connection_obj[1]], True)
 
         return rooms, characters
 
