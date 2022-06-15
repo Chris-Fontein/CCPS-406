@@ -58,7 +58,7 @@ class Room_builder:
             for floor_obj in room['floor']:
                 # add item to new_room floor
                 floor = items_dict[floor_obj]
-                if floor['type'] == 'item':
+                if floor['type'] == 'Item':
                     new_items_on_floor = Item(
                         floor['name'],
                         floor['description'],
@@ -67,7 +67,7 @@ class Room_builder:
                         floor['weight']
                         )
 
-                elif floor['type'] == 'equipment':
+                elif floor['type'] == 'Equipment':
                     new_items_on_floor = Equipment(
                         floor['name'],
                         floor['description'],
@@ -77,7 +77,7 @@ class Room_builder:
                         floor['slot'],
                         floor["equipValue"]
                     )
-                elif floor['type'] == 'consumable':
+                elif floor['type'] == 'Consumable':
                     new_items_on_floor = Equipment(
                         floor['name'],
                         floor['description'],

@@ -9,14 +9,13 @@ from assets.asset import Asset
 
 class Container(Item):
     '''Container class'''
-    def __init__(self, name, description, identifiers, value, weight):
-        super().__init__(name, description, identifiers, value, weight)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
-        self._content = []
-        self._closed_desc = ""
-        self._empty_desc = ""
-        self._placement = ""
-        self._content_desc = ""
+        self._content = kwargs.get("content")
+        self._empty_desc = kwargs.get("empty_description")
+        self._placement = kwargs.get("placement")
+        self._content_desc = kwargs.get("contents_description")
 
     def get_value(self):
         '''Returns the value of the container plus the values of all items inside'''
@@ -51,29 +50,26 @@ class Container(Item):
         '''Returns the description of the container along with the descriptions of
         individual items inside if the container is open. To be used when the player looks
         at the specific container'''
-        if not self._open:
-            look_desc = self._closed_desc + ". "
+        if len(self._content) == 0:
+            look_desc = self._empty_desc + ". "
+        elif len(self._content) == 1:
+            look_desc = (self._description
+                        + ". "
+                        + self._content_desc
+                        + self._content[0].get_description()
+                        + ". "
+                        )
         else:
-            if len(self._content) == 0:
-                look_desc = self._empty_desc + ". "
-            elif len(self._content) == 1:
-                look_desc = (self._description
-                            + ". "
-                            + self._content_desc
-                            + self._content[0].get_description()
-                            + ". "
-                            )
-            else:
-                look_desc = self._description + ". " + self._content_desc
-                for item in range(len(self._content)):
-                    if item != len(self._content) - 1:
-                        look_desc = look_desc + self._content[item].get_description() + ", "
-                    else:
-                        look_desc = (look_desc
-                                    + "and "
-                                    + self._content[item].get_description()
-                                    + ". "
-                                    )
+            look_desc = self._description + ". " + self._content_desc
+            for item in range(len(self._content)):
+                if item != len(self._content) - 1:
+                    look_desc = look_desc + self._content[item].get_description() + ", "
+                else:
+                    look_desc = (look_desc
+                                + "and "
+                                + self._content[item].get_description()
+                                + ". "
+                                )
         return look_desc
 
     def get_contents(self, instance):

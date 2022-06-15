@@ -8,10 +8,10 @@ from assets.item import Item
 
 class Equipment(Item):
     '''Generic item class.'''
-    def __init__(self, name, description, identifiers, value, weight, slot, stats):
-        super().__init__(name, description, identifiers, value, weight)
-        self._slot = slot
-        self._stats = stats
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._slot = kwargs.get("slot")
+        self._stats = kwargs.get("equipValue")
 
     def get_stats(self):
         """Returns Equipments's stat modifications."""

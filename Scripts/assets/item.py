@@ -8,10 +8,10 @@ from assets.asset import Asset
 
 class Item(Asset):
     '''Generic item class.'''
-    def __init__(self, name, description, identifiers, value, weight):
-        super().__init__(name, description, identifiers)
-        self._value = value
-        self._weight = weight
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._value = kwargs.get("value")
+        self._weight = kwargs.get("weight")
 
     def get_value(self):
         """Returns item's value."""

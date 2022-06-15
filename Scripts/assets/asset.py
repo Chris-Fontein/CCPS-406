@@ -7,10 +7,10 @@
 
 class Asset:
     '''Base class for all game assets.'''
-    def __init__(self, name, description, identifiers):
-        self._name = name
-        self._description = description
-        self._identifiers = set(identifiers)
+    def __init__(self, **kwargs):
+        self._name = kwargs.get("name")
+        self._description = kwargs.get("description")
+        self._identifiers = kwargs.get("identifiers")
 
     def __str__(self):
         return "".join([self._name, ":", self.get_description()])
