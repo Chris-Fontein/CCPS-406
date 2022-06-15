@@ -32,7 +32,7 @@ class Character(Asset):
 
         self._effects = kwargs.get("effects")
         self._inventory = kwargs.get("inventory")
-        self._controller = kwargs.get("controller")
+        self._controller = None
 
         self._room = kwargs.get("room")
         self._rooms_visited = set(kwargs.get("rooms_visited"))
