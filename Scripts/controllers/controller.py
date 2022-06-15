@@ -21,3 +21,6 @@ class Controller():
     def search(self, identifiers):
         '''Search Room Character is in for asset matching identifiers'''
         return self._character.search(identifiers)
+
+    def attacked(self, attacker, damage):
+        '''Controller response to being attacked'''

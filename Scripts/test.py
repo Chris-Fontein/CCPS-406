@@ -1,3 +1,5 @@
+from time import sleep
+
 """fine"""
 #from assets.item import Item
 from assets.items.container import Container
@@ -78,3 +80,4 @@ characters = [char1, char2, char3, char4, char5]
 while True:
     for c in characters:
         c.action()
+        sleep(1)
