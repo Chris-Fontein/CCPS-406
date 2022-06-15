@@ -26,6 +26,7 @@ class Room_builder:
 
     def build_a_room(self,room,characters_dict,items_dict):
         new_room = Room(room['name'], room['description'])
+        characters=[]
         for character_obj in room['characters']:
             # create character
             # add character to new_r
@@ -49,6 +50,8 @@ class Room_builder:
                 #new_char.set_controller(MonsterController())
             else:
                 new_char.set_controller(Controller())
+
+            characters.append(new_char)
 
 
         if room['floor'] is not None:
@@ -110,18 +113,21 @@ class Room_builder:
                         furniture['weight'],
                         furniture['open'])
                     new_room.add_funiture(new_furniture)
-        return new_room
+        return new_room, characters
 
 
     def initialize_room_builder(self, yaml_characters,yaml_items,yaml_rooms):
 
         rooms = {} #[]
         room_dict = yaml_rooms
+        characters =[]
+
 
         for room_id in room_dict:
             room =room_dict[room_id]
-            new_room = self.build_a_room(room,yaml_characters,yaml_items)
+            new_room = self.build_a_room(room,yaml_characters,yaml_items)[0]
             rooms[room_id] = new_room
+            characters.append(self.build_a_room(room,yaml_characters,yaml_items)[1])
             #rooms.append(new_room)
 
         #Now, the connections will be established below based on all the rooms built above.
@@ -130,16 +136,16 @@ class Room_builder:
             if room_dict[room_id]['connections'] is not None:
                 for connection_obj in room_dict[room_id]['connections']:
                     connection_direction = connection_obj[0]
-                    connected_room_id = connection_obj[1]
-                    room.add_room_connection(connection_direction, connected_room_id,False)
+                    #connected_room_id = connection_obj[1]
+                    room.add_room_connection(connection_direction, room, False)
 
             if room_dict[room_id]['monster_connections'] is not None:
                 for connection_obj in room_dict[room_id]['monster_connections']:
                     connection_direction = connection_obj[0]
-                    connected_room_id = connection_obj[1]
-                    room.add_room_connection(connection_direction, connected_room_id,True)
+                    #connected_room_id = connection_obj[1]
+                    room.add_room_connection(connection_direction, room, True)
 
-        return rooms
+        return rooms, characters
 
 
 

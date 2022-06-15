@@ -13,7 +13,9 @@ if __name__ == "__main__":
 
     print("***** Game Start *****")
     #print(game_world)
-    characters = game_world['room00']._characters
+    characters = game_world[1]
+
     while True:
         for c in characters:
-            c.action()
+            c[0].action()
+
