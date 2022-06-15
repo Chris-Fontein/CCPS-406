@@ -17,5 +17,6 @@ if __name__ == "__main__":
 
     while True:
         for c in characters:
-            c[0].action()
+            if len(c)>0:
+                c[0].action()
 

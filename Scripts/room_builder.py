@@ -124,9 +124,10 @@ class Room_builder:
 
         for room_id in room_dict:
             room =room_dict[room_id]
-            new_room = self.build_a_room(room,yaml_characters,yaml_items)[0]
+            a_room =self.build_a_room(room,yaml_characters,yaml_items)
+            new_room =a_room [0]
             rooms[room_id] = new_room
-            characters.append(self.build_a_room(room,yaml_characters,yaml_items)[1])
+            characters.append(a_room[1])
             #rooms.append(new_room)
 
         #Now, the connections will be established below based on all the rooms built above.
@@ -136,13 +137,13 @@ class Room_builder:
                 for connection_obj in room_dict[room_id]['connections']:
                     connection_direction = connection_obj[0]
                     #connected_room_id = connection_obj[1]
-                    room.add_room_connection(connection_direction, room_dict[connection_obj[1]], False)
+                    room.add_room_connection(connection_direction, rooms[connection_obj[1]], False)
 
             if room_dict[room_id]['monster_connections'] is not None:
                 for connection_obj in room_dict[room_id]['monster_connections']:
                     connection_direction = connection_obj[0]
                     #connected_room_id = connection_obj[1]
-                    room.add_room_connection(connection_direction, room_dict[connection_obj[1]], True)
+                    room.add_room_connection(connection_direction, rooms[connection_obj[1]], True)
 
         return rooms, characters
 
