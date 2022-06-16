@@ -1,5 +1,5 @@
 '''Contains base Character class.'''
-
+import yaml
 #Imports
 #Python imports
 #Third party imports
@@ -60,7 +60,7 @@ class Character(Asset):
         '''Sets the room the Character is currently located in.'''
         self._room = room
         room.add_character(self)
-    
+
     def get_controller(self):
         '''Returns the controller of the character'''
         return self._controller
@@ -84,6 +84,10 @@ class Character(Asset):
         if self._room in self._rooms_visited:
             return True
         self._rooms_visited.add(self._room)
+        print(f"data = {self.get_name()} : {self._room._name}")
+        #dict_file=[{self.get_name() : self._room._name }]
+        #with open(r'./data/saved_characters.yml','w') as file:
+        #    document=yaml.dump(dict_file, file)
         return False
 
     def set_controller(self, controller):
