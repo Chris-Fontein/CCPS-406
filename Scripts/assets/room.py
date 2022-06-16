@@ -11,8 +11,8 @@ from controllers.playerController import PlayerController
 
 class Room(Asset):
     '''Room class.'''
-    def __init__(self, name, description):
-        super().__init__(name, description, set())
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
         self._floor = []
         self._furniture = []

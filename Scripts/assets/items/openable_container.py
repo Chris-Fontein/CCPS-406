@@ -9,15 +9,11 @@ from assets.asset import Asset
 
 class OpenableContainer(Container):
     '''Container class'''
-    def __init__(self, name, description, identifiers, value, weight, opened):
-        super().__init__(name, description, identifiers, value, weight)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
-        self._content = []
-        self._open = opened
-        self._closed_desc = ""
-        self._empty_desc = ""
-        self._placement = ""
-        self._content_desc = ""
+        self._open = kwargs.get("open")
+        self._closed_desc = kwargs.get("closed_description")
 
     def get_container_description(self):
         '''Returns the description of the container along with the descriptions of
