@@ -84,7 +84,7 @@ class Character(Asset):
         if self._room in self._rooms_visited:
             return True
         self._rooms_visited.add(self._room)
-        print(f"data = {self.get_name()} : {self._room._name}")
+        #print(f"data = {self.get_name()} : {self._room._name}")
         #dict_file=[{self.get_name() : self._room._name }]
         #with open(r'./data/saved_characters.yml','w') as file:
         #    document=yaml.dump(dict_file, file)
