@@ -22,3 +22,8 @@ class RoomClass:
         self.furniture = furniture
         self.connections = connections
         self.monster_connections = monster_connections
+
+
+
+    #def __getitem__(self, item):
+        #return self.name[item], self.description[item], self.identifiers[item], self.characters[item],self.floor[item],self.furniture[item],self.connections[item],self.monster_connections[item]
