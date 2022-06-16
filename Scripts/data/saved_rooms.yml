@@ -1,19 +1,6 @@
 room00:
-  name: Start
-  description: The mouth of the cave. To the south, is the exit to the outside world.
-    To the east, there is a corridor with a faint red glow. To the west, a corridor
-    with an emanating icy mist. On the north wall, a prominent crack from floor to
-    ceiling.
-  identifiers:
-  - entrance
-  - mouth
-  - cave
-  - cavern
   characters:
   - Player
-  floor: []
-  furniture:
-  - skeleton: []
   connections:
   - - west
     - room01
@@ -21,45 +8,56 @@ room00:
     - room02
   - - south
     - room12
+  description: The mouth of the cave. To the south, is the exit to the outside world.
+    To the east, there is a corridor with a faint red glow. To the west, a corridor
+    with an emanating icy mist.
+  floor: []
+  furniture:
+  - skeleton: []
+  identifiers:
+  - entrance
+  - mouth
+  - cave
+  - cavern
   monster_connections:
   - - north
     - room05
+  name: Cavern Entrance
 room01:
-  name: Ice Cave
+  characters: []
+  connections:
+  - - north
+    - room03
+  - - east
+    - room00
   description: A cave with icy crystals protruding from every corner. To the east,
     is a dark corridor. To the north, a narrow exit from which running water can be
-    heard. On the west wall, another prominent crack from floor to ceiling.
-  identifiers:
-  - ice
-  - cave
-  - icy
-  - cavern
-  characters: []
+    heard.
   floor:
   - shield
   furniture:
   - icy table:
     - saphire
     - plates
-  connections:
-  - - north
-    - room03
-  - - east
-    - room00
+  identifiers:
+  - ice
+  - cave
+  - icy
+  - cavern
   monster_connections:
   - - west
     - room11
+  name: Ice Cave
 room02:
-  name: Lava Cave
+  characters: []
+  connections:
+  - - north
+    - room04
+  - - west
+    - room00
   description: A cave with streaks of lava flowing down its walls. To the west, is
     a dark corridor. To the north, a dark hole which seemingly goes deeper under the
     earth.
-  identifiers:
-  - lava
-  - cave
-  - red
-  - cavern
-  characters: []
   floor:
   - sword
   - pouch
@@ -72,30 +70,15 @@ room02:
     - pouch
     - statue
     - key
-  connections:
-  - - north
-    - room04
-  - - west
-    - room00
-  monster_connections: null
-room03:
-  name: Fountain Cave
-  description: A cave with streams of water flowing in impossible geometric patterns
-    through the floor and walls. To the north, is an exit covered by a waterfall.
-    To the east, an exit covered by sparse vines and foliage.
   identifiers:
-  - fountain
+  - lava
   - cave
-  - water
+  - red
   - cavern
+  monster_connections: null
+  name: Lava Cave
+room03:
   characters: []
-  floor:
-  - cloak
-  furniture:
-  - drowned corpse:
-    - emerald
-    - pouch
-    - axe
   connections:
   - - north
     - room07
@@ -103,49 +86,62 @@ room03:
     - room05
   - - south
     - room01
-  monster_connections: null
-room04:
-  name: Emerald Cave
-  description: A cave with glowing green crystal walls and pillars. To the north,
-    there is a corridor stretching upwards towards the surface. To the south, a glowing
-    red corridor. On the west wall, the emerald surface is cracked from floor to ceiling.
+  description: A cave with streams of water flowing in impossible geometric patterns
+    through the floor and walls. To the north, is an exit covered by a waterfall.
+    To the east, an exit covered by sparse vines and foliage.
+  floor:
+  - cloak
+  furniture:
+  - drowned corpse:
+    - emerald
+    - pouch
+    - axe
   identifiers:
-  - emerald
+  - fountain
   - cave
-  - green
+  - water
   - cavern
+  monster_connections: null
+  name: Fountain Cave
+room04:
   characters:
   - Isabella
+  connections:
+  - - north
+    - room06
+  - - south
+    - room02
+  description: A cave with glowing green crystal walls and pillars. To the north,
+    there is a corridor stretching upwards towards the surface. To the south, a glowing
+    red corridor.
   floor:
   - ruby
+  - health potion
   furniture:
   - emerald table:
     - book
     - chalice
     - plates
     - crossbow
-  connections:
-  - - north
-    - room06
-  - - south
-    - room02
+  identifiers:
+  - emerald
+  - cave
+  - green
+  - cavern
   monster_connections:
   - - west
     - room05
+  name: Emerald Cave
 room05:
-  name: Forest Cave
+  characters: []
+  connections:
+  - - north
+    - room08
+  - - west
+    - room03
   description: A cave whose walls are covered by vines and leaves. Tree-like pillars
     seem to grow through the ceiling. To the north, a dense fog escapes through an
-    entrance. To the west, an exit covered by dense foliage. On the east and south
-    walls, two identical cracks run from floor to ceiling.
-  identifiers:
-  - forest
-  - cave
-  - tree
-  - leaf
-  - vine
-  - cavern
-  characters: []
+    entrance. To the west, an exit covered by dense foliage.
   floor:
   - hammer
   - spear
@@ -155,28 +151,29 @@ room05:
     - scroll
     - painting
     - helmet
-  connections:
-  - - north
-    - room08
-  - - west
-    - room03
+  identifiers:
+  - forest
+  - cave
+  - tree
+  - leaf
+  - vine
+  - cavern
   monster_connections:
   - - east
     - room04
   - - south
     - room00
+  name: Forest Cave
 room06:
-  name: Rainbow Cave
+  characters: []
+  connections:
+  - - south
+    - room04
+  - - west
+    - room08
   description: A cave with crystal walls emitting light of various colors.  To the
     south, there is an exit with predominantly green glow. To the west, an exit covered
-    by a dense fog. On the north wall, yet another prominent crack.
-  identifiers:
-  - rainbow
-  - cave
-  - crystal
-  - color
-  - cavern
-  characters: []
+    by a dense fog.
   floor:
   - axe
   - pouch
@@ -186,26 +183,26 @@ room06:
     - saphire
     - emerald
     - diamond skull
-  connections:
-  - - south
-    - room04
-  - - west
-    - room08
+  identifiers:
+  - rainbow
+  - cave
+  - crystal
+  - color
+  - cavern
   monster_connections:
   - - north
     - room11
+  name: Rainbow Cave
 room07:
-  name: Skull Cave
+  characters: []
+  connections:
+  - - south
+    - room03
+  - - north
+    - room09
   description: A cave with protruding human skulls in the walls and floor.  To the
     south, there is an exit within the mouth of a giant skull. To the north, a halway
-    littered with bones. On the east wall, the bones cover another crack from floor
-    to ceiling.
-  identifiers:
-  - skull
-  - cave
-  - skeleton
-  - cavern
-  characters: []
+    littered with bones.
   floor:
   - skull
   - key
@@ -217,33 +214,18 @@ room07:
   - rotting corpse:
     - sword
     - shield
-  connections:
-  - - south
-    - room03
-  - - north
-    - room09
+  identifiers:
+  - skull
+  - cave
+  - skeleton
+  - cavern
   monster_connections:
   - - east
     - room08
+  name: Skull Cave
 room08:
-  name: Mist Cave
-  description: A cave filled with a menacing, ghostly mist. The fog seems to be escaping
-    from two exits one to the north, and one to the east. On the west wall, a crack
-    identical to the others.
-  identifiers:
-  - mist
-  - cave
-  - fog
-  - cavern
   characters:
   - Sebastian
-  floor:
-  - crossbow
-  furniture:
-  - floating chest:
-    - painting
-    - chalice
-    - diamond skull
   connections:
   - - north
     - room10
@@ -251,20 +233,33 @@ room08:
     - room06
   - - south
     - room05
+  description: A cave filled with a menacing, ghostly mist. The fog seems to be escaping
+    from two exits one to the north, and one to the east.
+  floor:
+  - crossbow
+  furniture:
+  - floating chest:
+    - painting
+    - chalice
+    - diamond skull
+  identifiers:
+  - mist
+  - cave
+  - fog
+  - cavern
   monster_connections:
   - - west
     - room07
+  name: Mist Cave
 room09:
-  name: Gold Cave
-  description: A cave with golden walls and pillars. To the east, a ghostly wail emanates
-    from a dark corridor. To the south, an exit littered by human bones. The golden
-    surface on the north wall is interrupted by yet another crack.
-  identifiers:
-  - gold
-  - cave
-  - yellow
-  - cavern
   characters: []
+  connections:
+  - - east
+    - room10
+  - - south
+    - room07
+  description: A cave with golden walls and pillars. To the east, a ghostly wail emanates
+    from a dark corridor. To the south, an exit littered by human bones.
   floor:
   - mace
   furniture:
@@ -277,25 +272,25 @@ room09:
     - helmet
     - cloak
     - pouch
-  connections:
-  - - east
-    - room10
-  - - south
-    - room07
+  identifiers:
+  - gold
+  - cave
+  - yellow
+  - cavern
   monster_connections:
   - - north
     - room11
+  name: Gold Cave
 room10:
-  name: Marble Cave
+  characters: []
+  connections:
+  - - west
+    - room09
+  - - south
+    - room08
   description: A cave filled with marble statues of humans, their expressions frozen
     in horror. To the west, a golden light shines from a dark corridor. To the south,
-    an exit covered by mist. The north wall is cracked from floor to ceiling.
-  identifiers:
-  - marble
-  - cave
-  - statue
-  - cavern
-  characters: []
+    an exit covered by mist.
   floor:
   - banishing stone
   - painting
@@ -305,29 +300,28 @@ room10:
     - scroll
     - diamond skull
     - mace
-  connections:
-  - - west
-    - room09
-  - - south
-    - room08
+  identifiers:
+  - marble
+  - cave
+  - statue
+  - cavern
   monster_connections:
   - - north
     - room11
+  name: Marble Cave
 room11:
-  name: Monster Cave
-  description: A pitch black cave with no apparent exits. The sound of wind rushing
-    through small cracks emenates from all directions.
+  characters:
+  - Monster
+  connections: null
+  description: A pitch black cave with no apparent exits.
+  floor: null
+  furniture: null
   identifiers:
   - monster
   - cave
   - dark
   - black
   - cavern
-  characters:
-  - Monster
-  floor: null
-  furniture: null
-  connections: null
   monster_connections:
   - - north
     - room01
@@ -337,12 +331,19 @@ room11:
     - room09
   - - east
     - room06
+  name: Monster Cave
 room12:
-  name: Outside
+  characters:
+  - Pierre
+  connections:
+  - - north
+    - room00
   description: A dense forest borders a cliffside. To the north, a dark, cavernous
     mouth opens up and leads to caves that run under the cliffside. To the south,
     a long stretch of forest. To the east a white, sandy beach, and to the west, a
     long grassy plain.
+  floor: null
+  furniture: null
   identifiers:
   - outside
   - beach
@@ -350,11 +351,5 @@ room12:
   - grass
   - forest
   - sky
-  characters:
-  - Pierre
-  floor: null
-  furniture: null
-  connections:
-  - - north
-    - room00
   monster_connections: null
+  name: Outside

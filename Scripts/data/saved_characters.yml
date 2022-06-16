@@ -1,9 +1,9 @@
 Alice:
   base_stats:
-    armor: 0
-    attack: 1
-    health: 10
-    weight: 15
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
   controller: AdventurerController
   current_health: 10
   description: a young, blonde woman dressed in expensive hiking clothes
@@ -11,7 +11,7 @@ Alice:
   equipped:
   - chestplate
   identifiers:
-  - alice
+  - Alice
   - young
   - blonde
   - woman
@@ -29,10 +29,10 @@ Alice:
   rooms_visited: []
 Isabella:
   base_stats:
-    armor: 0
-    attack: 1
-    health: 10
-    weight: 15
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
   controller: AdventurerController
   current_health: 10
   description: a mature, stern looking woman wearing a black cloak
@@ -40,7 +40,7 @@ Isabella:
   equipped:
   - axe
   identifiers:
-  - isabella
+  - Isabella
   - mature
   - stern
   - woman
@@ -58,18 +58,18 @@ Isabella:
   rooms_visited: []
 Monster:
   base_stats:
-    armor: 0
-    attack: 1
-    health: 10
-    weight: 15
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
   controller: MonsterController
   current_health: 10
-  description: a gigantic slime creature
+  description: a gigantic cave troll
   effects: null
   equipped: null
   identifiers:
   - monster
-  - slime
+  - troll
   - giant
   - gigantic
   - creature
@@ -80,17 +80,17 @@ Monster:
   rooms_visited: []
 Pierre:
   base_stats:
-    armor: 0
-    attack: 1
-    health: 10
-    weight: 15
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
   controller: AdventurerController
   current_health: 10
   description: a timid, elder man carrying a very large travel pack
   effects: null
   equipped: null
   identifiers:
-  - pierre
+  - Pierre
   - timid
   - scared
   - elder
@@ -107,10 +107,10 @@ Pierre:
   rooms_visited: []
 Player:
   base_stats:
-    armor: 0
-    attack: 1
-    health: 10
-    weight: 15
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
   controller: PlayerController
   current_health: 10
   description: a young adventurer dressed in beige clothes and sturdy boots
@@ -130,10 +130,10 @@ Player:
   rooms_visited: []
 Sebastian:
   base_stats:
-    armor: 0
-    attack: 1
-    health: 10
-    weight: 15
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
   controller: AdventurerController
   current_health: 10
   description: a handsome, young man with a curly mustache and slicked back hair
@@ -141,7 +141,7 @@ Sebastian:
   equipped:
   - knife
   identifiers:
-  - sebastian
+  - Sebastian
   - young
   - man
   - mustache
@@ -159,10 +159,10 @@ Sebastian:
   rooms_visited: []
 Sylas:
   base_stats:
-    armor: 0
-    attack: 1
-    health: 10
-    weight: 15
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
   controller: AdventurerController
   current_health: 10
   description: a dark-haired, menacing, middle aged man dressed in leather
@@ -170,7 +170,7 @@ Sylas:
   equipped:
   - sword
   identifiers:
-  - sylas
+  - Sylas
   - dark
   - hair
   - dark-haired

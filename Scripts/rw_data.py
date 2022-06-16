@@ -2,13 +2,12 @@ import os
 import os.path
 import pprint
 import yaml
-from data.room_data_structure import RoomClass
 
 #check if the file to save has been created
 working_direcotry = os.path.abspath(os.getcwd())
-cfile_exists = os.path.isfile(working_direcotry+"\\data\\text_files\\saved_characters.yml")
-ifile_exists = os.path.isfile(working_direcotry+"\\data\\text_files\\saved_items.yml")
-rfile_exists = os.path.isfile(working_direcotry+"\\data\\text_files\\saved_rooms.yml")
+cfile_exists = os.path.isfile(working_direcotry+"\data\saved_characters.yml")
+ifile_exists = os.path.isfile(working_direcotry+"\data\saved_items.yml")
+rfile_exists = os.path.isfile(working_direcotry+"\data\saved_rooms.yml")
 
 class Data:
     def __init__(self):
@@ -16,7 +15,7 @@ class Data:
 
     def read_yaml(self,file_name):
         """ A function to read YAML file"""
-        with open(f"data/text_files/{file_name}.yml") as file:
+        with open(f"Data/{file_name}.yml") as file:
             # config = yaml.safe_load(f)
             data_list = yaml.safe_load(file)
             # print(roomsList)
@@ -26,11 +25,8 @@ class Data:
     def write_yaml(self, data, file_name):
         """ A function to write YAML file"""
         #serialize a Python dictionary and store it into a YAML formatted file
-        with open(f'data/text_files/{file_name}.yml', 'w') as file:
+        with open(f'Data/{file_name}.yml', 'w') as file:
             yaml.dump(data, file)
-
-    def noop(self, *args, **kw):
-        pass
 
     #load the text data file
     def load(self):

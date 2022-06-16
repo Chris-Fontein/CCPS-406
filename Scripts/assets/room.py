@@ -29,7 +29,7 @@ class Room(Asset):
         """Returns room's long description."""
         short_desc = "".join(["[", self._name, "]"])
 
-        return " ".join([short_desc, "\r\n", self._description,
+        return " ".join([short_desc, self._description,
                             self.build_character_description(),
                             self.build_furniture_description(),
                             self.build_item_description()
