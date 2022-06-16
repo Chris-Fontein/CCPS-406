@@ -85,7 +85,7 @@ class Room_builder:
             a_room =self.build_a_room(room,yaml_characters,yaml_items)
             new_room =a_room [0]
             rooms[room_id] = new_room
-            characters.append(a_room[1])
+            characters.extend(a_room[1])
             #rooms.append(new_room)
 
         #Now, the connections will be established below based on all the rooms built above.

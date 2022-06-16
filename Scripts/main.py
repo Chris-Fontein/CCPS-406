@@ -1,3 +1,4 @@
+from time import sleep
 #import yaml
 #import pprint
 from room_builder import Room_builder
@@ -22,8 +23,9 @@ if __name__ == "__main__":
     print("***** Game Start *****")
     #print(game_world)
     characters = game_world[1]
+    print (characters)
 
     while True:
         for c in characters:
-            if len(c)>0:
-                c[0].action()
+            c.action()
+            sleep(0.25)
