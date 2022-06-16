@@ -15,9 +15,9 @@ class Room_builder:
     def __init__(self):
         super().__init__()
 
-    #def read_yaml(self,file_name):
-    #    """ A function to read YAML file"""
-    #    with open(f"Scripts/data/{file_name}.yml") as file:
+    def read_yaml(self,file_name):
+        """ A function to read YAML file"""
+        with open(f"data/{file_name}.yml") as file:
             # config = yaml.safe_load(f)
     #        data_list = yaml.safe_load(file)
             # print(roomsList)
