@@ -26,10 +26,10 @@ if __name__ == "__main__":
     print("***********************")
     #print(game_world)
     characters = game_world[1]
-    print (characters)
+    #print (characters)
 
     while True:
         for c in characters:
-            print(c)
+            #print(c)
             c.action()
             sleep(0.25)

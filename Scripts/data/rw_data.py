@@ -78,7 +78,7 @@ class Data:
         rooms_list[0].name = "Start"
         rooms_dict[list(room_data_list.keys())[0]].name= "Start"
 
-        with open(r'./data/saved_rooms.yml','w') as file:
+        with open(r'./data/text_files/saved_rooms.yml','w') as file:
             document=yaml.dump(rooms_dict, file)
 
         return rooms_list

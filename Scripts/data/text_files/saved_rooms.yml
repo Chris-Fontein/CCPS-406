@@ -1,4 +1,4 @@
-room00:
+room00: !!python/object:data.room_data_structure.RoomClass
   characters:
   - Player
   connections:
@@ -23,8 +23,8 @@ room00:
   monster_connections:
   - - north
     - room05
-  name: Cavern Entrance
-room01:
+  name: Start
+room01: !!python/object:data.room_data_structure.RoomClass
   characters: []
   connections:
   - - north
@@ -49,7 +49,7 @@ room01:
   - - west
     - room11
   name: Ice Cave
-room02:
+room02: !!python/object:data.room_data_structure.RoomClass
   characters: []
   connections:
   - - north
@@ -78,7 +78,7 @@ room02:
   - cavern
   monster_connections: null
   name: Lava Cave
-room03:
+room03: !!python/object:data.room_data_structure.RoomClass
   characters: []
   connections:
   - - north
@@ -104,7 +104,7 @@ room03:
   - cavern
   monster_connections: null
   name: Fountain Cave
-room04:
+room04: !!python/object:data.room_data_structure.RoomClass
   characters:
   - Isabella
   connections:
@@ -132,7 +132,7 @@ room04:
   - - west
     - room05
   name: Emerald Cave
-room05:
+room05: !!python/object:data.room_data_structure.RoomClass
   characters: []
   connections:
   - - north
@@ -165,7 +165,7 @@ room05:
   - - south
     - room00
   name: Forest Cave
-room06:
+room06: !!python/object:data.room_data_structure.RoomClass
   characters: []
   connections:
   - - south
@@ -194,7 +194,7 @@ room06:
   - - north
     - room11
   name: Rainbow Cave
-room07:
+room07: !!python/object:data.room_data_structure.RoomClass
   characters: []
   connections:
   - - south
@@ -225,7 +225,7 @@ room07:
   - - east
     - room08
   name: Skull Cave
-room08:
+room08: !!python/object:data.room_data_structure.RoomClass
   characters:
   - Sebastian
   connections:
@@ -254,7 +254,7 @@ room08:
   - - west
     - room07
   name: Mist Cave
-room09:
+room09: !!python/object:data.room_data_structure.RoomClass
   characters: []
   connections:
   - - east
@@ -285,7 +285,7 @@ room09:
   - - north
     - room11
   name: Gold Cave
-room10:
+room10: !!python/object:data.room_data_structure.RoomClass
   characters: []
   connections:
   - - west
@@ -313,7 +313,7 @@ room10:
   - - north
     - room11
   name: Marble Cave
-room11:
+room11: !!python/object:data.room_data_structure.RoomClass
   characters:
   - Monster
   connections: null
@@ -337,7 +337,7 @@ room11:
   - - east
     - room06
   name: Monster Cave
-room12:
+room12: !!python/object:data.room_data_structure.RoomClass
   characters:
   - Pierre
   connections:
