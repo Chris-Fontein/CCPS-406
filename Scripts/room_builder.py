@@ -15,28 +15,22 @@ class Room_builder:
     def __init__(self):
         super().__init__()
 
-    #def read_yaml(self,file_name):
-    #    """ A function to read YAML file"""
-    #    with open(f"Data/{file_name}.yml") as file:
+    def read_yaml(self,file_name):
+        """ A function to read YAML file"""
+        with open(f"Scripts/data/{file_name}.yml") as file:
             # config = yaml.safe_load(f)
     #        data_list = yaml.safe_load(file)
             # print(roomsList)
     #   return data_list  # config
 
     def build_a_room(self,room,characters_dict,items_dict):
-        new_room = Room(room['name'], room['description'])
+        new_room = Room(**room)
         characters=[]
         for character_obj in room['characters']:
             # create character
             # add character to new_r
             character = characters_dict[character_obj]
-            new_char = Adventurer(
-                character['name'],
-                character['description'],
-                character['identifiers'],
-                character['base_stats'],
-                character['current_health']
-                )
+            new_char = Adventurer(**character)
             new_char.set_room(new_room)
 
             if character['controller'] == 'AdventurerController':
@@ -57,44 +51,16 @@ class Room_builder:
             for floor_obj in room['floor']:
                 # add item to new_room floor
                 floor = items_dict[floor_obj]
-                if floor['type'] == 'item':
-                    new_items_on_floor = Item(
-                        floor['name'],
-                        floor['description'],
-                        floor['identifiers'],
-                        floor['value'],
-                        floor['weight']
-                        )
+                if floor['type'] == 'Item':
+                    new_items_on_floor = Item(**floor)
 
-                elif floor['type'] == 'equipment':
-                    new_items_on_floor = Equipment(
-                        floor['name'],
-                        floor['description'],
-                        floor['identifiers'],
-                        floor['value'],
-                        floor['weight'],
-                        floor['slot'],
-                        floor["equipValue"]
-                    )
-                elif floor['type'] == 'consumable':
-                    new_items_on_floor = Equipment(
-                        floor['name'],
-                        floor['description'],
-                        "",
-                        "",
-                        "",
-                        "",
-                        floor["effect"]
-                    )
+                elif floor['type'] == 'Equipment':
+                    new_items_on_floor = Equipment(**floor)
+                elif floor['type'] == 'Consumable':
+                    new_items_on_floor = Equipment(**floor)
                 else:
                     # maybe, this is not part of items on floor. but just in case.
-                    new_items_on_floor = Container(
-                        floor['name'],
-                        floor['description'],
-                        floor['identifiers'],
-                        floor['value'],
-                        floor['weight'],
-                    )
+                    new_items_on_floor = Container(**floor)
                 new_room.add_item_to_floor(new_items_on_floor)
 
             if room['furniture'] is not None:
@@ -103,13 +69,7 @@ class Room_builder:
                     # add items to furniture
                     # add furniture to new_r
                     furniture = items_dict[list(furniture_obj.keys())[0]]
-                    new_furniture = Container(
-                        furniture['name'],
-                        furniture['description'],
-                        furniture['identifiers'],
-                        furniture['value'],
-                        furniture['weight'],
-                        )
+                    new_furniture = Container(**furniture)
                     new_room.add_funiture(new_furniture)
         return new_room, characters
 

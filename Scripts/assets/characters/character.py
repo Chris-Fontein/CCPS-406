@@ -17,27 +17,27 @@ class Character(Asset):
     WEIGHT_LIMIT = "weight"
 
 
-    def __init__(self, name, description, identifiers, base_stats, current_health):
-        super().__init__(name, description, identifiers)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
         self._weight = 0
-        self._base_stats = base_stats
+        self._base_stats = kwargs.get("base_stats")
         self._stat_modifiers = {
             Character.ARMOR:0,
             Character.ATTACK:0,
             Character.MAX_HEALTH:0,
             Character.WEIGHT_LIMIT:0,
         }
-        self._current_health = current_health
+        self._current_health = kwargs.get("current_health")
 
-        self._effects = []
-        self._inventory = []
+        self._effects = kwargs.get("effects")
+        self._inventory = kwargs.get("inventory")
         self._controller = None
 
-        self._room = None
-        self._rooms_visited = set()
+        self._room = kwargs.get("room")
+        self._rooms_visited = set(kwargs.get("rooms_visited"))
 
-        self._equipment = {}
+        self._equipment = kwargs.get("equipped")
 
     def get_name(self):
         '''Returns the name of the Character'''
@@ -129,12 +129,11 @@ class Character(Asset):
         self.modify_health(-damage)
 
         if self._current_health <= 0:
-            body = Container("%s's body" %self._name,
-                                "%s's body. They were alive until recently" %self._name,
-                                ["body", self._name],
-                                0,
-                                100,
-                                True
+            body = Container(name = "%s's body" %self._name,
+                                description = "%s's body. They were alive until recently" %self._name,
+                                identifiers = ["body", self._name],
+                                value = 0,
+                                weight = 100
                                 )
             for item in self._inventory:
                 body.add_item_contents(item)

@@ -1,6 +1,6 @@
 #generic items
 plates:
-    type: item
+    type: Item
     name: plates
     description: a stack of beatifully decorated plates
     identifiers: [plates, plate, stack, decorated, beautiful]
@@ -8,7 +8,7 @@ plates:
     weight: 2
 
 chalice:
-    type: item
+    type: Item
     name: chalice
     description: a gold jewel encrusted cup
     identifiers: [gold, chalice, jewel, cup, grail]
@@ -16,7 +16,7 @@ chalice:
     weight: 1
 
 scroll:
-    type: item
+    type: Item
     name: scroll
     description: an ancient, beautifully illustrated scroll
     identifiers: [scroll, ancient, illustrated, paper]
@@ -24,7 +24,7 @@ scroll:
     weight: 1
 
 book:
-    type: item
+    type: Item
     name: book
     description: a manual about cave trolls
     identifiers: [book, manual, trolls]
@@ -32,7 +32,7 @@ book:
     weight: 1
 
 saphire:
-    type: item
+    type: Item
     name: saphire
     description: a precious, blue gem
     identifiers: [saphire, blue, gem, stone, precious]
@@ -40,7 +40,7 @@ saphire:
     weight: 1
 
 amulet:
-    type: item
+    type: Item
     name: amulet
     description: a golden amulet
     identifiers: [amulet, gold, necklace, pendant]
@@ -48,7 +48,7 @@ amulet:
     weight: 1
 
 pouch:
-    type: item
+    type: Item
     name: pouch
     description: a pouch of gold coins
     identifiers: [pouch, bag, gold, coins]
@@ -56,7 +56,7 @@ pouch:
     weight: 1
 
 ruby:
-    type: item
+    type: Item
     name: ruby
     description: a precious red gem
     identifiers: [ruby, red, precious, gem, stone]
@@ -64,7 +64,7 @@ ruby:
     weight: 1
 
 skull:
-    type: item
+    type: Item
     name: skull
     description: a human skull
     identifiers: [skull, bone, human]
@@ -72,7 +72,7 @@ skull:
     weight: 1
 
 diamond skull:
-    type: item
+    type: Item
     name: diamond skull
     description: a diamond, human-shaped skull
     identifiers: [diamond, skull, valuable, crystal]
@@ -80,7 +80,7 @@ diamond skull:
     weight: 2
 
 statue:
-    type: item
+    type: Item
     name: statue
     description: a miniature statue of an elven god
     identifiers: [statue, miniature, elven, god]
@@ -88,7 +88,7 @@ statue:
     weight: 1
 
 emerald:
-    type: item
+    type: Item
     name: emerald
     description: a precious green stone
     identifiers: [emerald, green, precious, gem, stone]
@@ -96,7 +96,7 @@ emerald:
     weight: 1
 
 key:
-    type: item
+    type: Item
     name: key
     description: a small key
     identifiers: [key]
@@ -104,7 +104,7 @@ key:
     weight: 1
 
 banishing stone:
-    type: item
+    type: Item
     name: banishing stone
     description: a glowing, rune engraved stone
     identifiers: [banishing, stone, monster, rune, glowing]
@@ -112,7 +112,7 @@ banishing stone:
     weight: 1
 
 painting:
-    type: item
+    type: Item
     name: painting
     description: a portrait of a young woman
     identifiers: [painting, portrait, picture, woman]
@@ -122,7 +122,7 @@ painting:
 
 #containers
 oak table:
-    type: container
+    type: Container
     name: oak table
     value: 0
     weight: 50
@@ -132,11 +132,9 @@ oak table:
     content: []
     contents_description: "On top of the table, there is "
     empty_description: a long oak table with nothing on it
-    closed_description: a long oak table
-    open: true
 
 icy table:
-    type: container
+    type: Container
     name: icy table
     value: 0
     weight: 50
@@ -146,11 +144,9 @@ icy table:
     content: []
     contents_description: "On top of the table, there is "
     empty_description: a large icy table with nothing on it
-    closed_description: a large icy table
-    open: true
 
 emerald table:
-    type: container
+    type: Container
     name: emerald table
     value: 0
     weight: 50
@@ -160,11 +156,9 @@ emerald table:
     content: []
     contents_description: "On top of the table, there is "
     empty_description: a large crystal-green table with nothing on it
-    closed_description: a large crystal-green table
-    open: true
 
 marble table:
-    type: container
+    type: Container
     name: marble table
     value: 0
     weight: 50
@@ -174,11 +168,9 @@ marble table:
     content: []
     contents_description: "On top of the table, there is "
     empty_description: a long marble table with nothing on it
-    closed_description: a long marble table
-    open: true
 
 wooden chest:
-    type: container
+    type: OpenableContainer
     name: wooden chest
     value: 0
     weight: 50
@@ -188,11 +180,11 @@ wooden chest:
     content: []
     contents_description: "Inside the chest, there is "
     empty_description: an empty wooden chest
-    closed_description: a locked wooden chest
-    open: true
+    closed_description: a closed wooden chest
+    open: false
 
 jewel chest:
-    type: container
+    type: OpenableContainer
     name: jewel chest
     value: 0
     weight: 50
@@ -202,11 +194,11 @@ jewel chest:
     content: []
     contents_description: "Inside the chest, there is "
     empty_description: an empty jewel-encrusted chest
-    closed_description: a locked jewel-encrusted chest
-    open: true
+    closed_description: a closed jewel-encrusted chest
+    open: false
 
 bone chest:
-    type: container
+    type: OpenableContainer
     name: bone chest
     value: 0
     weight: 50
@@ -216,11 +208,11 @@ bone chest:
     content: []
     contents_description: "Inside the chest, there is "
     empty_description: an empty chest made of bones
-    closed_description: a locked chest made of bones
-    open: true
+    closed_description: a closed chest made of bones
+    open: false
 
 floating chest:
-    type: container
+    type: OpenableContainer
     name: floating chest
     value: 0
     weight: 50
@@ -230,11 +222,11 @@ floating chest:
     content: []
     contents_description: "Inside the chest, there is "
     empty_description: an empty, floating chest 
-    closed_description: a locked, floating chest 
-    open: true
+    closed_description: a closed, floating chest 
+    open: false
 
 gold chest:
-    type: container
+    type: OpenableContainer
     name: gold chest
     value: 0
     weight: 50
@@ -244,11 +236,11 @@ gold chest:
     content: []
     contents_description: "Inside the chest, there is "
     empty_description: an empty gold-trimmed chest
-    closed_description: a locked gold-trimmed chest
-    open: true
+    closed_description: a closed gold-trimmed chest
+    open: false
 
 wooden barrel:
-    type: container
+    type: OpenableContainer
     name: wooden barrel
     value: 0
     weight: 50
@@ -259,10 +251,10 @@ wooden barrel:
     contents_description: "Inside the barrel, there is "
     empty_description: an empty wooden barrel
     closed_description: a sealed wooden barrel
-    open: true
+    open: false
 
 rotting corpse:
-    type: container
+    type: Container
     name: rotting corpse
     value: 0
     weight: 50
@@ -271,12 +263,10 @@ rotting corpse:
     placement: by the south exit of the cave
     content: []
     contents_description: "By the corpse, there is "
-    empty_description: a rotting corpse
-    closed_description: a rotting corpse
-    open: true
+    empty_description: a bare, rotting corpse
 
 fresh corpse:
-    type: container
+    type: Container
     name: fresh corpse
     value: 0
     weight: 50
@@ -285,12 +275,10 @@ fresh corpse:
     placement: in the center of the cave
     content: []
     contents_description: "By the body, there is "
-    empty_description: a lifeless body
-    closed_description: a lifeless body
-    open: true
+    empty_description: a bare, lifeless body
 
 drowned corpse:
-    type: container
+    type: Container
     name: drowned corpse
     value: 0
     weight: 50
@@ -299,12 +287,10 @@ drowned corpse:
     placement: by the north exit of the cave
     content: []
     contents_description: "By the corpse, there is "
-    empty_description: a bloated corpse
-    closed_description: a bloated corpse
-    open: true
+    empty_description: a bare, bloated corpse
 
 skeleton:
-    type: container
+    type: Container
     name: skeleton
     value: 0
     weight: 50
@@ -313,14 +299,12 @@ skeleton:
     placement: in the center of the cave
     content: [skeleton, bones, bone, body, dead, corpse]
     contents_description: "By the bones, there is "
-    empty_description: a human skeleton
-    closed_description: a human skeleton
-    open: true
+    empty_description: a bare, human skeleton
 
 #equipment
 #-armor
 helmet:
-    type: equipment
+    type: Equipment
     name: helmet
     description: a grey, metal helmet
     identifiers: [helmet, armor, metal, grey]
@@ -334,7 +318,7 @@ helmet:
       weight: 0
 
 shield:
-    type: equipment
+    type: Equipment
     name: shield
     description: a round steel shield
     identifiers: [shield, round, steel, armor]
@@ -348,7 +332,7 @@ shield:
       weight: 0
 
 cloak:
-    type: equipment
+    type: Equipment
     name: cloak
     description: a long black cloak
     identifiers: [cloak, cape, black, long]
@@ -362,7 +346,7 @@ cloak:
       weight: 0
 
 chestplate:
-    type: equipment
+    type: Equipment
     name: chestplate
     description: a shiny, steel chestplate
     identifiers: [chestplate, armor, steel, shiny]
@@ -377,7 +361,7 @@ chestplate:
 
 #-weapon
 sword:
-    type: equipment
+    type: Equipment
     name: sword
     description: a steel long-sword
     identifiers: [sword, long-sword, steel]
@@ -391,7 +375,7 @@ sword:
       weight: 0
 
 hammer:
-    type: equipment
+    type: Equipment
     name: hammer
     description: a large battle hammer
     identifiers: [hammer, large, battle]
@@ -405,7 +389,7 @@ hammer:
       weight: 0
 
 spear:
-    type: equipment
+    type: Equipment
     name: spear
     description: a wooden spear
     identifiers: [spear, wooden]
@@ -419,7 +403,7 @@ spear:
       weight: 0
 
 axe:
-    type: equipment
+    type: Equipment
     name: axe
     description: an iron battle-axe
     identifiers: [axe, battle-axe, battle, iron]
@@ -433,7 +417,7 @@ axe:
       weight: 0
 
 knife:
-    type: equipment
+    type: Equipment
     name: knife
     description: a sharp knife
     identifiers: [sharp, knife, blade]
@@ -447,7 +431,7 @@ knife:
       weight: 0
 
 crossbow:
-    type: equipment
+    type: Equipment
     name: crossbow
     description: a black crossbow
     identifiers: [crossbow, bow, black]
@@ -461,7 +445,7 @@ crossbow:
       weight: 0
 
 mace:
-    type: equipment
+    type: Equipment
     name: mace
     description: a steel mace
     identifiers: [mace, steel]
@@ -473,19 +457,3 @@ mace:
       attack: 3
       health: 0
       weight: 0
-
-
-#unique classes.  Items with item specific functionality
-trick potion:
-    type: consumable
-    name: trick potion
-    description: a red potion with an upside-down heart on the label
-    effect: 
-        health: -5 
-
-health potion:
-    type: consumable
-    name: health potion
-    description: a red potion with a heart on the label
-    effect: 
-        health: 5 

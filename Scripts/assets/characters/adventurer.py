@@ -9,14 +9,9 @@ from assets.characters.character import Character
 
 class Adventurer(Character):
     '''Adventurer class.'''
-    def __init__(self, name, description, identifiers, base_stats, current_health):
-        super().__init__(name, description, identifiers, base_stats, current_health)
-        self._equipment = {
-            "body":None,
-            "head":None,
-            "shield":None,
-            "weapon":None,
-            }
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._equipment = kwargs.get("equipped")
 
 
     def get_valid_connections(self):

@@ -1,6 +1,6 @@
 room00:
   name: Cavern Entrance
-  description: The mouth of the cave. To the south, is the exit to the outside world. To the east, there is a corridor with a faint red glow. To the west, a corridor with an emanating icy mist.
+  description: The mouth of the cave. To the south, is the exit to the outside world. To the east, there is a corridor with a faint red glow. To the west, a corridor with an emanating icy mist. On the north wall, a prominent crack from floor to ceiling.
   identifiers: [entrance, mouth, cave, cavern]
   characters: [Player]
   floor: []
@@ -15,7 +15,7 @@ room00:
 
 room01:
   name: Ice Cave
-  description: A cave with icy crystals protruding from every corner. To the east, is a dark corridor. To the north, a narrow exit from which running water can be heard.
+  description: A cave with icy crystals protruding from every corner. To the east, is a dark corridor. To the north, a narrow exit from which running water can be heard. On the west wall, another prominent crack from floor to ceiling.
   identifiers: [ice, cave, icy, cavern]
   characters: []
   floor: 
@@ -62,12 +62,11 @@ room03:
 
 room04:
   name: Emerald Cave
-  description: A cave with glowing green crystal walls and pillars. To the north, there is a corridor stretching upwards towards the surface. To the south, a glowing red corridor.
+  description: A cave with glowing green crystal walls and pillars. To the north, there is a corridor stretching upwards towards the surface. To the south, a glowing red corridor. On the west wall, the emerald surface is cracked from floor to ceiling.
   identifiers: [emerald, cave, green, cavern]
   characters: [Isabella]
   floor: 
     - ruby
-    - health potion
   furniture:
     - emerald table: [book, chalice, plates, crossbow]
   connections:
@@ -78,7 +77,7 @@ room04:
 
 room05:
   name: Forest Cave
-  description: A cave whose walls are covered by vines and leaves. Tree-like pillars seem to grow through the ceiling. To the north, a dense fog escapes through an entrance. To the west, an exit covered by dense foliage.
+  description: A cave whose walls are covered by vines and leaves. Tree-like pillars seem to grow through the ceiling. To the north, a dense fog escapes through an entrance. To the west, an exit covered by dense foliage. On the east and south walls, two identical cracks run from floor to ceiling.
   identifiers: [forest, cave, tree, leaf, vine, cavern]
   characters: []
   floor: 
@@ -96,7 +95,7 @@ room05:
 
 room06:
   name: Rainbow Cave
-  description: A cave with crystal walls emitting light of various colors.  To the south, there is an exit with predominantly green glow. To the west, an exit covered by a dense fog.
+  description: A cave with crystal walls emitting light of various colors.  To the south, there is an exit with predominantly green glow. To the west, an exit covered by a dense fog. On the north wall, yet another prominent crack.
   identifiers: [rainbow, cave, crystal, color, cavern]
   characters: []
   floor: 
@@ -112,7 +111,7 @@ room06:
 
 room07:
   name: Skull Cave
-  description: A cave with protruding human skulls in the walls and floor.  To the south, there is an exit within the mouth of a giant skull. To the north, a halway littered with bones.
+  description: A cave with protruding human skulls in the walls and floor.  To the south, there is an exit within the mouth of a giant skull. To the north, a halway littered with bones. On the east wall, the bones cover another crack from floor to ceiling.
   identifiers: [skull, cave, skeleton, cavern]
   characters: []
   floor: 
@@ -129,7 +128,7 @@ room07:
 
 room08:
   name: Mist Cave
-  description: A cave filled with a menacing, ghostly mist. The fog seems to be escaping from two exits one to the north, and one to the east.
+  description: A cave filled with a menacing, ghostly mist. The fog seems to be escaping from two exits one to the north, and one to the east. On the west wall, a crack identical to the others.
   identifiers: [mist, cave, fog, cavern]
   characters: [Sebastian]
   floor: 
@@ -145,7 +144,7 @@ room08:
 
 room09:
   name: Gold Cave
-  description: A cave with golden walls and pillars. To the east, a ghostly wail emanates from a dark corridor. To the south, an exit littered by human bones.
+  description: A cave with golden walls and pillars. To the east, a ghostly wail emanates from a dark corridor. To the south, an exit littered by human bones. The golden surface on the north wall is interrupted by yet another crack.
   identifiers: [gold, cave, yellow, cavern]
   characters: []
   floor: 
@@ -161,7 +160,7 @@ room09:
 
 room10:
   name: Marble Cave
-  description: A cave filled with marble statues of humans, their expressions frozen in horror. To the west, a golden light shines from a dark corridor. To the south, an exit covered by mist.
+  description: A cave filled with marble statues of humans, their expressions frozen in horror. To the west, a golden light shines from a dark corridor. To the south, an exit covered by mist. The north wall is cracked from floor to ceiling.
   identifiers: [marble, cave, statue, cavern]
   characters: []
   floor: 
@@ -177,7 +176,7 @@ room10:
 
 room11:
   name: Monster Cave
-  description: A pitch black cave with no apparent exits.
+  description: A pitch black cave with no apparent exits. The sound of wind rushing through small cracks emenates from all directions.
   identifiers: [monster, cave, dark, black, cavern]
   characters: [Monster]
   floor: 
