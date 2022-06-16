@@ -67,7 +67,6 @@ room04:
   characters: [Isabella]
   floor: 
     - ruby
-    - health potion
   furniture:
     - emerald table: [book, chalice, plates, crossbow]
   connections:

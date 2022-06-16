@@ -14,11 +14,11 @@ class Room(Asset):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self._floor = kwargs.get("floor")
-        self._furniture = kwargs.get("furniture")
-        self._characters = set(kwargs.get("characters"))
-        self._connections = kwargs.get("connections")
-        self._monster_connections = kwargs.get("monster_connections")
+        self._floor = []
+        self._furniture = []
+        self._characters = set()
+        self._connections = {}
+        self._monster_connections = {}
 
     def get_description(self):
         """Returns room's short description."""
