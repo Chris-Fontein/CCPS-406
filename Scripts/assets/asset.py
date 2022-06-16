@@ -10,7 +10,7 @@ class Asset:
     def __init__(self, **kwargs):
         self._name = kwargs.get("name")
         self._description = kwargs.get("description")
-        self._identifiers = kwargs.get("identifiers")
+        self._identifiers = set(kwargs.get("identifiers"))
 
     def __str__(self):
         return "".join([self._name, ":", self.get_description()])
