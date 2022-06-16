@@ -1,0 +1,614 @@
+amulet:
+  description: a golden amulet
+  identifiers:
+  - amulet
+  - gold
+  - necklace
+  - pendant
+  name: amulet
+  type: item
+  value: 3
+  weight: 1
+axe:
+  description: an iron battle-axe
+  equipValue:
+    armor: 1
+    attack: 3
+    health: 0
+    weight: 0
+  identifiers:
+  - axe
+  - battle-axe
+  - battle
+  - iron
+  name: axe
+  slot: weapon
+  type: equipment
+  value: 5
+  weight: 2
+banishing stone:
+  description: a glowing, rune engraved stone
+  identifiers:
+  - banishing
+  - stone
+  - monster
+  - rune
+  - glowing
+  name: banishing stone
+  type: item
+  value: 3
+  weight: 1
+bone chest:
+  closed_description: a locked chest made of bones
+  content: []
+  contents_description: 'Inside the chest, there is '
+  description: a chest made of human bones
+  empty_description: an empty chest made of bones
+  identifiers:
+  - bone
+  - chest
+  - human
+  - skeleton
+  - coffer
+  - box
+  name: bone chest
+  open: true
+  placement: by the west wall of the cave
+  type: container
+  value: 0
+  weight: 50
+book:
+  description: a manual about cave trolls
+  identifiers:
+  - book
+  - manual
+  - trolls
+  name: book
+  type: item
+  value: 1
+  weight: 1
+chalice:
+  description: a gold jewel encrusted cup
+  identifiers:
+  - gold
+  - chalice
+  - jewel
+  - cup
+  - grail
+  name: chalice
+  type: item
+  value: 5
+  weight: 1
+chestplate:
+  description: a shiny, steel chestplate
+  equipValue:
+    armor: 4
+    attack: 0
+    health: 0
+    weight: 0
+  identifiers:
+  - chestplate
+  - armor
+  - steel
+  - shiny
+  name: chestplate
+  slot: body
+  type: equipment
+  value: 5
+  weight: 3
+cloak:
+  description: a long black cloak
+  equipValue:
+    armor: 1
+    attack: 0
+    health: 0
+    weight: 0
+  identifiers:
+  - cloak
+  - cape
+  - black
+  - long
+  name: cloak
+  slot: body
+  type: equipment
+  value: 2
+  weight: 1
+crossbow:
+  description: a black crossbow
+  equipValue:
+    armor: 0
+    attack: 2
+    health: 0
+    weight: 0
+  identifiers:
+  - crossbow
+  - bow
+  - black
+  name: crossbow
+  slot: weapon
+  type: equipment
+  value: 5
+  weight: 2
+diamond skull:
+  description: a diamond, human-shaped skull
+  identifiers:
+  - diamond
+  - skull
+  - valuable
+  - crystal
+  name: diamond skull
+  type: item
+  value: 10
+  weight: 2
+drowned corpse:
+  closed_description: a bloated corpse
+  content: []
+  contents_description: 'By the corpse, there is '
+  description: a bloated corpse
+  empty_description: a bloated corpse
+  identifiers:
+  - drowned
+  - bloated
+  - water
+  - corpse
+  - body
+  - dead
+  - wet
+  name: drowned corpse
+  open: true
+  placement: by the north exit of the cave
+  type: container
+  value: 0
+  weight: 50
+emerald:
+  description: a precious green stone
+  identifiers:
+  - emerald
+  - green
+  - precious
+  - gem
+  - stone
+  name: emerald
+  type: item
+  value: 5
+  weight: 1
+emerald table:
+  closed_description: a large crystal-green table
+  content: []
+  contents_description: 'On top of the table, there is '
+  description: a large crystal-green table
+  empty_description: a large crystal-green table with nothing on it
+  identifiers:
+  - emerald
+  - green
+  - crystal
+  - large
+  - table
+  name: emerald table
+  open: true
+  placement: by the north exit of the cave
+  type: container
+  value: 0
+  weight: 50
+floating chest:
+  closed_description: a locked, floating chest
+  content: []
+  contents_description: 'Inside the chest, there is '
+  description: a floating steel chest
+  empty_description: an empty, floating chest
+  identifiers:
+  - floating
+  - steel
+  - chest
+  - treasure
+  - box
+  - coffer
+  - flying
+  name: floating chest
+  open: true
+  placement: above the floor of the cave
+  type: container
+  value: 0
+  weight: 50
+fresh corpse:
+  closed_description: a lifeless body
+  content: []
+  contents_description: 'By the body, there is '
+  description: a lifeless body
+  empty_description: a lifeless body
+  identifiers:
+  - fresh
+  - corpse
+  - dead
+  - body
+  name: fresh corpse
+  open: true
+  placement: in the center of the cave
+  type: container
+  value: 0
+  weight: 50
+gold chest:
+  closed_description: a locked gold-trimmed chest
+  content: []
+  contents_description: 'Inside the chest, there is '
+  description: a gold-trimmed chest
+  empty_description: an empty gold-trimmed chest
+  identifiers:
+  - gold
+  - gold-trimmed
+  - chest
+  - golden
+  - box
+  - treasure
+  - coffer
+  name: gold chest
+  open: true
+  placement: by the west wall of the cave
+  type: container
+  value: 0
+  weight: 50
+hammer:
+  description: a large battle hammer
+  equipValue:
+    armor: 1
+    attack: 2
+    health: 0
+    weight: 0
+  identifiers:
+  - hammer
+  - large
+  - battle
+  name: hammer
+  slot: weapon
+  type: equipment
+  value: 3
+  weight: 2
+health potion:
+  description: a red potion with a heart on the label
+  effect:
+    health: 5
+  name: health potion
+  type: consumable
+helmet:
+  description: a grey, metal helmet
+  equipValue:
+    armor: 2
+    attack: 0
+    health: 0
+    weight: 0
+  identifiers:
+  - helmet
+  - armor
+  - metal
+  - grey
+  name: helmet
+  slot: head
+  type: equipment
+  value: 5
+  weight: 1
+icy table:
+  closed_description: a large icy table
+  content: []
+  contents_description: 'On top of the table, there is '
+  description: a large icy table
+  empty_description: a large icy table with nothing on it
+  identifiers:
+  - ice
+  - icy
+  - table
+  - large
+  name: icy table
+  open: true
+  placement: to the north side of the cave
+  type: container
+  value: 0
+  weight: 50
+jewel chest:
+  closed_description: a locked jewel-encrusted chest
+  content: []
+  contents_description: 'Inside the chest, there is '
+  description: a jewel-encrusted chest
+  empty_description: an empty jewel-encrusted chest
+  identifiers:
+  - jewel
+  - encrusted
+  - chest
+  - treasure
+  - box
+  - coffer
+  name: jewel chest
+  open: true
+  placement: by the east wall of the cave
+  type: container
+  value: 0
+  weight: 50
+key:
+  description: a small key
+  identifiers:
+  - key
+  name: key
+  type: item
+  value: 2
+  weight: 1
+knife:
+  description: a sharp knife
+  equipValue:
+    armor: 0
+    attack: 1
+    health: 0
+    weight: 0
+  identifiers:
+  - sharp
+  - knife
+  - blade
+  name: knife
+  slot: weapon
+  type: equipment
+  value: 2
+  weight: 1
+mace:
+  description: a steel mace
+  equipValue:
+    armor: 1
+    attack: 3
+    health: 0
+    weight: 0
+  identifiers:
+  - mace
+  - steel
+  name: mace
+  slot: weapon
+  type: equipment
+  value: 5
+  weight: 3
+marble table:
+  closed_description: a long marble table
+  content: []
+  contents_description: 'On top of the table, there is '
+  description: a long marble table
+  empty_description: a long marble table with nothing on it
+  identifiers:
+  - long
+  - marble
+  - stone
+  - table
+  - large
+  name: marble table
+  open: true
+  placement: in the center of the cave
+  type: container
+  value: 0
+  weight: 50
+oak table:
+  closed_description: a long oak table
+  content: []
+  contents_description: 'On top of the table, there is '
+  description: a long oak table
+  empty_description: a long oak table with nothing on it
+  identifiers:
+  - long
+  - oak
+  - table
+  - wood
+  name: oak table
+  open: true
+  placement: in the center of the cave
+  type: container
+  value: 0
+  weight: 50
+painting:
+  description: a portrait of a young woman
+  identifiers:
+  - painting
+  - portrait
+  - picture
+  - woman
+  name: painting
+  type: item
+  value: 5
+  weight: 2
+plates:
+  description: a stack of beatifully decorated plates
+  identifiers:
+  - plates
+  - plate
+  - stack
+  - decorated
+  - beautiful
+  name: plates
+  type: item
+  value: 3
+  weight: 2
+pouch:
+  description: a pouch of gold coins
+  identifiers:
+  - pouch
+  - bag
+  - gold
+  - coins
+  name: pouch
+  type: item
+  value: 4
+  weight: 1
+rotting corpse:
+  closed_description: a rotting corpse
+  content: []
+  contents_description: 'By the corpse, there is '
+  description: a rotting corpse
+  empty_description: a rotting corpse
+  identifiers:
+  - rotting
+  - corpse
+  - body
+  - dead
+  name: rotting corpse
+  open: true
+  placement: by the south exit of the cave
+  type: container
+  value: 0
+  weight: 50
+ruby:
+  description: a precious red gem
+  identifiers:
+  - ruby
+  - red
+  - precious
+  - gem
+  - stone
+  name: ruby
+  type: item
+  value: 5
+  weight: 1
+saphire:
+  description: a precious, blue gem
+  identifiers:
+  - saphire
+  - blue
+  - gem
+  - stone
+  - precious
+  name: saphire
+  type: item
+  value: 5
+  weight: 1
+scroll:
+  description: an ancient, beautifully illustrated scroll
+  identifiers:
+  - scroll
+  - ancient
+  - illustrated
+  - paper
+  name: scroll
+  type: item
+  value: 4
+  weight: 1
+shield:
+  description: a round steel shield
+  equipValue:
+    armor: 3
+    attack: 1
+    health: 0
+    weight: 0
+  identifiers:
+  - shield
+  - round
+  - steel
+  - armor
+  name: shield
+  slot: shield
+  type: equipment
+  value: 5
+  weight: 2
+skeleton:
+  closed_description: a human skeleton
+  content:
+  - skeleton
+  - bones
+  - bone
+  - body
+  - dead
+  - corpse
+  contents_description: 'By the bones, there is '
+  description: a human skeleton
+  empty_description: a human skeleton
+  identifiers: []
+  name: skeleton
+  open: true
+  placement: in the center of the cave
+  type: container
+  value: 0
+  weight: 50
+skull:
+  description: a human skull
+  identifiers:
+  - skull
+  - bone
+  - human
+  name: skull
+  type: item
+  value: 0
+  weight: 1
+spear:
+  description: a wooden spear
+  equipValue:
+    armor: 0
+    attack: 3
+    health: 0
+    weight: 0
+  identifiers:
+  - spear
+  - wooden
+  name: spear
+  slot: weapon
+  type: equipment
+  value: 5
+  weight: 1
+statue:
+  description: a miniature statue of an elven god
+  identifiers:
+  - statue
+  - miniature
+  - elven
+  - god
+  name: statue
+  type: item
+  value: 4
+  weight: 1
+sword:
+  description: a steel long-sword
+  equipValue:
+    armor: 1
+    attack: 3
+    health: 0
+    weight: 0
+  identifiers:
+  - sword
+  - long-sword
+  - steel
+  name: sword
+  slot: weapon
+  type: equipment
+  value: 5
+  weight: 1
+trick potion:
+  description: a red potion with an upside-down heart on the label
+  effect:
+    health: -5
+  name: trick potion
+  type: consumable
+wooden barrel:
+  closed_description: a sealed wooden barrel
+  content: []
+  contents_description: 'Inside the barrel, there is '
+  description: a wooden barrel
+  empty_description: an empty wooden barrel
+  identifiers:
+  - wood
+  - wooden
+  - barrel
+  - keg
+  name: wooden barrel
+  open: true
+  placement: by the south exit of the cave
+  type: container
+  value: 0
+  weight: 50
+wooden chest:
+  closed_description: a locked wooden chest
+  content: []
+  contents_description: 'Inside the chest, there is '
+  description: a wooden chest
+  empty_description: an empty wooden chest
+  identifiers:
+  - wood
+  - wooden
+  - chest
+  - treasure
+  - coffer
+  - box
+  name: wooden chest
+  open: true
+  placement: in the center of the cave
+  type: container
+  value: 0
+  weight: 50

@@ -15,14 +15,13 @@ class Room_builder:
     def __init__(self):
         super().__init__()
 
-
-    def read_yaml(self,file_name):
-        """ A function to read YAML file"""
-        with open(f"Data/{file_name}.yml") as file:
+    #def read_yaml(self,file_name):
+    #    """ A function to read YAML file"""
+    #    with open(f"Data/{file_name}.yml") as file:
             # config = yaml.safe_load(f)
-            data_list = yaml.safe_load(file)
+    #        data_list = yaml.safe_load(file)
             # print(roomsList)
-        return data_list  # config
+    #   return data_list  # config
 
     def build_a_room(self,room,characters_dict,items_dict):
         new_room = Room(room['name'], room['description'])
@@ -120,7 +119,6 @@ class Room_builder:
         rooms = {} #[]
         room_dict = yaml_rooms
         characters =[]
-
 
         for room_id in room_dict:
             room =room_dict[room_id]

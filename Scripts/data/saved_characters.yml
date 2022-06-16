@@ -1,0 +1,191 @@
+Alice:
+  base_stats:
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
+  controller: AdventurerController
+  current_health: 10
+  description: a young, blonde woman dressed in expensive hiking clothes
+  effects: null
+  equipped:
+  - chestplate
+  identifiers:
+  - Alice
+  - young
+  - blonde
+  - woman
+  - girl
+  - expensive
+  - hiking
+  - clothes
+  - adventurer
+  - explorer
+  inventory:
+  - scroll
+  - painting
+  name: Alice
+  room: room03
+  rooms_visited: []
+Isabella:
+  base_stats:
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
+  controller: AdventurerController
+  current_health: 10
+  description: a mature, stern looking woman wearing a black cloak
+  effects: null
+  equipped:
+  - axe
+  identifiers:
+  - Isabella
+  - mature
+  - stern
+  - woman
+  - older
+  - old
+  - black
+  - cloak
+  - adventurer
+  - explorer
+  inventory:
+  - shield
+  - spear
+  name: Isabella
+  room: room04
+  rooms_visited: []
+Monster:
+  base_stats:
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
+  controller: MonsterController
+  current_health: 10
+  description: a gigantic cave troll
+  effects: null
+  equipped: null
+  identifiers:
+  - monster
+  - troll
+  - giant
+  - gigantic
+  - creature
+  inventory:
+  - monster core
+  name: Monster
+  room: room11
+  rooms_visited: []
+Pierre:
+  base_stats:
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
+  controller: AdventurerController
+  current_health: 10
+  description: a timid, elder man carrying a very large travel pack
+  effects: null
+  equipped: null
+  identifiers:
+  - Pierre
+  - timid
+  - scared
+  - elder
+  - man
+  - old
+  - older
+  - backpack
+  - large
+  - adventurer
+  - explorer
+  inventory: null
+  name: Pierre
+  room: room12
+  rooms_visited: []
+Player:
+  base_stats:
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
+  controller: PlayerController
+  current_health: 10
+  description: a young adventurer dressed in beige clothes and sturdy boots
+  effects: null
+  equipped: null
+  identifiers:
+  - player
+  - adventurer
+  - beige
+  - clothes sturdy
+  - boots
+  - adventurer
+  - explorer
+  inventory: null
+  name: Player
+  room: room00
+  rooms_visited: []
+Sebastian:
+  base_stats:
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
+  controller: AdventurerController
+  current_health: 10
+  description: a handsome, young man with a curly mustache and slicked back hair
+  effects: null
+  equipped:
+  - knife
+  identifiers:
+  - Sebastian
+  - young
+  - man
+  - mustache
+  - beard
+  - slicked
+  - slick
+  - hair
+  - adventurer
+  - explorer
+  inventory:
+  - ruby
+  - saphire
+  name: Sebastian
+  room: room08
+  rooms_visited: []
+Sylas:
+  base_stats:
+    baseArmor: 0
+    baseAttack: 1
+    maxHealth: 10
+    weightLimit: 15
+  controller: AdventurerController
+  current_health: 10
+  description: a dark-haired, menacing, middle aged man dressed in leather
+  effects: null
+  equipped:
+  - sword
+  identifiers:
+  - Sylas
+  - dark
+  - hair
+  - dark-haired
+  - menacing
+  - man
+  - middle
+  - aged
+  - older
+  - leather
+  - adventurer
+  - explorer
+  inventory:
+  - knife
+  - pouch
+  - ruby
+  name: Sylas
+  room: room03
+  rooms_visited: []

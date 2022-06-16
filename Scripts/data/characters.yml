@@ -78,7 +78,7 @@ Isabella:
 
 Sebastian:
   name: Sebastian
-  description: a handsome, young man with a curly mustache and slicked back hair 
+  description: a handsome, young man with a curly mustache and slicked back hair
   identifiers: [Sebastian, young, man, mustache, beard, slicked, slick, hair, adventurer, explorer]
   current_health: 10
   base_stats:
@@ -115,7 +115,7 @@ Pierre:
 
 Monster:
   name: Monster
-  description: a gigantic cave troll 
+  description: a gigantic cave troll
   identifiers: [monster, troll, giant, gigantic, creature]
   current_health: 10
   base_stats:

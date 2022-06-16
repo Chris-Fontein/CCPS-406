@@ -1,15 +1,23 @@
-#import time
 #import yaml
 #import pprint
 from room_builder import Room_builder
+from rw_data import Data
 
 if __name__ == "__main__":
     #exec(open("room_builder.py").read())
 
+    data=Data()
+    #characters_data = data.read_yaml('characters')
+    #items_data = data.read_yaml('items')
+    #rooms_data=data.read_yaml('rooms')
+    data_lists = data.load()
+    characters_data = data_lists[0]
+    items_data = data_lists[1]
+    rooms_data = data_lists[2]
 
     rooms=Room_builder()
-    game_world=rooms.initialize_room_builder(rooms.read_yaml('characters'), rooms.read_yaml('items'), rooms.read_yaml('rooms'))
-
+    #game_world=rooms.initialize_room_builder(rooms.read_yaml('characters'), rooms.read_yaml('items'), rooms.read_yaml('rooms'))
+    game_world=rooms.initialize_room_builder(characters_data, items_data, rooms_data)
 
     print("***** Game Start *****")
     #print(game_world)
@@ -19,4 +27,3 @@ if __name__ == "__main__":
         for c in characters:
             if len(c)>0:
                 c[0].action()
-
