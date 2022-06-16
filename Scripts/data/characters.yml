@@ -18,7 +18,7 @@ Player:
 Sylas:
   name: Sylas
   description: a dark-haired, menacing, middle aged man dressed in leather
-  identifiers: [Sylas, dark, hair, dark-haired, menacing, man, middle, aged, older, leather, adventurer, explorer]
+  identifiers: [sylas, dark, hair, dark-haired, menacing, man, middle, aged, older, leather, adventurer, explorer]
   current_health: 10
   base_stats:
     maxHealth: 10
@@ -39,7 +39,7 @@ Sylas:
 Alice:
   name: Alice
   description: a young, blonde woman dressed in expensive hiking clothes
-  identifiers: [Alice, young, blonde, woman, girl, expensive, hiking, clothes, adventurer, explorer]
+  identifiers: [alice, young, blonde, woman, girl, expensive, hiking, clothes, adventurer, explorer]
   current_health: 10
   base_stats:
     maxHealth: 10
@@ -59,7 +59,7 @@ Alice:
 Isabella:
   name: Isabella
   description: a mature, stern looking woman wearing a black cloak
-  identifiers: [Isabella, mature, stern, woman, older, old, black, cloak, adventurer, explorer]
+  identifiers: [isabella, mature, stern, woman, older, old, black, cloak, adventurer, explorer]
   current_health: 10
   base_stats:
     maxHealth: 10
@@ -79,7 +79,7 @@ Isabella:
 Sebastian:
   name: Sebastian
   description: a handsome, young man with a curly mustache and slicked back hair 
-  identifiers: [Sebastian, young, man, mustache, beard, slicked, slick, hair, adventurer, explorer]
+  identifiers: [sebastian, young, man, mustache, beard, slicked, slick, hair, adventurer, explorer]
   current_health: 10
   base_stats:
     maxHealth: 10
@@ -99,7 +99,7 @@ Sebastian:
 Pierre:
   name: Pierre
   description: a timid, elder man carrying a very large travel pack
-  identifiers: [Pierre, timid, scared, elder, man, old, older, backpack, large, adventurer, explorer]
+  identifiers: [pierre, timid, scared, elder, man, old, older, backpack, large, adventurer, explorer]
   current_health: 10
   base_stats:
     maxHealth: 10
@@ -115,8 +115,8 @@ Pierre:
 
 Monster:
   name: Monster
-  description: a gigantic cave troll 
-  identifiers: [monster, troll, giant, gigantic, creature]
+  description: a gigantic slime creature 
+  identifiers: [monster, slime, giant, gigantic, creature]
   current_health: 10
   base_stats:
     maxHealth: 10
