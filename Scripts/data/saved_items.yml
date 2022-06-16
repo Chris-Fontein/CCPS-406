@@ -6,7 +6,7 @@ amulet:
   - necklace
   - pendant
   name: amulet
-  type: item
+  type: Item
   value: 3
   weight: 1
 axe:
@@ -23,7 +23,7 @@ axe:
   - iron
   name: axe
   slot: weapon
-  type: equipment
+  type: Equipment
   value: 5
   weight: 2
 banishing stone:
@@ -35,11 +35,11 @@ banishing stone:
   - rune
   - glowing
   name: banishing stone
-  type: item
+  type: Item
   value: 3
   weight: 1
 bone chest:
-  closed_description: a locked chest made of bones
+  closed_description: a closed chest made of bones
   content: []
   contents_description: 'Inside the chest, there is '
   description: a chest made of human bones
@@ -52,9 +52,9 @@ bone chest:
   - coffer
   - box
   name: bone chest
-  open: true
+  open: false
   placement: by the west wall of the cave
-  type: container
+  type: OpenableContainer
   value: 0
   weight: 50
 book:
@@ -64,7 +64,7 @@ book:
   - manual
   - trolls
   name: book
-  type: item
+  type: Item
   value: 1
   weight: 1
 chalice:
@@ -76,7 +76,7 @@ chalice:
   - cup
   - grail
   name: chalice
-  type: item
+  type: Item
   value: 5
   weight: 1
 chestplate:
@@ -93,7 +93,7 @@ chestplate:
   - shiny
   name: chestplate
   slot: body
-  type: equipment
+  type: Equipment
   value: 5
   weight: 3
 cloak:
@@ -110,7 +110,7 @@ cloak:
   - long
   name: cloak
   slot: body
-  type: equipment
+  type: Equipment
   value: 2
   weight: 1
 crossbow:
@@ -126,7 +126,7 @@ crossbow:
   - black
   name: crossbow
   slot: weapon
-  type: equipment
+  type: Equipment
   value: 5
   weight: 2
 diamond skull:
@@ -137,15 +137,14 @@ diamond skull:
   - valuable
   - crystal
   name: diamond skull
-  type: item
+  type: Item
   value: 10
   weight: 2
 drowned corpse:
-  closed_description: a bloated corpse
   content: []
   contents_description: 'By the corpse, there is '
   description: a bloated corpse
-  empty_description: a bloated corpse
+  empty_description: a bare, bloated corpse
   identifiers:
   - drowned
   - bloated
@@ -155,9 +154,8 @@ drowned corpse:
   - dead
   - wet
   name: drowned corpse
-  open: true
   placement: by the north exit of the cave
-  type: container
+  type: Container
   value: 0
   weight: 50
 emerald:
@@ -169,11 +167,10 @@ emerald:
   - gem
   - stone
   name: emerald
-  type: item
+  type: Item
   value: 5
   weight: 1
 emerald table:
-  closed_description: a large crystal-green table
   content: []
   contents_description: 'On top of the table, there is '
   description: a large crystal-green table
@@ -185,13 +182,12 @@ emerald table:
   - large
   - table
   name: emerald table
-  open: true
   placement: by the north exit of the cave
-  type: container
+  type: Container
   value: 0
   weight: 50
 floating chest:
-  closed_description: a locked, floating chest
+  closed_description: a closed, floating chest
   content: []
   contents_description: 'Inside the chest, there is '
   description: a floating steel chest
@@ -205,30 +201,28 @@ floating chest:
   - coffer
   - flying
   name: floating chest
-  open: true
+  open: false
   placement: above the floor of the cave
-  type: container
+  type: OpenableContainer
   value: 0
   weight: 50
 fresh corpse:
-  closed_description: a lifeless body
   content: []
   contents_description: 'By the body, there is '
   description: a lifeless body
-  empty_description: a lifeless body
+  empty_description: a bare, lifeless body
   identifiers:
   - fresh
   - corpse
   - dead
   - body
   name: fresh corpse
-  open: true
   placement: in the center of the cave
-  type: container
+  type: Container
   value: 0
   weight: 50
 gold chest:
-  closed_description: a locked gold-trimmed chest
+  closed_description: a closed gold-trimmed chest
   content: []
   contents_description: 'Inside the chest, there is '
   description: a gold-trimmed chest
@@ -242,9 +236,9 @@ gold chest:
   - treasure
   - coffer
   name: gold chest
-  open: true
+  open: false
   placement: by the west wall of the cave
-  type: container
+  type: OpenableContainer
   value: 0
   weight: 50
 hammer:
@@ -260,15 +254,9 @@ hammer:
   - battle
   name: hammer
   slot: weapon
-  type: equipment
+  type: Equipment
   value: 3
   weight: 2
-health potion:
-  description: a red potion with a heart on the label
-  effect:
-    health: 5
-  name: health potion
-  type: consumable
 helmet:
   description: a grey, metal helmet
   equipValue:
@@ -283,11 +271,10 @@ helmet:
   - grey
   name: helmet
   slot: head
-  type: equipment
+  type: Equipment
   value: 5
   weight: 1
 icy table:
-  closed_description: a large icy table
   content: []
   contents_description: 'On top of the table, there is '
   description: a large icy table
@@ -298,13 +285,12 @@ icy table:
   - table
   - large
   name: icy table
-  open: true
   placement: to the north side of the cave
-  type: container
+  type: Container
   value: 0
   weight: 50
 jewel chest:
-  closed_description: a locked jewel-encrusted chest
+  closed_description: a closed jewel-encrusted chest
   content: []
   contents_description: 'Inside the chest, there is '
   description: a jewel-encrusted chest
@@ -317,9 +303,9 @@ jewel chest:
   - box
   - coffer
   name: jewel chest
-  open: true
+  open: false
   placement: by the east wall of the cave
-  type: container
+  type: OpenableContainer
   value: 0
   weight: 50
 key:
@@ -327,7 +313,7 @@ key:
   identifiers:
   - key
   name: key
-  type: item
+  type: Item
   value: 2
   weight: 1
 knife:
@@ -343,7 +329,7 @@ knife:
   - blade
   name: knife
   slot: weapon
-  type: equipment
+  type: Equipment
   value: 2
   weight: 1
 mace:
@@ -358,11 +344,10 @@ mace:
   - steel
   name: mace
   slot: weapon
-  type: equipment
+  type: Equipment
   value: 5
   weight: 3
 marble table:
-  closed_description: a long marble table
   content: []
   contents_description: 'On top of the table, there is '
   description: a long marble table
@@ -374,13 +359,11 @@ marble table:
   - table
   - large
   name: marble table
-  open: true
   placement: in the center of the cave
-  type: container
+  type: Container
   value: 0
   weight: 50
 oak table:
-  closed_description: a long oak table
   content: []
   contents_description: 'On top of the table, there is '
   description: a long oak table
@@ -391,9 +374,8 @@ oak table:
   - table
   - wood
   name: oak table
-  open: true
   placement: in the center of the cave
-  type: container
+  type: Container
   value: 0
   weight: 50
 painting:
@@ -404,7 +386,7 @@ painting:
   - picture
   - woman
   name: painting
-  type: item
+  type: Item
   value: 5
   weight: 2
 plates:
@@ -416,7 +398,7 @@ plates:
   - decorated
   - beautiful
   name: plates
-  type: item
+  type: Item
   value: 3
   weight: 2
 pouch:
@@ -427,24 +409,22 @@ pouch:
   - gold
   - coins
   name: pouch
-  type: item
+  type: Item
   value: 4
   weight: 1
 rotting corpse:
-  closed_description: a rotting corpse
   content: []
   contents_description: 'By the corpse, there is '
   description: a rotting corpse
-  empty_description: a rotting corpse
+  empty_description: a bare, rotting corpse
   identifiers:
   - rotting
   - corpse
   - body
   - dead
   name: rotting corpse
-  open: true
   placement: by the south exit of the cave
-  type: container
+  type: Container
   value: 0
   weight: 50
 ruby:
@@ -456,7 +436,7 @@ ruby:
   - gem
   - stone
   name: ruby
-  type: item
+  type: Item
   value: 5
   weight: 1
 saphire:
@@ -468,7 +448,7 @@ saphire:
   - stone
   - precious
   name: saphire
-  type: item
+  type: Item
   value: 5
   weight: 1
 scroll:
@@ -479,7 +459,7 @@ scroll:
   - illustrated
   - paper
   name: scroll
-  type: item
+  type: Item
   value: 4
   weight: 1
 shield:
@@ -496,11 +476,10 @@ shield:
   - armor
   name: shield
   slot: shield
-  type: equipment
+  type: Equipment
   value: 5
   weight: 2
 skeleton:
-  closed_description: a human skeleton
   content:
   - skeleton
   - bones
@@ -510,12 +489,11 @@ skeleton:
   - corpse
   contents_description: 'By the bones, there is '
   description: a human skeleton
-  empty_description: a human skeleton
+  empty_description: a bare, human skeleton
   identifiers: []
   name: skeleton
-  open: true
   placement: in the center of the cave
-  type: container
+  type: Container
   value: 0
   weight: 50
 skull:
@@ -525,7 +503,7 @@ skull:
   - bone
   - human
   name: skull
-  type: item
+  type: Item
   value: 0
   weight: 1
 spear:
@@ -540,7 +518,7 @@ spear:
   - wooden
   name: spear
   slot: weapon
-  type: equipment
+  type: Equipment
   value: 5
   weight: 1
 statue:
@@ -551,7 +529,7 @@ statue:
   - elven
   - god
   name: statue
-  type: item
+  type: Item
   value: 4
   weight: 1
 sword:
@@ -567,15 +545,9 @@ sword:
   - steel
   name: sword
   slot: weapon
-  type: equipment
+  type: Equipment
   value: 5
   weight: 1
-trick potion:
-  description: a red potion with an upside-down heart on the label
-  effect:
-    health: -5
-  name: trick potion
-  type: consumable
 wooden barrel:
   closed_description: a sealed wooden barrel
   content: []
@@ -588,13 +560,13 @@ wooden barrel:
   - barrel
   - keg
   name: wooden barrel
-  open: true
+  open: false
   placement: by the south exit of the cave
-  type: container
+  type: OpenableContainer
   value: 0
   weight: 50
 wooden chest:
-  closed_description: a locked wooden chest
+  closed_description: a closed wooden chest
   content: []
   contents_description: 'Inside the chest, there is '
   description: a wooden chest
@@ -607,8 +579,8 @@ wooden chest:
   - coffer
   - box
   name: wooden chest
-  open: true
+  open: false
   placement: in the center of the cave
-  type: container
+  type: OpenableContainer
   value: 0
   weight: 50

@@ -10,7 +10,8 @@ room00:
     - room12
   description: The mouth of the cave. To the south, is the exit to the outside world.
     To the east, there is a corridor with a faint red glow. To the west, a corridor
-    with an emanating icy mist.
+    with an emanating icy mist. On the north wall, a prominent crack from floor to
+    ceiling.
   floor: []
   furniture:
   - skeleton: []
@@ -32,7 +33,7 @@ room01:
     - room00
   description: A cave with icy crystals protruding from every corner. To the east,
     is a dark corridor. To the north, a narrow exit from which running water can be
-    heard.
+    heard. On the west wall, another prominent crack from floor to ceiling.
   floor:
   - shield
   furniture:
@@ -113,10 +114,9 @@ room04:
     - room02
   description: A cave with glowing green crystal walls and pillars. To the north,
     there is a corridor stretching upwards towards the surface. To the south, a glowing
-    red corridor.
+    red corridor. On the west wall, the emerald surface is cracked from floor to ceiling.
   floor:
   - ruby
-  - health potion
   furniture:
   - emerald table:
     - book
@@ -141,7 +141,8 @@ room05:
     - room03
   description: A cave whose walls are covered by vines and leaves. Tree-like pillars
     seem to grow through the ceiling. To the north, a dense fog escapes through an
-    entrance. To the west, an exit covered by dense foliage.
+    entrance. To the west, an exit covered by dense foliage. On the east and south
+    walls, two identical cracks run from floor to ceiling.
   floor:
   - hammer
   - spear
@@ -173,7 +174,7 @@ room06:
     - room08
   description: A cave with crystal walls emitting light of various colors.  To the
     south, there is an exit with predominantly green glow. To the west, an exit covered
-    by a dense fog.
+    by a dense fog. On the north wall, yet another prominent crack.
   floor:
   - axe
   - pouch
@@ -202,7 +203,8 @@ room07:
     - room09
   description: A cave with protruding human skulls in the walls and floor.  To the
     south, there is an exit within the mouth of a giant skull. To the north, a halway
-    littered with bones.
+    littered with bones. On the east wall, the bones cover another crack from floor
+    to ceiling.
   floor:
   - skull
   - key
@@ -234,7 +236,8 @@ room08:
   - - south
     - room05
   description: A cave filled with a menacing, ghostly mist. The fog seems to be escaping
-    from two exits one to the north, and one to the east.
+    from two exits one to the north, and one to the east. On the west wall, a crack
+    identical to the others.
   floor:
   - crossbow
   furniture:
@@ -259,7 +262,8 @@ room09:
   - - south
     - room07
   description: A cave with golden walls and pillars. To the east, a ghostly wail emanates
-    from a dark corridor. To the south, an exit littered by human bones.
+    from a dark corridor. To the south, an exit littered by human bones. The golden
+    surface on the north wall is interrupted by yet another crack.
   floor:
   - mace
   furniture:
@@ -290,7 +294,7 @@ room10:
     - room08
   description: A cave filled with marble statues of humans, their expressions frozen
     in horror. To the west, a golden light shines from a dark corridor. To the south,
-    an exit covered by mist.
+    an exit covered by mist. The north wall is cracked from floor to ceiling.
   floor:
   - banishing stone
   - painting
@@ -313,7 +317,8 @@ room11:
   characters:
   - Monster
   connections: null
-  description: A pitch black cave with no apparent exits.
+  description: A pitch black cave with no apparent exits. The sound of wind rushing
+    through small cracks emenates from all directions.
   floor: null
   furniture: null
   identifiers:
