@@ -11,7 +11,12 @@ class Adventurer(Character):
     '''Adventurer class.'''
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._equipment = kwargs.get("equipped")
+        self._equipment = {
+                            "head": None,
+                            "body": None,
+                            "weapon": None,
+                            "shield": None
+                            }
 
 
     def get_valid_connections(self):

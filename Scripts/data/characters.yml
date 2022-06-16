@@ -4,10 +4,10 @@ Player:
   identifiers: [player, adventurer, beige, clothes sturdy, boots, adventurer, explorer]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
   equipped:
   effects:
@@ -21,10 +21,10 @@ Sylas:
   identifiers: [sylas, dark, hair, dark-haired, menacing, man, middle, aged, older, leather, adventurer, explorer]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
     - knife
     - pouch
@@ -42,10 +42,10 @@ Alice:
   identifiers: [alice, young, blonde, woman, girl, expensive, hiking, clothes, adventurer, explorer]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
     - scroll
     - painting
@@ -62,10 +62,10 @@ Isabella:
   identifiers: [isabella, mature, stern, woman, older, old, black, cloak, adventurer, explorer]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
     - shield
     - spear
@@ -82,10 +82,10 @@ Sebastian:
   identifiers: [sebastian, young, man, mustache, beard, slicked, slick, hair, adventurer, explorer]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
     - ruby
     - saphire
@@ -102,10 +102,10 @@ Pierre:
   identifiers: [pierre, timid, scared, elder, man, old, older, backpack, large, adventurer, explorer]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
   equipped:
   effects:
@@ -119,10 +119,10 @@ Monster:
   identifiers: [monster, slime, giant, gigantic, creature]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
     - monster core
   equipped:

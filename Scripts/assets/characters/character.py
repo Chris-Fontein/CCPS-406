@@ -22,6 +22,7 @@ class Character(Asset):
 
         self._weight = 0
         self._base_stats = kwargs.get("base_stats")
+        print(self._base_stats)
         self._stat_modifiers = {
             Character.ARMOR:0,
             Character.ATTACK:0,
