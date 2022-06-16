@@ -60,30 +60,3 @@ class Data:
             self.write_yaml(rooms_data, 'saved_rooms')
 
         return characters_data, items_data, rooms_data
-
-
-    def data_mapping(self, room_data_list):
-        rooms_list = []
-        rooms_dict= {}
-        room_keys = list(room_data_list.keys())
-        for r_key in room_keys:
-            room_obj=RoomClass(room_data_list[r_key]['name'],
-                      room_data_list[r_key]['description'],
-                      room_data_list[r_key]['identifiers'],
-                      room_data_list[r_key]['characters'],
-                      room_data_list[r_key]['floor'],
-                      room_data_list[r_key]['furniture'],
-                      room_data_list[r_key]['connections'],
-                      room_data_list[r_key]['monster_connections'])
-            rooms_list.append(room_obj)
-            rooms_dict[r_key]=room_obj
-
-        rooms_list[0].name = "Start"
-        #rooms_dict[list(room_data_list.keys())[0]].name= "Start"
-
-        yaml.emitter.Emitter.process_tag = self.noop
-
-        with open(r'./data/text_files/saved_rooms.yml','w') as file:
-            document=yaml.dump(rooms_dict, file, sort_keys=False)
-
-        return rooms_list
