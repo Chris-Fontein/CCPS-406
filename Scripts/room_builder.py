@@ -1,5 +1,3 @@
-# import pprint
-import yaml
 from assets.characters.adventurer import Adventurer
 from assets.characters.monster import Monster
 from controllers.playerController import PlayerController
@@ -13,12 +11,28 @@ from assets.items.openable_container import OpenableContainer
 from assets.items.equipment import Equipment
 from assets.room import Room
 
-class Room_builder:
-
+class RoomBuilder:
+    """This module establishes room connections
+    as building each room with
+    its own characters,
+    items, equipments, consumables on floor, and
+    funrnitures (e.g. container , openable container)
+    """
     def __init__(self):
         super().__init__()
 
     def build_a_room(self,room,characters_dict,items_dict):
+        """This method creates a single room class object.
+        Args:
+            room (single room object): one single room which is read from yaml file with its key
+            characters_dict (dictionary list): read from characters.yaml file
+            items_dict (dictionary list): read from items.yaml file
+
+        Returns:
+            room object: a single room object with characters and item
+            list: list of characters om new_room
+        """
+
         new_room = Room(**room)
         characters=[]
         for character_key in room['characters']:
@@ -39,7 +53,6 @@ class Room_builder:
                     new_char = Adventurer(**character_obj)
                     new_char.set_room(new_room)
                     new_char.set_controller(PlayerController())
-
                 case _:
                     new_char = Adventurer(**character_obj)
                     new_char.set_room(new_room)
@@ -68,14 +81,12 @@ class Room_builder:
 
             characters.append(new_char)
 
-
         if room['floor'] is not None:
             for floor_obj in room['floor']:
                 # add item to new_room floor
                 floor = items_dict[floor_obj]
                 if floor['type'] == 'Item':
                     new_items_on_floor = Item(**floor)
-
                 elif floor['type'] == 'Equipment':
                     new_items_on_floor = Equipment(**floor)
                 elif floor['type'] == 'Consumable':
@@ -123,9 +134,17 @@ class Room_builder:
 
         return new_room, characters
 
-
     def initialize_room_builder(self, yaml_characters,yaml_items,yaml_rooms):
+        """ This method creates room connections.
+        Args:
+            yaml_characters (dictionary): data read from characters.yaml
+            yaml_items (dictionary): data read from items.yaml
+            yaml_rooms (dictionary): data read from rooms.yaml
 
+        Returns:
+            dicrionary: rooms
+            list: characters
+        """
         rooms = {} #[]
         room_dict = yaml_rooms
         characters =[]
@@ -133,7 +152,7 @@ class Room_builder:
         for room_id in room_dict:
             room =room_dict[room_id]
             a_room =self.build_a_room(room,yaml_characters,yaml_items)
-            new_room =a_room [0]
+            new_room =a_room[0]
             rooms[room_id] = new_room
             characters.extend(a_room[1])
             #rooms.append(new_room)
@@ -154,7 +173,4 @@ class Room_builder:
                     room.add_room_connection(connection_direction, rooms[connection_obj[1]], True)
 
         return rooms, characters
-
-
-
     #initialize_room_builder(read_yaml('characters'),read_yaml('items'),read_yaml('rooms'))
