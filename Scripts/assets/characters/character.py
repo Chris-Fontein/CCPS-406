@@ -22,6 +22,7 @@ class Character(Asset):
 
         self._weight = 0
         self._base_stats = kwargs.get("base_stats")
+        #print(self._base_stats)
         self._stat_modifiers = {
             Character.ARMOR:0,
             Character.ATTACK:0,
@@ -31,13 +32,13 @@ class Character(Asset):
         self._current_health = kwargs.get("current_health")
 
         self._effects = kwargs.get("effects")
-        self._inventory = kwargs.get("inventory")
+        self._inventory = [] #kwargs.get("inventory")
         self._controller = None
 
         self._room = kwargs.get("room")
         self._rooms_visited = set(kwargs.get("rooms_visited"))
 
-        self._equipment = kwargs.get("equipped")
+        self._equipment = [] #kwargs.get("equipped")
 
     def get_name(self):
         '''Returns the name of the Character'''
@@ -59,7 +60,7 @@ class Character(Asset):
         '''Sets the room the Character is currently located in.'''
         self._room = room
         room.add_character(self)
-    
+
     def get_controller(self):
         '''Returns the controller of the character'''
         return self._controller

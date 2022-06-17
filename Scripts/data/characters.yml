@@ -4,10 +4,10 @@ Player:
   identifiers: [player, adventurer, beige, clothes sturdy, boots, adventurer, explorer]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
   equipped:
   effects:
@@ -18,13 +18,13 @@ Player:
 Sylas:
   name: Sylas
   description: a dark-haired, menacing, middle aged man dressed in leather
-  identifiers: [Sylas, dark, hair, dark-haired, menacing, man, middle, aged, older, leather, adventurer, explorer]
+  identifiers: [sylas, dark, hair, dark-haired, menacing, man, middle, aged, older, leather, adventurer, explorer]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
     - knife
     - pouch
@@ -39,13 +39,13 @@ Sylas:
 Alice:
   name: Alice
   description: a young, blonde woman dressed in expensive hiking clothes
-  identifiers: [Alice, young, blonde, woman, girl, expensive, hiking, clothes, adventurer, explorer]
+  identifiers: [alice, young, blonde, woman, girl, expensive, hiking, clothes, adventurer, explorer]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
     - scroll
     - painting
@@ -59,13 +59,13 @@ Alice:
 Isabella:
   name: Isabella
   description: a mature, stern looking woman wearing a black cloak
-  identifiers: [Isabella, mature, stern, woman, older, old, black, cloak, adventurer, explorer]
+  identifiers: [isabella, mature, stern, woman, older, old, black, cloak, adventurer, explorer]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
     - shield
     - spear
@@ -79,13 +79,13 @@ Isabella:
 Sebastian:
   name: Sebastian
   description: a handsome, young man with a curly mustache and slicked back hair 
-  identifiers: [Sebastian, young, man, mustache, beard, slicked, slick, hair, adventurer, explorer]
+  identifiers: [sebastian, young, man, mustache, beard, slicked, slick, hair, adventurer, explorer]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
     - ruby
     - saphire
@@ -99,13 +99,13 @@ Sebastian:
 Pierre:
   name: Pierre
   description: a timid, elder man carrying a very large travel pack
-  identifiers: [Pierre, timid, scared, elder, man, old, older, backpack, large, adventurer, explorer]
+  identifiers: [pierre, timid, scared, elder, man, old, older, backpack, large, adventurer, explorer]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
   equipped:
   effects:
@@ -115,14 +115,14 @@ Pierre:
 
 Monster:
   name: Monster
-  description: a gigantic cave troll 
-  identifiers: [monster, troll, giant, gigantic, creature]
+  description: a gigantic slime creature 
+  identifiers: [monster, slime, giant, gigantic, creature]
   current_health: 10
   base_stats:
-    maxHealth: 10
-    baseArmor: 0
-    baseAttack: 1
-    weightLimit: 15
+    health: 10
+    armor: 0
+    attack: 1
+    weight: 15
   inventory:
     - monster core
   equipped:

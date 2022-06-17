@@ -12,7 +12,7 @@ class Container(Item):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self._content = kwargs.get("content")
+        self._content = []#kwargs.get("content")
         self._empty_desc = kwargs.get("empty_description")
         self._placement = kwargs.get("placement")
         self._content_desc = kwargs.get("contents_description")
