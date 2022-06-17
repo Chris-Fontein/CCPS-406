@@ -7,6 +7,7 @@ from controllers.controller import Controller
 from assets.item import Item
 # from assets.items.consumable import Consumable
 from assets.items.container import Container
+from assets.items.openable_container import OpenableContainer
 from assets.items.equipment import Equipment
 from assets.room import Room
 
@@ -89,7 +90,7 @@ class Room_builder:
                         new_furniture = Container(**furniture)
                         new_room.add_funiture(new_furniture)
                     case 'OpenableContainer':
-                        new_furniture = Container(**furniture)
+                        new_furniture = OpenableContainer(**furniture)
                         new_room.add_funiture(new_furniture)
 
                 #new_furniture = Container(**furniture)
@@ -107,13 +108,11 @@ class Room_builder:
                                 new_item = Item(**item)
                                 new_furniture.add_item_contents(new_item)
                             case 'Container':
-                                new_item = Item(**item)
+                                new_item = Container(**item)
                                 new_furniture.add_item_contents(new_item)
                             case 'OpenableContainer':
-                                new_item = Item(**item)
+                                new_item = OpenableContainer(**item)
                                 new_furniture.add_item_contents(new_item)
-
-                new_room.add_funiture(new_furniture)
 
         return new_room, characters
 
