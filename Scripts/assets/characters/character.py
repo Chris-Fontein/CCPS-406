@@ -40,8 +40,6 @@ class Character(Asset):
         self._room = kwargs.get("room")
         self._rooms_visited = set(kwargs.get("rooms_visited", []))
 
-        self._equipment = [] #kwargs.get("equipped")
-
     def get_name(self):
         '''Returns the name of the Character'''
         return self._name
@@ -67,7 +65,7 @@ class Character(Asset):
         '''Returns the controller of the character'''
         return self._controller
 
-    def get_visible_characters():
+    def get_visible_characters(self):
         '''Returns all visible Characters in the room excluding themselves'''
         return self._room.get_characters() - set([self])
 
