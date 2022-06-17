@@ -67,6 +67,7 @@ class Room(Asset):
     def add_item_to_floor(self, new_item):
         '''Adds the specified item to the floor list.'''
         self._floor.append(new_item)
+        new_item.set_parent(self)
 
     def remove_item_from_floor(self, target_item):
         '''Removes the specified item to the floor list.'''
@@ -78,6 +79,7 @@ class Room(Asset):
         Furniture cannot be removed.  This function should only be used during level creation.
         '''
         self._furniture.append(furniture)
+        furniture.set_parent(self)
 
     def add_room_connection(self, direction, room, monster_connection = False):
         '''

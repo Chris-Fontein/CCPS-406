@@ -17,6 +17,6 @@ class Monster(Character):
         for con in connections:
             all_connections[con] = connections[con]
         for con in monster_connections:
-            all_connections[con] = connections[con]
+            all_connections[con] = monster_connections[con]
 
         return all_connections

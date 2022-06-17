@@ -29,6 +29,8 @@ class Character(Asset):
             Character.MAX_HEALTH:0,
             Character.WEIGHT_LIMIT:0,
         }
+
+        self._equipment = {}
         self._current_health = kwargs.get("current_health")
 
         self._effects = kwargs.get("effects")
@@ -36,7 +38,7 @@ class Character(Asset):
         self._controller = None
 
         self._room = kwargs.get("room")
-        self._rooms_visited = set(kwargs.get("rooms_visited"))
+        self._rooms_visited = set(kwargs.get("rooms_visited", []))
 
         self._equipment = [] #kwargs.get("equipped")
 
@@ -65,9 +67,16 @@ class Character(Asset):
         '''Returns the controller of the character'''
         return self._controller
 
+    def get_visible_characters():
+        '''Returns all visible Characters in the room excluding themselves'''
+        return self._room.get_characters() - set([self])
+
     def get_valid_connections(self):
         '''Returns the directions and rooms a Character can go'''
         return {}
+
+    def get_equipment(self):
+        return self._equipment
 
     def get_contents(self, instance):
         '''Returns all items that are instances of the specified class'''
@@ -97,6 +106,7 @@ class Character(Asset):
         '''Add item to Character inventory'''
         self.adjust_weight(item.get_weight())
         self._inventory.append(item)
+        item.set_parent(self)
 
     def remove_item(self, item):
         '''Remove item to Character inventory'''
@@ -159,3 +169,50 @@ class Character(Asset):
     def action(self):
         '''Gets the controller to select the next action'''
         self._controller.action()
+
+    def get_available_contents(self, instance):
+        '''Gets all the contents the character can access'''
+        items = self.get_contents(instance)
+        items.extend(self._room.get_room_contents(instance))
+        return items
+
+    def equip(self, item):
+        '''Unequips Equipment in slot and equips item.'''
+        slot = item.get_slot()
+        unequipped = None
+        
+        if slot not in self._equipment:
+            return False, unequipped
+
+        #Slot is full
+        unequipped = self.unequip(slot)
+            
+        self._equipment[slot] = item
+        item_stats = item.get_stats()
+
+        for stat in item_stats:
+            self._stat_modifiers[stat] += item_stats[stat]
+
+        if item.get_parent():
+            self._inventory.remove(item)
+        else:
+            item.set_parent(self)
+            self.adjust_weight(item.get_weight())
+
+        return True, unequipped
+
+    def unequip(self, slot):
+        '''Unequips the Equipent in the specified slot placing it in inventory.'''
+        if not self._equipment[slot]:
+            return None
+
+        item = self._equipment[slot]
+        self._equipment[slot] = None
+
+        item_stats = item.get_stats()
+        for stat in item_stats:
+            self._stat_modifiers[stat] -= item_stats[stat]
+
+        self._inventory.append(item)
+
+        return item

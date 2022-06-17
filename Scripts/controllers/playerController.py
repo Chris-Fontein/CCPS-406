@@ -6,7 +6,9 @@
 #Local imports
 from controllers.controller import Controller
 
+from assets.asset import Asset
 from assets.items.equipment import Equipment
+from assets.items.container import Container
 from assets.characters.character import Character
 
 
@@ -16,9 +18,9 @@ class PlayerController(Controller):
     def action(self):
         '''Perform the characters actions based the Characters surrounding'''
         if self._character.has_visited():
-            print(self._character.get_room().get_description())
+            self.message(self._character.get_room().get_description())
         else:
-            print(self._character.get_room().get_long_description())
+            self.message(self._character.get_room().get_long_description())
 
         valid_action = False
         while not valid_action:
@@ -53,38 +55,55 @@ class PlayerController(Controller):
             action_function = actions[action]
             return action_function(details)
 
-        print("I don't recognise '%(action)s' as an action." %locals())
+        self.message("I don't recognise '%(action)s' as an action." %locals())
         return False
 
     def use(self, details):
         '''Attempt to use the specified items'''
-        print("use: %s" %details)
+        self.message("use: %s" %details)
         return True
 
     def open(self, details):
         '''Attempt to open the specified container'''
-        print("open: %s" %details)
+        self.message("open: %s" %details)
         return True
 
     def close(self, details):
         '''Attempt to close the specified container'''
-        print("close: %s" %details)
+        self.message("close: %s" %details)
         return True
 
     def look(self, details):
         '''Attempt to look at the specified asset'''
-        print("look: %s" %details)
+        if not details or details[0] == "room":
+            self.message(self._character.get_room().get_long_description())
+            return False
+        if details[0] in ["me", "self"]:
+            self.message(self._character.get_description())
+            return False
+
+        characters = self._character.get_visible_characters()
+        available = self._character.get_available_contents(Asset)
+        available.extend(characters)
+        items = find_nested_item(details, available)
+
+        same = check_same(items)
+
+        if same:
+            self.message(items[0].get_description())
+            return False
+
         return False
 
     def pickup(self, details):
         '''Attempt to pickup the specified item'''
-        print("pickup: %s" %details)
+        self.message("pickup: %s" %details)
         return True
 
     def move(self, details):
         '''Attempt to move in the specified direction'''
         if not details:
-            print("You didn't specify a direction.")
+            self.message("You didn't specify a direction.")
             return False
 
         valid_dirs = self._character.get_valid_connections()
@@ -104,39 +123,85 @@ class PlayerController(Controller):
                 break
         if final_dir:
             self._character.move(valid_dirs[final_dir])
-            print("You move %s towards %s." %(final_dir, self._character.get_room().get_name()))
+            self.message("You move %s towards %s." %(final_dir, self._character.get_room().get_name()))
             return True
-        print("You did not specify a valid direction.")
+        self.message("You did not specify a valid direction.")
         return False
 
     def equip(self, details):
         '''Attempt to equip the specified item'''
-        print("equip: %s" %details)
+        if not details:
+            self.message("Please specify what you would like to equip.")
+            return False
+
+        contents = self._character.get_contents(Equipment)
+
+        matches = search_contents(details, contents)
+
+        if not matches:
+            self.message("You don't have anything that matches that description.")
+            return False
+
+        if not check_same(matches):
+            return False
+        
+        item = matches[0]
+        result, unequipped = self.character.equip(item)
+
+        if not result:
+            self.message("You can't equip that item.")
+            return False
+        elif unequipped:
+            self.message("You remove your %s and equip your %s." %(unequipped.get_name(), item.get_name()))
+        else:
+            self.message("You equip your %s." %item.get)
+
         return True
 
     def unequip(self, details):
         '''Attempt to unequip the specified item'''
-        print("unequip: %s" %details)
-        return True
+        equipment = self._character.get_equipment()
+        equipment_items = []
+        for slot in equipment:
+            if slot in details:
+                item = self._character.unequip(slot)
+                if item:
+                    self.message("You unequipped your %s." %item.get_name())
+                    return True
+                else:
+                    self.message("You have nothing equipped to %s." %slot)
+                    return False
+            items.append(equipment[slot])
+
+        matches = search_contents(details, items)
+
+        if matches:
+            item = matches[0]
+            for slot in equipment:
+                if equipment[slot] == item:
+                    item = self._character.unequip(slot)
+                    self.message("You unequipped your %s." %item.get_name())
+                    return True
+
+        return False
 
     def attack(self, details):
         '''Attempt to attack the specified character'''
-        room = self._character.get_room()
-        characters = room.get_characters() - set([self._character])
+        characters = self._character.get_visible_characters()
 
         if not characters:
-            print("There is no one else in the room with you.")
+            self.message("There is no one else in the room with you.")
             return False
         matches = search_contents(details, characters)
         if not matches:
-            print("There is no one like that in the room.")
+            self.message("There is no one like that in the room.")
             return False
 
         if len(matches) > 1:
             if all(matches[0] == m for m in matches):
                 target = matches[0]
             else:
-                print("There is more then one person in the room that matches that description")
+                self.message("There is more then one person in the room that matches that description")
                 return False
         else:
             target = matches[0]
@@ -150,10 +215,10 @@ class PlayerController(Controller):
                 message.append(", killing them")
         else:
             message.append("but, are not able to penetrate their defences.")
-            print(" ".join(message))
+            self.message(" ".join(message))
             return False
 
-        print("%s." %" ".join(message))
+        self.message("%s." %" ".join(message))
         return True
 
     def attacked(self, attacker, damage):
@@ -165,9 +230,7 @@ class PlayerController(Controller):
         else:
             message.append("but, was not able to penetrate your defences")
 
-        print("%s." %" ".join(message))
-
-
+        self.message("%s." %" ".join(message))
 
 
 def search_contents(identifiers, items):
@@ -185,33 +248,54 @@ def search_contents(identifiers, items):
 
     return matches
 
-def find_nested_item(details, items):
-    levels = []
-    current_level = []
+def find_nested_item(details, items, instance = Asset):
+    '''
+        Parse details to handle instructions indicating items in a container to identify matching
+        items.
+    '''
+    sections = []
+    current_section = []
 
     for detail in details:
+        print (detail)
         if detail in set(["in", "on"]):
-            levels.append(current_level)
-            current_level = []
-        current_level.append(detail)
+            sections.append(current_section)
+            current_section = []
+        current_section.append(detail)
 
-    failed = False
+    sections.append(current_section)
     current_items = items
-    levels.reverse()
-    for i in range(len(levels)):
-        level = levels[i]
-        current_items = search_contents(level, current_items)
-        if not current_items:
-            failed = True
+    sections.reverse()
+    for i in range(len(sections)):
+        level = sections[i]
+        item_matches = search_contents(level, current_items)
+        if not item_matches:
+            current_items = []
             break
+        if i < len(sections) - 1:
+            current_items = []
+            for item in item_matches:
+                if isinstance(item, Container):
+                    current_items.extend(item.get_contents(instance))
+        else:
+            current_items = item_matches
 
-    if failed:
-        print("There is no item that matches that description.")
-        return []
+    if not current_items:
+        self.message("Nothing in the room matches that description.")
 
     return current_items
 
-
+def check_same(items):
+    '''checks if all items are equivalent'''
+    if not items:
+        return False
+    same = True
+    first_item = items[0]
+    for item in items:
+        same = same and (item == first_item)
+    if not same:
+        self.message("More then one thing in the room matches that description.")
+    return same
 
 def substitute_commands(action, details):
     '''Modify actions and details with synonymous command'''
@@ -229,6 +313,8 @@ def substitute_commands(action, details):
         details.insert(0, "east")
     elif action == "wield":
         action = "equip"
+    elif action == "remove":
+        action = "unequip"
     elif action == "drink":
         action = "use"
     elif action == "fight":
@@ -238,6 +324,8 @@ def substitute_commands(action, details):
     elif action == "grab":
         action = "pickup"
     elif action == "search":
+        action = "look"
+    elif action == "examine":
         action = "look"
 
     return action, details
