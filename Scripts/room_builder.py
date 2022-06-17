@@ -1,3 +1,5 @@
+''' creating rooms and their connections '''
+
 from assets.characters.adventurer import Adventurer
 from assets.characters.monster import Monster
 from controllers.playerController import PlayerController

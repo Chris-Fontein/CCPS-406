@@ -1,3 +1,5 @@
+''' main to start the game: << python main.py >> '''
+
 from time import sleep
 #import yaml
 #import pprint

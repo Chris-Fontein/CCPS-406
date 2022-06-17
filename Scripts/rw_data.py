@@ -1,3 +1,5 @@
+''' data connections : read/write textual data files'''
+
 import os
 import os.path
 #import pprint
