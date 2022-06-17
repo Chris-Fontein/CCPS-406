@@ -32,7 +32,7 @@ room02:
   name: Lava Cave
   description: A cave with streaks of lava flowing down its walls. To the west, is a dark corridor. To the north, a dark hole which seemingly goes deeper under the earth.
   identifiers: [lava, cave, red, cavern]
-  characters: []
+  characters: [Alice]
   floor: 
     - sword
     - pouch
