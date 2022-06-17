@@ -26,17 +26,39 @@ class Room_builder:
     def build_a_room(self,room,characters_dict,items_dict):
         new_room = Room(**room)
         characters=[]
-        for character_obj in room['characters']:
+        for character_key in room['characters']:
             # create character
             # add character to new_r
-            character = characters_dict[character_obj]
-            new_char = Adventurer(**character)
+            character_obj = characters_dict[character_key]
+            new_char = Adventurer(**character_obj)
+
+            if character_obj['inventory'] is not None:
+                for item_key in character_obj['inventory']:
+                    item=items_dict[item_key]
+
+                    match item['type']:
+                        case 'Equipment':
+                            new_item = Equipment(**item)
+                            new_char.add_item(new_item)
+                        case 'Item':
+                            new_item = Item(**item)
+                            new_char.add_item(new_item)
+
+            if character_obj['equipped'] is not None:
+                for equip_key in character_obj['equipped']:
+                    equip=items_dict[equip_key]
+
+                    match equip['type']:
+                        case 'Equipment':
+                            new_equip = Equipment(**equip)
+                            new_char.add_item(new_equip)
+
             new_char.set_room(new_room)
 
-            if character['controller'] == 'AdventurerController':
+            if character_obj['controller'] == 'AdventurerController':
                 new_char.set_controller(AdventurerController())
 
-            elif character['controller'] == 'PlayerController':
+            elif character_obj['controller'] == 'PlayerController':
                 new_char.set_controller(PlayerController())
 
             #elif character['controller'] == 'MonsterController':
@@ -63,14 +85,44 @@ class Room_builder:
                     new_items_on_floor = Container(**floor)
                 new_room.add_item_to_floor(new_items_on_floor)
 
-            if room['furniture'] is not None:
-                for furniture_obj in room['furniture']:
-                    # create furniture
-                    # add items to furniture
-                    # add furniture to new_r
-                    furniture = items_dict[list(furniture_obj.keys())[0]]
-                    new_furniture = Container(**furniture)
-                    new_room.add_funiture(new_furniture)
+        if room['furniture'] is not None:
+            for furniture_obj in room['furniture']:
+                # create furniture
+                # add items to furniture
+                # add furniture to new_r
+                furniture = items_dict[list(furniture_obj.keys())[0]]
+                match furniture['type']:
+                    #we are creating container here
+                    case 'Container':
+                        new_furniture = Container(**furniture)
+                        new_room.add_funiture(new_furniture)
+                    case 'OpenableContainer':
+                        new_furniture = Container(**furniture)
+                        new_room.add_funiture(new_furniture)
+
+                #new_furniture = Container(**furniture)
+
+                #here, we are creating items with container.
+                if furniture['content'] is not None:
+                    for item_key in furniture['content']:
+                        item=items_dict[item_key]
+
+                        match item['type']:
+                            case 'Equipment':
+                                new_item = Equipment(**item)
+                                new_furniture.add_item_contents(new_item)
+                            case 'Item':
+                                new_item = Item(**item)
+                                new_furniture.add_item_contents(new_item)
+                            case 'Container':
+                                new_item = Item(**item)
+                                new_furniture.add_item_contents(new_item)
+                            case 'OpenableContainer':
+                                new_item = Item(**item)
+                                new_furniture.add_item_contents(new_item)
+
+                new_room.add_funiture(new_furniture)
+
         return new_room, characters
 
 

@@ -221,8 +221,8 @@ floating chest:
     placement: above the floor of the cave
     content: []
     contents_description: "Inside the chest, there is "
-    empty_description: an empty, floating chest 
-    closed_description: a closed, floating chest 
+    empty_description: an empty, floating chest
+    closed_description: a closed, floating chest
     open: false
 
 gold chest:
@@ -295,9 +295,9 @@ skeleton:
     value: 0
     weight: 50
     description: a human skeleton
-    identifiers: []
+    identifiers: [skeleton, bones, bone, body, dead, corpse]
     placement: in the center of the cave
-    content: [skeleton, bones, bone, body, dead, corpse]
+    content: []
     contents_description: "By the bones, there is "
     empty_description: a bare, human skeleton
 
@@ -311,7 +311,7 @@ helmet:
     value: 5
     weight: 1
     slot: head
-    equipValue: 
+    equipValue:
       armor: 2
       attack: 0
       health: 0
@@ -325,7 +325,7 @@ shield:
     value: 5
     weight: 2
     slot: shield
-    equipValue: 
+    equipValue:
       armor: 3
       attack: 1
       health: 0
@@ -339,7 +339,7 @@ cloak:
     value: 2
     weight: 1
     slot: body
-    equipValue: 
+    equipValue:
       armor: 1
       attack: 0
       health: 0
@@ -353,7 +353,7 @@ chestplate:
     value: 5
     weight: 3
     slot: body
-    equipValue: 
+    equipValue:
       armor: 4
       attack: 0
       health: 0
@@ -368,7 +368,7 @@ sword:
     value: 5
     weight: 1
     slot: weapon
-    equipValue: 
+    equipValue:
       armor: 1
       attack: 3
       health: 0
@@ -382,7 +382,7 @@ hammer:
     value: 3
     weight: 2
     slot: weapon
-    equipValue: 
+    equipValue:
       armor: 1
       attack: 2
       health: 0
@@ -396,7 +396,7 @@ spear:
     value: 5
     weight: 1
     slot: weapon
-    equipValue: 
+    equipValue:
       armor: 0
       attack: 3
       health: 0
@@ -410,7 +410,7 @@ axe:
     value: 5
     weight: 2
     slot: weapon
-    equipValue: 
+    equipValue:
       armor: 1
       attack: 3
       health: 0
@@ -424,7 +424,7 @@ knife:
     value: 2
     weight: 1
     slot: weapon
-    equipValue: 
+    equipValue:
       armor: 0
       attack: 1
       health: 0
@@ -438,7 +438,7 @@ crossbow:
     value: 5
     weight: 2
     slot: weapon
-    equipValue: 
+    equipValue:
       armor: 0
       attack: 2
       health: 0
@@ -452,7 +452,7 @@ mace:
     value: 5
     weight: 3
     slot: weapon
-    equipValue: 
+    equipValue:
       armor: 1
       attack: 3
       health: 0
