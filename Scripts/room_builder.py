@@ -1,6 +1,7 @@
 # import pprint
 import yaml
 from assets.characters.adventurer import Adventurer
+from assets.characters.monster import Monster
 from controllers.playerController import PlayerController
 from controllers.adventurerController import AdventurerController
 from controllers.controller import Controller
@@ -23,7 +24,14 @@ class Room_builder:
             # create character
             # add character to new_r
             character_obj = characters_dict[character_key]
-            new_char = Adventurer(**character_obj)
+            
+            match character_obj['controller']:
+                case 'AdventurerController':
+                    new_char = Adventurer(**character_obj)
+                    new_char.set_room(new_room)
+                case 'MonsterController':
+                    new_char = Monster(**character_obj)
+                    new_char.set_room(new_room)
 
             if character_obj['inventory'] is not None:
                 for item_key in character_obj['inventory']:
@@ -46,7 +54,6 @@ class Room_builder:
                             new_equip = Equipment(**equip)
                             new_char.equip(new_equip)
 
-            new_char.set_room(new_room)
 
             if character_obj['controller'] == 'AdventurerController':
                 new_char.set_controller(AdventurerController())
