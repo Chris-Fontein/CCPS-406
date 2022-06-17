@@ -41,18 +41,18 @@ class Data:
             characters_data=self.read_yaml('saved_characters')
         else:
             characters_data=self.read_yaml('characters')
-            self.write_yaml(characters_data, 'saved_characters')
+            #self.write_yaml(characters_data, 'saved_characters')
 
         if ifile_exists:
             items_data=self.read_yaml('saved_items')
         else:
             items_data=self.read_yaml('items')
-            self.write_yaml(items_data, 'saved_items')
+            #self.write_yaml(items_data, 'saved_items')
 
         if rfile_exists:
             rooms_data=self.read_yaml('saved_rooms')
         else:
             rooms_data=self.read_yaml('rooms')
-            self.write_yaml(rooms_data, 'saved_rooms')
+            #self.write_yaml(rooms_data, 'saved_rooms')
 
         return characters_data, items_data, rooms_data
