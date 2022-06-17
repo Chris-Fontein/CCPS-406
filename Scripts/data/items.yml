@@ -7,7 +7,7 @@ plates:
     value: 3
     weight: 2
 
-plates:
+monster core:
     type: Item
     name: monster core
     description: a glowing orb
