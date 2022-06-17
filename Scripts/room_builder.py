@@ -44,7 +44,7 @@ class Room_builder:
                     match equip['type']:
                         case 'Equipment':
                             new_equip = Equipment(**equip)
-                            new_char.add_item(new_equip)
+                            new_char.equip(new_equip)
 
             new_char.set_room(new_room)
 
