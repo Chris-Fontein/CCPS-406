@@ -5,6 +5,7 @@ from assets.characters.monster import Monster
 from controllers.playerController import PlayerController
 from controllers.adventurerController import AdventurerController
 from controllers.monsterController import MonsterController
+from controllers.controller import Controller
 from assets.item import Item
 # from assets.items.consumable import Consumable
 from assets.items.container import Container
@@ -24,7 +25,7 @@ class Room_builder:
             # create character
             # add character to new_r
             character_obj = characters_dict[character_key]
-            
+
             match character_obj['controller']:
                 case 'AdventurerController':
                     new_char = Adventurer(**character_obj)
@@ -38,6 +39,11 @@ class Room_builder:
                     new_char = Adventurer(**character_obj)
                     new_char.set_room(new_room)
                     new_char.set_controller(PlayerController())
+
+                case _:
+                    new_char = Adventurer(**character_obj)
+                    new_char.set_room(new_room)
+                    new_char.set_controller(Controller())
 
             if character_obj['inventory'] is not None:
                 for item_key in character_obj['inventory']:
