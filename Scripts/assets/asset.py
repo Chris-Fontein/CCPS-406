@@ -10,7 +10,7 @@ class Asset:
     def __init__(self, **kwargs):
         self._name = kwargs.get("name")
         self._description = kwargs.get("description")
-        self._identifiers = set(kwargs.get("identifiers"))
+        self._identifiers = set(kwargs.get("identifiers", []))
 
     def __str__(self):
         return "".join([self._name, ":", self.get_description()])
@@ -18,9 +18,7 @@ class Asset:
         return hash(repr(self))
 
     def __eq__(self, other):
-        return (self.__class__ == other.__class__
-                    and self._identifiers == other._identifiers
-                )
+        return self._identifiers == other._identifiers
     def __ne__(self, other):
         return not self.__eq__(other)
 

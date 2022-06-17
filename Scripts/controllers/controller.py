@@ -4,6 +4,7 @@
 #Python imports
 #Third party imports
 #Local imports
+import helper_funcs
 
 class Controller():
     '''Controller class.'''
@@ -16,11 +17,11 @@ class Controller():
 
     def action(self):
         '''Perform the characters actions based the Characters surrounding'''
-        print(self._character.get_name() + " does nothing")
-
-    def search(self, identifiers):
-        '''Search Room Character is in for asset matching identifiers'''
-        return self._character.search(identifiers)
+        self.message(self._character.get_name() + " does nothing")
 
     def attacked(self, attacker, damage):
         '''Controller response to being attacked'''
+
+    def message(self, text):
+        '''Print messages with proper formatting'''
+        helper_funcs.print_text(text)

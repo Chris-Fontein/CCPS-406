@@ -5,10 +5,10 @@
 import random
 #Third party imports
 #Local imports
-from controllers.controller import Controller
+from controllers.aiController import AiController
 
-class AdventurerController(Controller):
-    '''Controller class.'''
+class AdventurerController(AiController):
+    '''Adventurer Controller class.'''
 
     def action(self):
         '''Perform the characters actions based the Characters surrounding'''
@@ -20,4 +20,5 @@ class AdventurerController(Controller):
                                                 new_room.get_name(),
                                                 )
         self._character.move(new_room)
-        print(message)
+        self.message(message)
+

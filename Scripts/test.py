@@ -3,6 +3,7 @@ from time import sleep
 """fine"""
 from assets.item import Item
 from assets.items.container import Container
+from assets.items.equipment import Equipment
 #from assets.asset import Asset
 from assets.room import Room
 from assets.characters.adventurer import Adventurer
@@ -11,51 +12,53 @@ from controllers.adventurerController import AdventurerController
 from controllers.controller import Controller
 
 char1 = Adventurer(
-        "bob",
-        "A man in red robes",
-        ["man", "bob", "red", "robes"],
-        {"attack":1, "armor":1, "weight":15, "health":10},
-        10
+        name="bob",
+        description="A man in red robes",
+        identifiers=["man", "bob", "red", "robes"],
+        base_stats={"attack":1, "armor":1, "weight":15, "health":10},
+        current_health=10
     )
 char2 = Adventurer(
-        "gil",
-        "A woman in black robes",
-        ["woman", "bob", "red", "robes"],
-        {"attack":3, "armor":0, "weight":15, "health":10},
-        10
+        name="gil",
+        description="A woman in black robes",
+        identifiers=["woman", "bob", "red", "robes"],
+        base_stats={"attack":3, "armor":0, "weight":15, "health":10},
+        current_health=10
     )
 char3 = Adventurer(
-        "carol",
-        "A man in grey robes",
-        ["woman", "carol", "green", "robes"],
-        {"attack":1, "armor":1, "weight":15, "health":5},
-        10
+        name="carol",
+        description="A man in grey robes",
+        identifiers=["woman", "carol", "green", "robes"],
+        base_stats={"attack":1, "armor":1, "weight":15, "health":5},
+        current_health=10
     )
 char4 = Adventurer(
-        "dave",
-        "A man in grey robes",
-        ["man", "dave", "grey", "robes"],
-        {"attack":1, "armor":1, "weight":15, "health":5},
-        10
+        name="dave",
+        description="A man in grey robes",
+        identifiers=["man", "dave", "grey", "robes"],
+        base_stats={"attack":1, "armor":1, "weight":15, "health":5},
+        current_health=10
     )
 char5 = Adventurer(
-        "Golem",
-        "A big rock guy",
-        ["golem", "rock", "guy"],
-        {"attack":1, "armor":10, "weight":15, "health":5},
-        10
+        name="Golem",
+        description="A big rock guy",
+        identifiers=["golem", "rock", "guy"],
+        base_stats={"attack":1, "armor":10, "weight":15, "health":5},
+        current_health=10
     )
 
 
-table = Container("table", "A solid oak table", ["table", "oak", "solid"], 0, 100)
-gem1 = Item("saphire", "a blue gem", ["blue", "gem", "saphire"], 50, 1)
-gem2 = Item("ruby", "a red gem", ["red", "gem", "ruby"], 50, 1)
-gem3 = Item("diamond", "a clear gem", ["clear", "gem", "diamond"], 50, 1)
+table = Container(name="table", description="A solid oak table", identifiers=["table", "oak", "solid"], value=0, weight=100)
+gem1 = Item(name="saphire", description="a blue gem", identifiers=["blue", "gem", "saphire"], value=50, weight=1)
+gem2 = Item(name="ruby", description="a red gem", identifiers=["red", "gem", "ruby"], value=50, weight=1)
+gem3 = Item(name="diamond", description="a clear gem", identifiers=["clear", "gem", "diamond"], value=50, weight=1)
+cloak = Equipment(name="cloak", description="dark cloak", identifiers=["dark", "cloak"], weight=1, value=1)
+armor = Equipment(name="armor", description="dark armor", identifiers=["metal", "armor"], weight=1, value=1)
 
-entrance = Room("Entrance", "The entrance to the cave.  There is a room to the east, and a hallway leading north.")
-dead_end = Room("Dead end", "A dead end.  The entrance lies to the west.")
-hallway = Room("Hallway", "A long hallway.  The entrance lies to the south and a room to the north.")
-dining_room = Room("Dining room", "A large dining room.  A long hallway lies to the south")
+entrance = Room(name="Entrance", description="The entrance to the cave.  There is a room to the east, and a hallway leading north.")
+dead_end = Room(name="Dead end", description="A dead end.  The entrance lies to the west.")
+hallway = Room(name="Hallway", description="A long hallway.  The entrance lies to the south and a room to the north.")
+dining_room = Room(name="Dining room", description="A large dining room.  A long hallway lies to the south")
 
 char3.set_room(entrance)
 char2.set_room(entrance)
