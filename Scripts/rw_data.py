@@ -1,25 +1,26 @@
+''' data connections : read/write textual data files'''
+
 import os
 import os.path
-import pprint
+#import pprint
 import yaml
 
 #check if the file to save has been created
 working_direcotry = os.path.abspath(os.getcwd())
-cfile_exists = os.path.isfile(working_direcotry+"\data\saved_characters.yml")
-ifile_exists = os.path.isfile(working_direcotry+"\data\saved_items.yml")
-rfile_exists = os.path.isfile(working_direcotry+"\data\saved_rooms.yml")
+cfile_exists = os.path.isfile(working_direcotry+"\\data\\saved_characters.yml")
+ifile_exists = os.path.isfile(working_direcotry+"\\data\\saved_items.yml")
+rfile_exists = os.path.isfile(working_direcotry+"\\data\\saved_rooms.yml")
 
 class Data:
+    """ Read/Write textual data files """
     def __init__(self):
         super().__init__()
 
     def read_yaml(self,file_name):
         """ A function to read YAML file"""
         with open(f"Data/{file_name}.yml") as file:
-            # config = yaml.safe_load(f)
             data_list = yaml.safe_load(file)
-            # print(roomsList)
-        return data_list  # config
+        return data_list
 
     #save the file
     def write_yaml(self, data, file_name):
@@ -30,6 +31,13 @@ class Data:
 
     #load the text data file
     def load(self):
+        """This method reads yaml files and returns them for the system.
+
+        Returns:
+            dictionary: characters
+            dictionary: items
+            dictionary: rooms
+        """
         characters_data=[]
         items_data=[]
         rooms_data=[]
