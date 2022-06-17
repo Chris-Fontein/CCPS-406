@@ -103,14 +103,6 @@ emerald:
     value: 5
     weight: 1
 
-key:
-    type: Item
-    name: key
-    description: a small key
-    identifiers: [key]
-    value: 2
-    weight: 1
-
 banishing stone:
     type: Item
     name: banishing stone

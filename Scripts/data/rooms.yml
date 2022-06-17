@@ -39,7 +39,7 @@ room02:
     - helmet
   furniture:
     - wooden chest: [sword, amulet]
-    - wooden barrel: [pouch, statue, key]
+    - wooden barrel: [pouch, statue]
   connections:
     - [north, room04]
     - [west, room00]
@@ -116,7 +116,6 @@ room07:
   characters: []
   floor: 
     - skull
-    - key
   furniture:
     - bone chest: [pouch, knife, amulet]
     - rotting corpse: [sword, shield]
