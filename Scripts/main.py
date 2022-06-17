@@ -21,9 +21,7 @@ if __name__ == "__main__":
     game_world=rooms.initialize_room_builder(characters_data, items_data, rooms_data)
 
     print("***** Game Start *****")
-    #print(game_world)
     characters = game_world[1]
-    print (characters)
 
     while True:
         for c in characters:
