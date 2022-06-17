@@ -7,6 +7,14 @@ plates:
     value: 3
     weight: 2
 
+plates:
+    type: Item
+    name: monster core
+    description: a glowing orb
+    identifiers: [monster, core, orb, sphere, glowing]
+    value: 50
+    weight: 1
+
 chalice:
     type: Item
     name: chalice
