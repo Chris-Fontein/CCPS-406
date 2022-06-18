@@ -5,7 +5,7 @@ from textwrap3 import wrap
 
 WIDTH = 80
 
-def print_text(text):
+def print_text(text = ""):
     '''Print out the text given with proper formatting'''
     if not text:
         print()

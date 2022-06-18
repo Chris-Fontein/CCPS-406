@@ -26,10 +26,16 @@ if __name__ == "__main__":
     pt(r" \______/|____|  |____|    \_/    |_________|____| |___|_____|\____|_______/ ")
     sleep(1)
 
-    pt("")
-    pt("")
+    pt()
+    pt()
+    pt("Navigate the caverns and try to escape with as much valuable loot as you can but, "
+            "beware your fellow treasure hunters and other more sinister foes lie ahead.")
+    sleep(4)
+    pt()
+    pt()
     pt("***** Your adventure begins *****")
-    pt("")
+    pt()
+    pt()
     sleep(1)
     characters = game_world[1]
 
