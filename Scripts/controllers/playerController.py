@@ -176,7 +176,7 @@ class PlayerController(Controller):
 
     def pickup(self, details):
         '''Attempt to pickup the specified item'''
-        available = self._character.get_available_contents(Item)
+        available = self._character.get_available_contents(Item, False)
         items = find_nested_item(details, available)
 
         if not items:
@@ -332,7 +332,7 @@ class PlayerController(Controller):
             if target.get_current_health() <= 0:
                 message.append(", killing them")
         else:
-            message.append("but, are not able to penetrate their defences.")
+            message.append("but, are not able to penetrate their defences")
 
         self.message("%s." %" ".join(message))
         return True
