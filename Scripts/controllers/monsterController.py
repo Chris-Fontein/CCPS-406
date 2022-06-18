@@ -12,6 +12,7 @@ class MonsterController(AiController):
             target = random.choice(list(targets))
             self._character.attack(target)
             self.message("%s attacks %s" %(self._character.get_name(), target.get_name()))
+            self._character.set_last_action("It attacked %s" % target.get_name())
             return
 
         connections = self._character.get_valid_connections()
@@ -22,4 +23,5 @@ class MonsterController(AiController):
                                                 new_room.get_name(),
                                                 )
         self._character.move(new_room)
+        self._character.set_last_action("It has just arrived at %s" % new_room.get_name())
         self.message(message)

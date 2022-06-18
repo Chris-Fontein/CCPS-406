@@ -40,14 +40,31 @@ class Character(Asset):
 
         self._room = kwargs.get("room")
         self._rooms_visited = set(kwargs.get("rooms_visited", []))
+        self._last_action = ""
 
     def get_name(self):
         '''Returns the name of the Character'''
         return self._name
 
-    def get_inventory(self):
+    def get_description(self):
+        '''Returns a description of the Character'''
+        if self._last_action:
+            return "%s. %s." %(self._description, self._last_action)
+        return "%s." %self._description
+
+    def set_last_action(self, action):
+        '''Set the last action performed by the character'''
+        self._last_action = action
+
+    def get_inventory(self, instance = None):
         '''Returns the inventory of the Character'''
-        return self._inventory
+        if not instance:
+            return self._inventory
+        items = []
+        for item in self._inventory:
+            if isinstance(item, instance):
+                items.append(item)
+        return items
 
     def get_current_health(self):
         '''Returns current health'''
@@ -136,6 +153,7 @@ class Character(Asset):
         return True
 
     def drop_item(self, item, destination):
+        '''Place the item at the specified destination'''
         self.remove_item(item)
 
         if isinstance(destination,  Room):
