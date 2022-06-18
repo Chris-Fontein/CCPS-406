@@ -23,8 +23,7 @@ class AdventurerController(AiController):
         targets = self._character.get_visible_characters()
         if targets:
             actions.append(self.attack)
-
-        contents = self._character.get_contents(Item)
+        contents = self._character.get_available_contents(Item, False)
         if contents:
             actions.extend([self.look, self.pickup])
 
@@ -37,26 +36,29 @@ class AdventurerController(AiController):
 
     def look(self):
         '''Look at a random item in the room.'''
-        contents = self._character.get_contents(Item)
+        contents = self._character.get_available_contents(Item, False)
         item = random.choice(list(contents))
         self.message("%s looks at %s" %(self._character.get_name(), item.get_name()))
-        self._character.set_last_action("They are looking at %s" % item.get_name())
+        self._character.set_last_action("They are looking at a %s" % item.get_name())
 
     def pickup(self):
         '''Pick up a random item in the room.'''
-        contents = self._character.get_contents(Item)
+        contents = self._character.get_available_contents(Item, False)
         item = random.choice(list(contents))
 
         result = self._character.pickup(item)
         if result:
             self._character.set_last_action("They picked up %s" % item.get_name())
-            self.message("%s picked up a %s and put it in their inventory" %(self._character.get_name(),
-                                                                        item.get_name()))
+            self.message("%s picked up a %s and put it in their inventory" %(
+                                                                    self._character.get_name(),
+                                                                    item.get_name()
+                                                                    ))
         else:
             self._character.set_last_action("They tried to pick up %s but, "
                                                 "couldn't" % item.get_name())
             self.message("%s tried to pick up %s but couldn't" %(self._character.get_name(),
-                                                                        item.get_name()))
+                                                                        item.get_name()
+                                                                        ))
 
     def equip(self):
         '''Equip a random item from inventory.'''
