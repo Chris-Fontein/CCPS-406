@@ -8,7 +8,6 @@ class MonsterController(AiController):
     def action(self):
         '''Perform the characters actions based the Characters surrounding'''
         targets = self._character.get_visible_characters()
-
         if targets:
             target = random.choice(list(targets))
             self._character.attack(target)
