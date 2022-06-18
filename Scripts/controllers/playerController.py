@@ -18,6 +18,8 @@ class PlayerController(Controller):
 
     def action(self):
         '''Perform the characters actions based the Characters surrounding'''
+        if self._character.get_current_health() <= 0:
+            return
         if self._character.has_visited():
             self.message(self._character.get_room().get_description())
         else:
@@ -74,7 +76,7 @@ class PlayerController(Controller):
         result = container.open_close_container(close = False)
 
         if not result:
-            self.message("You open the %s" %container.get_name())
+            self.message("You open the %s." %container.get_name())
         else:
             self.message("You can't open the %s because it is %s." %(container.get_name(), result))
 
@@ -130,6 +132,8 @@ class PlayerController(Controller):
                 self.message(item.get_container_description())
             elif isinstance(item, Item):
                 self.message(item.get_description())
+        else:
+            self.message("More then one thing in the room matches that description.")
         if not items:
             self.message("There is nothing in the room that matches that description.")
         return False
@@ -372,7 +376,6 @@ def find_nested_item(details, items, instance = Asset):
         else:
             current_items = item_matches
 
-    
     return current_items
 
 def check_same(items):
@@ -383,8 +386,6 @@ def check_same(items):
     first_item = items[0]
     for item in items:
         same = same and (item == first_item)
-    if not same:
-        self.message("More then one thing in the room matches that description.")
     return same
 
 def substitute_commands(action, details):

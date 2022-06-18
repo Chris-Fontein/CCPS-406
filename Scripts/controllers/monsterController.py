@@ -13,6 +13,7 @@ class MonsterController(AiController):
         if targets:
             target = random.choice(list(targets))
             self._character.attack(target)
+            self.message("%s attacks %s" %(self._character.get_name(), target.get_nam()))
             return
 
         connections = self._character.get_valid_connections()
