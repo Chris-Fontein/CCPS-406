@@ -19,6 +19,11 @@ class Room(Asset):
         self._characters = set()
         self._connections = {}
         self._monster_connections = {}
+        self._exit = kwargs.get("exit", False)
+
+    def get_exit(self):
+        """Returns if the room is an exit"""
+        return self._exit
 
     def get_description(self):
         """Returns room's short description."""

@@ -79,6 +79,7 @@ class Character(Asset):
         return {}
 
     def get_equipment(self):
+        '''Returns the Characters equipment'''
         return self._equipment
 
     def get_contents(self, instance):
@@ -117,14 +118,15 @@ class Character(Asset):
             if isinstance(item_parent, Room):
                 item_parent.remove_item_from_floor(item)
 
-    def remove_item(self, item, desetination = None):
+    def remove_item(self, item):
         '''Remove item to Character inventory'''
         self.adjust_weight(-item.get_weight())
         self._inventory.remove(item)
 
     def pickup(self, item):
+        '''Pick up the specified item if you can carry it'''
         weight = self._weight
-        max_weight = (self._stat_modifiers[Character.WEIGHT_LIMIT] 
+        max_weight = (self._stat_modifiers[Character.WEIGHT_LIMIT]
                      + self._base_stats[Character.WEIGHT_LIMIT])
 
         if weight + item.get_weight() > max_weight:
@@ -169,7 +171,8 @@ class Character(Asset):
 
         if self._current_health <= 0:
             body = Container(name = "%s's body" %self._name,
-                                description = "%s's body. They were alive until recently" %self._name,
+                                description = "%s's body. They were alive "
+                                                "until recently" %self._name,
                                 identifiers = ["body", self._name],
                                 value = 0,
                                 weight = 100
@@ -208,13 +211,13 @@ class Character(Asset):
         '''Unequips Equipment in slot and equips item.'''
         slot = item.get_slot()
         unequipped = None
-        
+
         if slot not in self._equipment:
             return False, unequipped
 
         #Slot is full
         unequipped = self.unequip(slot)
-            
+
         self._equipment[slot] = item
         item_stats = item.get_stats()
 
