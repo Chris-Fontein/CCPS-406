@@ -350,7 +350,6 @@ def find_nested_item(details, items, instance = Asset):
     current_section = []
 
     for detail in details:
-        print (detail)
         if detail in set(["in", "on"]):
             sections.append(current_section)
             current_section = []
