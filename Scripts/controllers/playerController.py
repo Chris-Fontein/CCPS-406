@@ -162,17 +162,16 @@ class PlayerController(Controller):
         items = find_nested_item(details, available)
 
         same = check_same(items)
-
-        if same:
+        if not items:
+            self.message("There is nothing in the room that matches that description.")
+        elif same:
             item = items[0]
             if isinstance(item, Container):
                 self.message(item.get_container_description())
-            elif isinstance(item, Item):
+            elif isinstance(item, Asset):
                 self.message(item.get_description())
         else:
             self.message("More then one thing in the room matches that description.")
-        if not items:
-            self.message("There is nothing in the room that matches that description.")
         return False
 
     def pickup(self, details):
@@ -334,8 +333,6 @@ class PlayerController(Controller):
                 message.append(", killing them")
         else:
             message.append("but, are not able to penetrate their defences.")
-            self.message(" ".join(message))
-            return False
 
         self.message("%s." %" ".join(message))
         return True
@@ -353,6 +350,7 @@ class PlayerController(Controller):
         self.message("%s." %" ".join(message))
 
         if health <= 0:
+            sleep(3)
             sys.exit()
 
 
