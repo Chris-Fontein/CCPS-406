@@ -97,7 +97,7 @@ room06:
   name: Rainbow Cave
   description: A cave with crystal walls emitting light of various colors.  To the south, there is an exit with predominantly green glow. To the west, an exit covered by a dense fog. On the north wall, yet another prominent crack.
   identifiers: [rainbow, cave, crystal, color, cavern]
-  characters: []
+  characters: [Sylas]
   floor: 
     - axe
     - pouch
