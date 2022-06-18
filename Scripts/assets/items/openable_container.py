@@ -1,11 +1,10 @@
-'''Contains Consumable item class.'''
+'''Contains OpenableContainer class.'''
 
 #Imports
 #Python imports
 #Third party imports
 #Local imports
 from assets.items.container import Container
-from assets.asset import Asset
 
 class OpenableContainer(Container):
     '''Container class'''
@@ -29,8 +28,15 @@ class OpenableContainer(Container):
         if self._open:
             return super().get_contents(instance)
         return []
-    def search_contents(self, identifiers, instance = Asset, min_match = 1):
-        '''Searches the contents of the container for the best matches to the identifier'''
-        if not self._open:
-            return []
-        return super().search_contents(identifiers, instance, min_match)
+
+    def open_close_container(self, close):
+        '''Opens or closes container based on input'''
+        if self._open and not close:
+            return "already closed"
+        if not self._open and close:
+            return "already closed"
+        if self._open and close:
+            self._open = False
+        elif not self._open and not close:
+            self._open = True
+        return ""

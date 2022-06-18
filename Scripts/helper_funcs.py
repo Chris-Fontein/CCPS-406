@@ -1,3 +1,4 @@
+#pip install textWrap3
 from textwrap3 import wrap
 WIDTH = 80
 def print_text(text):
