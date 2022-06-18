@@ -3,6 +3,7 @@
 #Imports
 #Python imports
 import sys
+from time import sleep
 #Third party imports
 #Local imports
 from controllers.controller import Controller
@@ -27,15 +28,40 @@ class PlayerController(Controller):
 
         if self._character.get_room().get_exit():
             self.win()
-            
+
         valid_action = False
         while not valid_action:
             command = input("\n> ")
             valid_action = self.parse_command(command)
 
     def win(self):
+        '''Check if the player would like to end the game'''
+        yes = ["yes", "y"]
+        cont = ["no", "n"]
         self.message("You have made it to the outside.  Would you like to leave with your loot?")
-        response = input("> ")
+        while True:
+            response = input("> ").lower()
+            if response in yes:
+                inventory = self._character.get_inventory()
+                equipment = self._character.get_equipment()
+
+                value = 0
+                for item in inventory:
+                    value += item.get_value()
+
+                for slot in equipment:
+                    if equipment[slot]:
+                        value += equipment[slot].get_value()
+
+                self.message("You have survived the caverns.  You head off back to civilization "
+                                "with your newly aquired loot.")
+                self.message("You aquired loot totaling %s gold coins in value." %value)
+                sleep(5)
+                sys.exit()
+
+            elif response in cont:
+                self.message("The adventure continues.")
+                break
 
     def parse_command(self, command):
         '''Deconstruct user input to determin action'''
