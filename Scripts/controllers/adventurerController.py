@@ -12,6 +12,8 @@ class AdventurerController(AiController):
 
     def action(self):
         '''Perform the characters actions based the Characters surrounding'''
+        if self._character.get_current_health() <= 0:
+            return
         connections = self._character.get_valid_connections()
         direction = random.choice(list(connections))
         new_room = connections[direction]

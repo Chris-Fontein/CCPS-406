@@ -22,4 +22,4 @@ if __name__ == "__main__":
     while True:
         for c in characters:
             c.action()
-            sleep(0.25)
+            sleep(0.10)
