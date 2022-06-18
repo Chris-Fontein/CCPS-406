@@ -121,7 +121,7 @@ Monster:
   base_stats:
     health: 10
     armor: 0
-    attack: 1
+    attack: 6
     weight: 15
   inventory:
     - monster core

@@ -11,12 +11,11 @@ def print_text(text = ""):
         print()
         sleep(0.1)
         return
-
     split = text.split("\n")
     for line in split:
+        if line:
+            line = "%s%s" %(line[0].upper(), line[1:])
         para_lines = wrap(line, WIDTH)
         for para_line in para_lines:
             print(para_line)
             sleep(0.1)
-
-
