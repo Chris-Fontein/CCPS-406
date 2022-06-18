@@ -20,3 +20,7 @@ class Monster(Character):
             all_connections[con] = monster_connections[con]
 
         return all_connections
+
+    def attacked(self, attack_value, attacker):
+        '''Monsters don't take damage'''
+        return 0

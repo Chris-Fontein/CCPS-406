@@ -81,27 +81,3 @@ class Container(Item):
             if isinstance(item, Container):
                 items.extend(item.get_contents(instance))
         return items
-
-    def search_contents(self, identifiers, instance = Asset, min_match = 1):
-        '''Searches the contents of the container for the best matches to the identifier'''
-        match_value = min_match
-        matches = []
-        for item in self._content:
-            if not isinstance(item, instance):
-                continue
-
-            match_number = item.match_identifiers(identifiers)
-            if match_number >= match_value:
-                if match_number > match_value:
-                    matches = []
-                    match_value = match_number
-                matches.append(item)
-
-            if isinstance(item, Container):
-                container_number, container_items = item.search_contents(identifiers)
-                if container_number > match_value:
-                    matches = []
-                    match_value = container_number
-                matches.extend(container_items)
-
-        return match_value, matches

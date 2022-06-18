@@ -7,9 +7,10 @@
 from controllers.controller import Controller
 
 from assets.asset import Asset
+from assets.item import Item
 from assets.items.equipment import Equipment
 from assets.items.container import Container
-from assets.characters.character import Character
+from assets.items.openable_container import OpenableContainer
 
 
 class PlayerController(Controller):
@@ -48,6 +49,7 @@ class PlayerController(Controller):
             "equip": self.equip,
             "unequip": self.unequip,
             "pickup": self.pickup,
+            "place": self.place,
             "attack": self.attack,
             }
 
@@ -65,13 +67,46 @@ class PlayerController(Controller):
 
     def open(self, details):
         '''Attempt to open the specified container'''
-        self.message("open: %s" %details)
+        container = self.get_container(details)
+        if not container:
+            return False
+
+        result = container.open_close_container(close = False)
+
+        if not result:
+            self.message("You open the %s" %container.get_name())
+        else:
+            self.message("You can't open the %s because it is %s." %(container.get_name(), result))
+
         return True
 
     def close(self, details):
         '''Attempt to close the specified container'''
-        self.message("close: %s" %details)
+        container = self.get_container(details)
+        if not container:
+            return False
+
+        result = container.open_close_container(close = True)
+        if not result:
+            self.message("You close the %s" %container.get_name())
+        else:
+            self.message("You can't close the %s because it is %s." %(container.get_name(), result))
+
         return True
+
+    def get_container(self, details):
+        '''Search for container matching details'''
+        available = self._character.get_available_contents(OpenableContainer)
+        matches = find_nested_item(details, available, OpenableContainer)
+
+        if not matches:
+            self.message("There are no items in the room like that you can open.")
+            return None
+        if len(matches) > 1:
+            if not check_same(matches):
+                self.message("There more then one item that matches that description.")
+
+        return matches[0]
 
     def look(self, details):
         '''Attempt to look at the specified asset'''
@@ -90,14 +125,68 @@ class PlayerController(Controller):
         same = check_same(items)
 
         if same:
-            self.message(items[0].get_description())
-            return False
-
+            item = items[0]
+            if isinstance(item, Container):
+                self.message(item.get_container_description())
+            elif isinstance(item, Item):
+                self.message(item.get_description())
+        if not items:
+            self.message("There is nothing in the room that matches that description.")
         return False
 
     def pickup(self, details):
         '''Attempt to pickup the specified item'''
-        self.message("pickup: %s" %details)
+        available = self._character.get_available_contents(Item)
+        items = find_nested_item(details, available)
+
+        if not items:
+            self.message("There is nothing in the room that matches that description.")
+            return False
+
+        same = check_same(items)
+
+        if same:
+            item = items[0]
+            result = self._character.pickup(item)
+            if result:
+                self.message("You pick up the %s." %item.get_name())
+                return True
+
+            self.message("With everything you are carrying you wouldn't be able to carry that.")
+        return False
+
+    def place(self, details):
+        inventory = self._character.get_inventory()
+        #item_details = []
+        #target_details = []
+        target = None
+
+        '''
+        current_details = item_details
+        for detail in details:
+            if detail in ["in", "on", "onto"]:
+                current_details = target_details
+            elif detail in ["floor", "ground"]:
+                target = self._character.get_room()
+                break
+            current_details.append(detail)
+
+        if not target:
+            if target_details:
+                search_contents(item_details, inventory)
+
+        '''
+        if not target:
+            target = self._character.get_room()
+        matches = search_contents(details, inventory)
+
+        if not matches:
+            self.message("You don't have anything like that in your inventory.")
+            return False
+
+        item = matches[0]
+        self._character.drop_item(item, target)
+        self.message("You place your %s on the floor" %item.get_name())
         return True
 
     def move(self, details):
@@ -123,7 +212,9 @@ class PlayerController(Controller):
                 break
         if final_dir:
             self._character.move(valid_dirs[final_dir])
-            self.message("You move %s towards %s." %(final_dir, self._character.get_room().get_name()))
+            self.message("You move %s towards %s." %(final_dir, 
+                                                    self._character.get_room().get_name()
+                                                    ))
             return True
         self.message("You did not specify a valid direction.")
         return False
@@ -144,17 +235,19 @@ class PlayerController(Controller):
 
         if not check_same(matches):
             return False
-        
+
         item = matches[0]
-        result, unequipped = self.character.equip(item)
+        result, unequipped = self._character.equip(item)
 
         if not result:
             self.message("You can't equip that item.")
             return False
-        elif unequipped:
-            self.message("You remove your %s and equip your %s." %(unequipped.get_name(), item.get_name()))
+        if unequipped:
+            self.message("You remove your %s and equip your %s." %(unequipped.get_name(), 
+                                                                    item.get_name()
+                                                                    ))
         else:
-            self.message("You equip your %s." %item.get)
+            self.message("You equip your %s." %item.get_name())
 
         return True
 
@@ -168,12 +261,12 @@ class PlayerController(Controller):
                 if item:
                     self.message("You unequipped your %s." %item.get_name())
                     return True
-                else:
-                    self.message("You have nothing equipped to %s." %slot)
-                    return False
-            items.append(equipment[slot])
+                self.message("You have nothing equipped to %s." %slot)
+                return False
+            if equipment[slot]:
+                equipment_items.append(equipment[slot])
 
-        matches = search_contents(details, items)
+        matches = search_contents(details, equipment_items)
 
         if matches:
             item = matches[0]
@@ -280,9 +373,7 @@ def find_nested_item(details, items, instance = Asset):
         else:
             current_items = item_matches
 
-    if not current_items:
-        self.message("Nothing in the room matches that description.")
-
+    
     return current_items
 
 def check_same(items):
@@ -323,9 +414,15 @@ def substitute_commands(action, details):
         action = "pickup"
     elif action == "grab":
         action = "pickup"
+    elif action == "pick":
+        action = "pickup"
     elif action == "search":
         action = "look"
     elif action == "examine":
         action = "look"
+    elif action == "drop":
+        action = "place"
+    elif action == "put":
+        action = "place"
 
     return action, details

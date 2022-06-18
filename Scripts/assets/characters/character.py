@@ -5,6 +5,7 @@
 #Third party imports
 #Local imports
 from assets.asset import Asset
+from assets.room import Room
 from assets.items.container import Container
 
 class Character(Asset):
@@ -43,6 +44,10 @@ class Character(Asset):
     def get_name(self):
         '''Returns the name of the Character'''
         return self._name
+
+    def get_inventory(self):
+        '''Returns the inventory of the Character'''
+        return self._inventory
 
     def get_current_health(self):
         '''Returns current health'''
@@ -104,12 +109,37 @@ class Character(Asset):
         '''Add item to Character inventory'''
         self.adjust_weight(item.get_weight())
         self._inventory.append(item)
+        item_parent =  item.get_parent()
         item.set_parent(self)
+        if item_parent:
+            if isinstance(item_parent, Container):
+                item_parent.remove_item_contents(item)
+            if isinstance(item_parent, Room):
+                item_parent.remove_item_from_floor(item)
 
-    def remove_item(self, item):
+    def remove_item(self, item, desetination = None):
         '''Remove item to Character inventory'''
         self.adjust_weight(-item.get_weight())
         self._inventory.remove(item)
+
+    def pickup(self, item):
+        weight = self._weight
+        max_weight = (self._stat_modifiers[Character.WEIGHT_LIMIT] 
+                     + self._base_stats[Character.WEIGHT_LIMIT])
+
+        if weight + item.get_weight() > max_weight:
+            return False
+
+        self.add_item(item)
+        return True
+
+    def drop_item(self, item, destination):
+        self.remove_item(item)
+
+        if isinstance(destination,  Room):
+            destination.add_item_to_floor(item)
+        else:
+            destination.add_item_contents(item)
 
     def adjust_weight(self, adjustment):
         '''Adjust the character's weight load by the specified amount.'''
