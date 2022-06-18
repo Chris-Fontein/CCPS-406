@@ -55,7 +55,7 @@ class RoomBuilder:
                     new_char = Adventurer(**character_obj)
                     new_char.set_room(new_room)
                     new_char.set_controller(PlayerController())
-                
+
 
             if character_obj['inventory'] is not None:
                 for item_key in character_obj['inventory']:
@@ -171,21 +171,6 @@ class RoomBuilder:
                     connection_direction = connection_obj[0]
                     #connected_room_id = connection_obj[1]
                     room.add_room_connection(connection_direction, rooms[connection_obj[1]], True)
-
-        for r in rooms:
-            for char in rooms[r]._characters:
-                print(char)
-                for x in char._inventory:
-                    print(x)
-                for y in char._equipment:
-                    print(char._equipment[y])
-            for f in rooms[r]._furniture:
-                print(f)
-                if isinstance(f, Container) or isinstance(f, OpenableContainer):
-                    for item in f._content:
-                        print(item)
-            for item in rooms[r]._floor:
-                print(item)
 
         return rooms, characters
     #initialize_room_builder(read_yaml('characters'),read_yaml('items'),read_yaml('rooms'))
