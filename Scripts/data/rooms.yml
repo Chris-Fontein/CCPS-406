@@ -197,3 +197,4 @@ room12:
   connections:
     - [north, room00]
   monster_connections:
+  exit: true

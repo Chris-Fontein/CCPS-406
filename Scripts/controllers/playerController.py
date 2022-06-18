@@ -2,6 +2,7 @@
 
 #Imports
 #Python imports
+import sys
 #Third party imports
 #Local imports
 from controllers.controller import Controller
@@ -18,17 +19,23 @@ class PlayerController(Controller):
 
     def action(self):
         '''Perform the characters actions based the Characters surrounding'''
-        if self._character.get_current_health() <= 0:
-            return
+
         if self._character.has_visited():
             self.message(self._character.get_room().get_description())
         else:
             self.message(self._character.get_room().get_long_description())
 
+        if self._character.get_room().get_exit():
+            self.win()
+            
         valid_action = False
         while not valid_action:
             command = input("\n> ")
             valid_action = self.parse_command(command)
+
+    def win(self):
+        self.message("You have made it to the outside.  Would you like to leave with your loot?")
+        response = input("> ")
 
     def parse_command(self, command):
         '''Deconstruct user input to determin action'''
@@ -39,6 +46,9 @@ class PlayerController(Controller):
 
         action = split[0]
         details = split[1:]
+
+        if action in ["quit", "exit"]:
+            sys.exit()
 
         (action, details) = substitute_commands(action, details)
 
@@ -54,6 +64,7 @@ class PlayerController(Controller):
             "place": self.place,
             "attack": self.attack,
             }
+
 
         if action in actions:
             action_function = actions[action]
@@ -160,26 +171,10 @@ class PlayerController(Controller):
         return False
 
     def place(self, details):
+        '''Take item from inventory and place it on the ground'''
         inventory = self._character.get_inventory()
-        #item_details = []
-        #target_details = []
         target = None
 
-        '''
-        current_details = item_details
-        for detail in details:
-            if detail in ["in", "on", "onto"]:
-                current_details = target_details
-            elif detail in ["floor", "ground"]:
-                target = self._character.get_room()
-                break
-            current_details.append(detail)
-
-        if not target:
-            if target_details:
-                search_contents(item_details, inventory)
-
-        '''
         if not target:
             target = self._character.get_room()
         matches = search_contents(details, inventory)
@@ -216,7 +211,7 @@ class PlayerController(Controller):
                 break
         if final_dir:
             self._character.move(valid_dirs[final_dir])
-            self.message("You move %s towards %s." %(final_dir, 
+            self.message("You move %s towards %s." %(final_dir,
                                                     self._character.get_room().get_name()
                                                     ))
             return True
@@ -247,8 +242,8 @@ class PlayerController(Controller):
             self.message("You can't equip that item.")
             return False
         if unequipped:
-            self.message("You remove your %s and equip your %s." %(unequipped.get_name(), 
-                                                                    item.get_name()
+            self.message("You remove your %s and equip your %s." %(unequipped.get_name(),
+                                                                    item.get_name(),
                                                                     ))
         else:
             self.message("You equip your %s." %item.get_name())
@@ -298,7 +293,8 @@ class PlayerController(Controller):
             if all(matches[0] == m for m in matches):
                 target = matches[0]
             else:
-                self.message("There is more then one person in the room that matches that description")
+                self.message("There is more then one person in the "
+                                "room that matches that description")
                 return False
         else:
             target = matches[0]
@@ -319,15 +315,20 @@ class PlayerController(Controller):
         return True
 
     def attacked(self, attacker, damage):
+        health = self._character.get_current_health()
         message = [attacker.get_name(), "attacked you"]
         if damage > 0:
             message.extend(["dealing", str(damage), "damage"])
-            if self._character.get_current_health() <= 0:
+            if health <= 0:
                 message.append(", killing you")
         else:
             message.append("but, was not able to penetrate your defences")
 
         self.message("%s." %" ".join(message))
+
+        if health <= 0:
+            sys.exit()
+
 
 
 def search_contents(identifiers, items):
@@ -410,19 +411,11 @@ def substitute_commands(action, details):
         action = "use"
     elif action == "fight":
         action = "attack"
-    elif action == "take":
+    elif action in ["take", "grab", "pick"]:
         action = "pickup"
-    elif action == "grab":
-        action = "pickup"
-    elif action == "pick":
-        action = "pickup"
-    elif action == "search":
+    elif action in ["search", "examin"]:
         action = "look"
-    elif action == "examine":
-        action = "look"
-    elif action == "drop":
-        action = "place"
-    elif action == "put":
+    elif action in ["drop", "put"]:
         action = "place"
 
     return action, details
