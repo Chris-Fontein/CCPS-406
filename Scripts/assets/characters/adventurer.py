@@ -4,7 +4,6 @@
 #Python imports
 #Third party imports
 #Local imports
-from assets.items.equipment import Equipment
 from assets.characters.character import Character
 
 class Adventurer(Character):

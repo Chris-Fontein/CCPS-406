@@ -353,8 +353,6 @@ class PlayerController(Controller):
             sleep(3)
             sys.exit()
 
-
-
 def search_contents(identifiers, items):
     '''Returns the best matches in a list of items'''
     id_set = set(identifiers)
